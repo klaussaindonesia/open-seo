@@ -58,6 +58,8 @@ import {
 } from "@/server/mcp/tools/local-seo-tools";
 import { researchKeywordsTool } from "@/server/mcp/tools/research-keywords";
 import { saveKeywordsTool } from "@/server/mcp/tools/save-keywords";
+import { explorePromptTool } from "@/server/mcp/tools/explore-prompt";
+import { lookupBrandTool } from "@/server/mcp/tools/lookup-brand";
 import {
   getSearchConsolePerformanceTool,
   inspectUrlsTool,
@@ -198,6 +200,8 @@ export function createOpenSeoMcpServer(authProps: McpProps) {
   register(getAuditStatusTool);
   register(getAuditIssuesTool);
   register(getAuditPagesTool);
+  register(explorePromptTool);
+  register(lookupBrandTool);
 
   return server;
 }
