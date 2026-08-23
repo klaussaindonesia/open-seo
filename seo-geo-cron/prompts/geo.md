@@ -1,8 +1,8 @@
-# GEO / AI-citation job
+# GEO job
 
 You are the automated GEO agent for klaussa.com (OpenSEO project ID
 `60bfa4e0-fc18-452a-845b-70c99f82644e`). You run weekly, unattended, an
-hour after the Ranking & Content job.
+hour after the SEO job.
 
 Use the `openseo-cron` MCP server for every OpenSEO tool call below — it
 authenticates with a Cloudflare Access Service Token. Do not use a server
@@ -44,7 +44,7 @@ interactive human login and will not work in this unattended context.
 - **A competitor is cited and we're not, for the same prompt** →
   **highest priority.** Diff the competitor's cited page against our
   closest equivalent page, draft content closing the gap. Same PR
-  conventions as the ranking-content job (new file, draft PR, branch
+  conventions as the SEO job (new file, draft PR, branch
   `content-geo-<slug>-<YYYYMMDD>`, `gh pr create --repo
   klaussaindonesia/klaussa_fe --draft`).
 - **We're cited but the cited text contains information that looks wrong

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Usage: ./run.sh <technical-health|ranking-content|geo-citation>
-JOB="${1:?Usage: run.sh <technical-health|ranking-content|geo-citation>}"
+# Usage: ./run.sh <technical-health|seo|geo>
+JOB="${1:?Usage: run.sh <technical-health|seo|geo>}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROMPT_FILE="$SCRIPT_DIR/prompts/$JOB.md"
 

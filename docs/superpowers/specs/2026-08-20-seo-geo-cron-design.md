@@ -55,8 +55,8 @@ target host (`0 9 * * * claude -p "System warmup."`).
 autoseo/seo-geo-cron/
   prompts/
     technical-health.md
-    ranking-content.md
-    geo-citation.md
+    seo.md
+    geo.md
   data/
     geo-history.sqlite       # GEO history OpenSEO doesn't persist
   run.sh                     # cd autoseo && git pull -q && claude -p "$(cat prompts/$1.md)" ...
@@ -122,13 +122,13 @@ Implementation: two new files under `src/server/mcp/tools/`
 ## 6. Prerequisites not yet in place
 
 - **Rank tracker is unconfigured** (`get_rank_tracker` returned empty
-  `configs: []`, `list_saved_keywords` returned 0 rows) — the Ranking &
-  Content job needs a seeded keyword list (competitors: Hukumonline, JDIH,
-  Legalku; target keywords TBD from OpenSEO UI exploration) before it has
-  anything to track drops against. This is separate follow-up work, not
-  blocking the technical-health job.
+  `configs: []`, `list_saved_keywords` returned 0 rows) — the SEO job needs
+  a seeded keyword list (competitors: Hukumonline, JDIH, Legalku; target
+  keywords TBD from OpenSEO UI exploration) before it has anything to track
+  drops against. This is separate follow-up work, not blocking the
+  technical-health job.
 - **GA4 has zero key events configured** — doesn't block any job (GSC + rank
-  tracker are sufficient for the ranking-content decision rules), but means
+  tracker are sufficient for the SEO job's decision rules), but means
   "does this content actually convert" stays unavailable until someone
   defines GA4 conversions.
 - **GEO MCP tools don't exist yet** (§5) — blocks the GEO job specifically,
@@ -161,7 +161,7 @@ Implementation: two new files under `src/server/mcp/tools/`
   correlated with response times up to 10.7s — escalate case (real backend
   perf issue, not a content/link fix).
 
-### 7.2 Ranking & Content
+### 7.2 SEO
 
 - **Cadence:** weekly (Monday). GSC/rank-tracker data doesn't move
   meaningfully day-to-day; weekly bounds DataForSEO keyword-research spend
@@ -187,9 +187,9 @@ Implementation: two new files under `src/server/mcp/tools/`
   position 8.5, 1 click). These are immediately actionable once this job
   exists.
 
-### 7.3 GEO / AI-citation
+### 7.3 GEO
 
-- **Cadence:** weekly (staggered an hour after ranking-content, to bound
+- **Cadence:** weekly (staggered an hour after the SEO job, to bound
   concurrent DataForSEO LLM-call load).
 - **Data:** `explore_prompt` + `lookup_brand` (new tools, §5) against a
   target prompt set (the ~50-prompt ID-language list mentioned in the

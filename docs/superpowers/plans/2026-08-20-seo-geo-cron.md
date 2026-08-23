@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Expose OpenSEO's Prompt Explorer and Brand Lookup as MCP tools, deploy them to the self-hosted instance, and stand up the three-job agentic cron system (technical health, ranking & content, GEO/AI-citation) on the desktop host so it can run unattended against klaussa.com.
+**Goal:** Expose OpenSEO's Prompt Explorer and Brand Lookup as MCP tools, deploy them to the self-hosted instance, and stand up the three-job agentic cron system (technical health, SEO, GEO) on the desktop host so it can run unattended against klaussa.com.
 
 **Architecture:** Two new MCP tools (`explore_prompt`, `lookup_brand`) added to the existing OpenSEO MCP server, following the exact wiring pattern already used by every other tool (`withMcpProjectAuth` → service call → `mcpResponse`). Three cron jobs are plain `claude -p "<prompt file>"` invocations on a remote desktop host, scheduled via crontab, each with MCP + git/`gh` tool access — no bespoke orchestration code.
 
@@ -459,7 +459,7 @@ git commit -m "Register explore_prompt and lookup_brand MCP tools"
 
 **Interfaces:**
 - Consumes: the two registered tools from Task 3.
-- Produces: a live self-hosted OpenSEO deployment exposing `explore_prompt` and `lookup_brand` over MCP — consumed by the `geo-citation.md` job prompt in Task 7.
+- Produces: a live self-hosted OpenSEO deployment exposing `explore_prompt` and `lookup_brand` over MCP — consumed by the `geo.md` job prompt in Task 7.
 
 - [ ] **Step 1: Verify Alchemy OAuth is still valid**
 
@@ -489,8 +489,8 @@ No commit needed — this task deploys already-committed code. Proceed to Task 5
 
 **Files:**
 - Create: `seo-geo-cron/prompts/technical-health.md`
-- Create: `seo-geo-cron/prompts/ranking-content.md`
-- Create: `seo-geo-cron/prompts/geo-citation.md`
+- Create: `seo-geo-cron/prompts/seo.md`
+- Create: `seo-geo-cron/prompts/geo.md`
 - Create: `seo-geo-cron/run.sh`
 - Create: `seo-geo-cron/data/.gitkeep`
 - Modify: `.gitignore` (add `seo-geo-cron/data/*.sqlite` and `seo-geo-cron/klaussa_fe-workspace/`)
@@ -569,12 +569,12 @@ Every PR/issue body must include the OpenSEO audit ID it was generated
 from, so a human can trace the decision back to the source data.
 ```
 
-- [ ] **Step 4: Write `seo-geo-cron/prompts/ranking-content.md`**
+- [ ] **Step 4: Write `seo-geo-cron/prompts/seo.md`**
 
 ```markdown
-# Ranking & Content job
+# SEO job
 
-You are the automated Ranking & Content agent for klaussa.com (OpenSEO
+You are the automated SEO agent for klaussa.com (OpenSEO
 project ID `60bfa4e0-fc18-452a-845b-70c99f82644e`). You run weekly,
 unattended.
 
@@ -612,7 +612,7 @@ unattended.
   check volume) we don't rank for at all** → draft a new post/hub page.
 - For every content action: work in
   `~/klaussa-lab/seo-geo-cron/klaussa_fe-workspace/`, branch
-  `content-ranking-<slug>-<YYYYMMDD>`, add a **new file** under the site's
+  `content-seo-<slug>-<YYYYMMDD>`, add a **new file** under the site's
   content/blog directory (never edit an existing published page directly).
   Write the actual publishable content, not a brief — the human reviewing
   the PR will QA it, not expand it. Commit, push, `gh pr create --draft`.
@@ -626,14 +626,14 @@ Every PR body must include the GSC date range and (if used) the rank
 tracker snapshot date the decision was based on.
 ```
 
-- [ ] **Step 5: Write `seo-geo-cron/prompts/geo-citation.md`**
+- [ ] **Step 5: Write `seo-geo-cron/prompts/geo.md`**
 
 ```markdown
-# GEO / AI-citation job
+# GEO job
 
 You are the automated GEO agent for klaussa.com (OpenSEO project ID
 `60bfa4e0-fc18-452a-845b-70c99f82644e`). You run weekly, unattended, an
-hour after the Ranking & Content job.
+hour after the SEO job.
 
 ## What to do
 
@@ -669,7 +669,7 @@ hour after the Ranking & Content job.
 - **A competitor is cited and we're not, for the same prompt** →
   **highest priority.** Diff the competitor's cited page against our
   closest equivalent page, draft content closing the gap. Same PR
-  conventions as the ranking-content job (new file, draft PR, branch
+  conventions as the SEO job (new file, draft PR, branch
   `content-geo-<slug>-<YYYYMMDD>`).
 - **We're cited but the cited text contains information that looks wrong
   or outdated** (cross-check against the actual current page content) →
@@ -694,8 +694,8 @@ prompt/query + model/platform the decision was based on.
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Usage: ./run.sh <technical-health|ranking-content|geo-citation>
-JOB="${1:?Usage: run.sh <technical-health|ranking-content|geo-citation>}"
+# Usage: ./run.sh <technical-health|seo|geo>
+JOB="${1:?Usage: run.sh <technical-health|seo|geo>}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROMPT_FILE="$SCRIPT_DIR/prompts/$JOB.md"
 
@@ -789,12 +789,12 @@ Expected: prints `klaussaindonesia/klaussa_fe`, confirming `gh` can act on it.
 ```bash
 ssh fiskal-vps "cd ~/klaussa-lab/seo-geo-cron/autoseo/seo-geo-cron && ./run.sh technical-health"
 ```
-Read the output. Confirm it either opened a PR/issue as expected given the current audit state, or correctly passed. Repeat for `ranking-content` and `geo-citation` (the latter is expected to escalate "GEO prompt set not configured" per Task 5 Step 5's rule, since prompt seeding is out of scope for this plan — that escalation firing correctly IS the expected/passing outcome here).
+Read the output. Confirm it either opened a PR/issue as expected given the current audit state, or correctly passed. Repeat for `seo` and `geo` (the latter is expected to escalate "GEO prompt set not configured" per Task 5 Step 5's rule, since prompt seeding is out of scope for this plan — that escalation firing correctly IS the expected/passing outcome here).
 
 - [ ] **Step 7: Install the crontab entries**
 
 ```bash
-ssh fiskal-vps "(crontab -l 2>/dev/null; echo '17 6 * * * cd ~/klaussa-lab/seo-geo-cron/autoseo/seo-geo-cron && ./run.sh technical-health'; echo '43 6 * * 1 cd ~/klaussa-lab/seo-geo-cron/autoseo/seo-geo-cron && ./run.sh ranking-content'; echo '22 7 * * 1 cd ~/klaussa-lab/seo-geo-cron/autoseo/seo-geo-cron && ./run.sh geo-citation') | crontab -"
+ssh fiskal-vps "(crontab -l 2>/dev/null; echo '17 6 * * * cd ~/klaussa-lab/seo-geo-cron/autoseo/seo-geo-cron && ./run.sh technical-health'; echo '43 6 * * 1 cd ~/klaussa-lab/seo-geo-cron/autoseo/seo-geo-cron && ./run.sh seo'; echo '22 7 * * 1 cd ~/klaussa-lab/seo-geo-cron/autoseo/seo-geo-cron && ./run.sh geo') | crontab -"
 ```
 
 - [ ] **Step 8: Verify the crontab**
@@ -814,12 +814,12 @@ No files touched — this task is a status report, not code.
 
 State clearly to the user, referencing spec §6 and §9 step 3:
 1. **Rank tracker is still unconfigured** — Task 6's dry run of
-   `ranking-content` will have skipped rank-drop/competitor-outranks
+   `seo` will have skipped rank-drop/competitor-outranks
    analysis and opened a "rank tracker not configured" escalation issue.
    This needs a separate session in the OpenSEO UI to seed target
    keywords and competitors (Hukumonline, JDIH, Legalku).
 2. **GEO prompt set is still unconfigured** — Task 6's dry run of
-   `geo-citation` will have escalated "GEO prompt set not configured".
+   `geo` will have escalated "GEO prompt set not configured".
    Needs the ~50-prompt ID-language list finalized and written to
    `seo-geo-cron/data/prompts.json` (format: `["prompt 1", "prompt 2", ...]`).
 3. **Multi-week monitoring** (spec §9 step 6: checking real DataForSEO
