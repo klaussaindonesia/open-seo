@@ -6,6 +6,12 @@ import { classifyAccessVerificationError } from "./accessTokenErrors";
 import { resolveSharedWorkspaceContext } from "./delegated";
 import type { EnsuredUserContext } from "./types";
 
+// Service Tokens have no email — Cloudflare Access identifies them by this
+// claim instead. Kept out of the real email namespace with the RFC 2606
+// reserved .invalid TLD so a synthesized identity can never collide with a
+// real user's address.
+const SERVICE_TOKEN_EMAIL_SUFFIX = "@service.access.invalid";
+
 const jwksByTeamDomain = new Map<
   string,
   ReturnType<typeof createRemoteJWKSet>
@@ -36,9 +42,15 @@ function getValidatedTeamDomain(teamDomain: string) {
   return result.origin;
 }
 
-export async function resolveCloudflareAccessContext(
+/**
+ * Verifies the `Cf-Access-Jwt-Assertion` header Cloudflare Access injects
+ * once a request has passed its policy (human SSO or a Service Token), and
+ * returns its payload. Shared by every self-host Access identity resolver —
+ * only what each does with a valid payload differs.
+ */
+async function verifyCloudflareAccessAssertion(
   headers: Headers,
-): Promise<EnsuredUserContext> {
+): Promise<JWTPayload> {
   const teamDomain = env.TEAM_DOMAIN
     ? getValidatedTeamDomain(env.TEAM_DOMAIN)
     : null;
@@ -72,19 +84,59 @@ export async function resolveCloudflareAccessContext(
   // Only the token verification itself is classified — anything thrown past
   // this block (user resolution, DB access) is an app fault, and classifying
   // it here would mislabel a DB outage as an auth-config problem.
-  let payload: JWTPayload;
   try {
     const jwks = getJwks(teamDomain);
-    ({ payload } = await jwtVerify(token, jwks, {
+    const { payload } = await jwtVerify(token, jwks, {
       issuer: teamDomain,
       audience: policyAud,
-    }));
+    });
+    return payload;
   } catch (error) {
     // The classified AppError carries operator guidance; log the raw jose
     // error too, since it is the only place the underlying cause survives.
     console.error("Cloudflare Access token verification failed:", error);
 
     throw classifyAccessVerificationError(error);
+  }
+}
+
+export async function resolveCloudflareAccessContext(
+  headers: Headers,
+): Promise<EnsuredUserContext> {
+  const payload = await verifyCloudflareAccessAssertion(headers);
+
+  const userId = typeof payload.sub === "string" ? payload.sub : null;
+  const userEmail = typeof payload.email === "string" ? payload.email : null;
+
+  if (!userId || !userEmail) {
+    throw new AppError("UNAUTHENTICATED");
+  }
+
+  return resolveSharedWorkspaceContext(userId, userEmail);
+}
+
+/**
+ * MCP-specific variant: also accepts a Cloudflare Access Service Token
+ * principal (identified by the JWT's `common_name` claim rather than an
+ * `email`), for headless/cron callers that can't complete an interactive
+ * OAuth login. Access's own policy already decides which service tokens may
+ * reach this route at all — this only maps an already-verified token to a
+ * stable app identity. Human callers fall through to the same resolution as
+ * {@link resolveCloudflareAccessContext}. Not used by non-MCP routes: a
+ * service token has no business browsing the dashboard UI.
+ */
+export async function resolveCloudflareAccessContextForMcp(
+  headers: Headers,
+): Promise<EnsuredUserContext> {
+  const payload = await verifyCloudflareAccessAssertion(headers);
+
+  const commonName =
+    typeof payload.common_name === "string" ? payload.common_name : null;
+  if (commonName) {
+    return resolveSharedWorkspaceContext(
+      `access-service-token:${commonName}`,
+      `${commonName}${SERVICE_TOKEN_EMAIL_SUFFIX}`,
+    );
   }
 
   const userId = typeof payload.sub === "string" ? payload.sub : null;

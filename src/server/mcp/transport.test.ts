@@ -11,15 +11,15 @@ import {
 } from "@/server/mcp/transport";
 
 const selfHostedAuthMocks = vi.hoisted(() => ({
-  resolveCloudflareAccessContext: vi.fn(),
+  resolveCloudflareAccessContextForMcp: vi.fn(),
   resolveLocalNoAuthContext: vi.fn(),
   createOpenSeoMcpServer: vi.fn(),
   createMcpHandler: vi.fn(),
 }));
 
 vi.mock("@/middleware/ensure-user/cloudflareAccess", () => ({
-  resolveCloudflareAccessContext:
-    selfHostedAuthMocks.resolveCloudflareAccessContext,
+  resolveCloudflareAccessContextForMcp:
+    selfHostedAuthMocks.resolveCloudflareAccessContextForMcp,
 }));
 
 vi.mock("@/middleware/ensure-user/delegated", () => ({
@@ -123,11 +123,13 @@ describe("handleSelfHostedOpenSeoMcpRequest", () => {
       userEmail: "admin@localhost",
       organizationId: "delegated-local-admin",
     });
-    selfHostedAuthMocks.resolveCloudflareAccessContext.mockResolvedValue({
-      userId: "cloudflare-user",
-      userEmail: "person@example.com",
-      organizationId: "delegated-cloudflare-user",
-    });
+    selfHostedAuthMocks.resolveCloudflareAccessContextForMcp.mockResolvedValue(
+      {
+        userId: "cloudflare-user",
+        userEmail: "person@example.com",
+        organizationId: "delegated-cloudflare-user",
+      },
+    );
   });
 
   it("accepts local no-auth MCP requests with the local admin context", async () => {
@@ -170,7 +172,7 @@ describe("handleSelfHostedOpenSeoMcpRequest", () => {
 
     expect(response.status).toBe(200);
     expect(
-      selfHostedAuthMocks.resolveCloudflareAccessContext,
+      selfHostedAuthMocks.resolveCloudflareAccessContextForMcp,
     ).toHaveBeenCalledWith(expect.any(Headers));
     expect(selfHostedAuthMocks.createOpenSeoMcpServer).toHaveBeenCalledWith({
       [MCP_AUTH_CONTEXT_PROP]: {
@@ -193,7 +195,7 @@ describe("handleSelfHostedOpenSeoMcpRequest", () => {
     expect(response.status).toBe(200);
     expect(await response.text()).toBe("");
     expect(
-      selfHostedAuthMocks.resolveCloudflareAccessContext,
+      selfHostedAuthMocks.resolveCloudflareAccessContextForMcp,
     ).not.toHaveBeenCalled();
     expect(selfHostedAuthMocks.createOpenSeoMcpServer).not.toHaveBeenCalled();
   });

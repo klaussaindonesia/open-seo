@@ -1,6 +1,6 @@
 {
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["web/**/*", "badseo/**/*"],
+  "exclude": ["web/**/*", "badseo/**/*", "seo-geo-cron/klaussa_fe-workspace/**/*"],
   "compilerOptions": {
     "strict": true,
     "esModuleInterop": true,

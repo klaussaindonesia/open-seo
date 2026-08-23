@@ -9,7 +9,7 @@ import {
 } from "@modelcontextprotocol/server";
 import { getHostedBaseUrl } from "@/lib/auth";
 import { MCP_SCOPE } from "@/lib/oauth-resource";
-import { resolveCloudflareAccessContext } from "@/middleware/ensure-user/cloudflareAccess";
+import { resolveCloudflareAccessContextForMcp } from "@/middleware/ensure-user/cloudflareAccess";
 import { resolveLocalNoAuthContext } from "@/middleware/ensure-user/delegated";
 import {
   createWorkersOAuthMcpProps,
@@ -175,7 +175,7 @@ export async function handleSelfHostedOpenSeoMcpRequest(
   const identity =
     authMode === "local_noauth"
       ? await resolveLocalNoAuthContext()
-      : await resolveCloudflareAccessContext(request.headers);
+      : await resolveCloudflareAccessContextForMcp(request.headers);
   const props = createWorkersOAuthMcpProps({
     userId: identity.userId,
     userEmail: identity.userEmail,
