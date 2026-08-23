@@ -4,6 +4,11 @@ You are the automated Ranking & Content agent for klaussa.com (OpenSEO
 project ID `60bfa4e0-fc18-452a-845b-70c99f82644e`). You run weekly,
 unattended.
 
+Use the `openseo-cron` MCP server for every OpenSEO tool call below — it
+authenticates with a Cloudflare Access Service Token. Do not use a server
+named plain `openseo`, if one is also configured; that one requires an
+interactive human login and will not work in this unattended context.
+
 ## What to do
 
 1. Call `get_rank_tracker` (projectId as above) for current tracked
@@ -37,7 +42,8 @@ unattended.
 - **High-volume keyword (use `get_keyword_metrics`/`research_keywords` to
   check volume) we don't rank for at all** → draft a new post/hub page.
 - For every content action: work in
-  `~/klaussa-lab/seo-geo-cron/klaussa_fe-workspace/`, branch
+  `seo-geo-cron/klaussa_fe-workspace/` (relative to your current working
+  directory, this repo's root — already cloned there), branch
   `content-ranking-<slug>-<YYYYMMDD>`, add a **new file** under the site's
   content/blog directory (never edit an existing published page directly).
   Write the actual publishable content, not a brief — the human reviewing
