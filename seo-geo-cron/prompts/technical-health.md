@@ -14,8 +14,17 @@ interactive human login and will not work in this unattended context.
    `projectId: "60bfa4e0-fc18-452a-845b-70c99f82644e"`,
    `url: "https://klaussa.com"`, default `maxPages` (50) and
    `runLighthouse: true`.
-2. Poll `get_audit_status` (same projectId/auditId) every ~15 seconds until
-   `status` is `"completed"` or `"failed"`.
+2. Poll `get_audit_status` (same projectId/auditId) until `status` is
+   `"completed"` or `"failed"`. **You must do this synchronously, in a loop,
+   within this same turn** — run a Bash `sleep 15` between each poll and
+   call `get_audit_status` again yourself. This process is invoked fresh by
+   cron and exits for good the moment you stop responding; there is no
+   scheduler, wakeup, or callback that will resume you later, so do not use
+   any "check back in N seconds" / scheduled-continuation mechanism even if
+   one appears to be available — it will not fire, and the run will be lost
+   with the audit left incomplete. If the audit is still running after
+   ~10 minutes (40 polls), give up, escalate with issue title "[SEO/GEO]
+   technical-health audit did not complete in time", and stop.
 3. Call `get_audit_issues` for the full issue report.
 
 ## Decision rules
