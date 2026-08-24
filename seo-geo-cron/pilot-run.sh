@@ -8,5 +8,12 @@ JOB="${1:?Usage: pilot-run.sh <technical-health|seo|geo>}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROMPT_FILE="$SCRIPT_DIR/prompts/$JOB.md"
 
+if [ -f "$SCRIPT_DIR/.env.local" ]; then
+  set -a
+  # shellcheck disable=SC1091
+  source "$SCRIPT_DIR/.env.local"
+  set +a
+fi
+
 claude -p "$(cat "$PROMPT_FILE")" \
   2>&1 | tee "$SCRIPT_DIR/data/$JOB-pilot.log"

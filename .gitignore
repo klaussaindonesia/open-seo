@@ -45,7 +45,9 @@ dist-sourcemaps/
 # Alchemy local state + bundle artifacts (SaaS deploys)
 .alchemy/
 
-# seo-geo-cron: local GEO history + logs, and the klaussa_fe workspace clone
+# seo-geo-cron: local GEO history + logs, the klaussa_fe workspace clone,
+# and the local secrets file (writer bot creds, blog-review-email HMAC secret)
 seo-geo-cron/data/*.sqlite
 seo-geo-cron/data/*.log
 seo-geo-cron/klaussa_fe-workspace/
+seo-geo-cron/.env.local

@@ -39,14 +39,15 @@ interactive human login and will not work in this unattended context.
 ## Decision rules
 
 - **We're cited** (a citation URL matches klaussa.com) → low priority.
-  Optionally reinforce that page in a draft content PR if there's an
-  obvious easy win; otherwise pass.
+  Optionally reinforce that page as a draft content action (see SEO job's
+  publishing steps) if there's an obvious easy win; otherwise pass.
 - **A competitor is cited and we're not, for the same prompt** →
   **highest priority.** Diff the competitor's cited page against our
-  closest equivalent page, draft content closing the gap. Same PR
-  conventions as the SEO job (new file, draft PR, branch
-  `content-geo-<slug>-<YYYYMMDD>`, `gh pr create --repo
-  klaussaindonesia/klaussa_fe --draft`).
+  closest equivalent page, draft content closing the gap. Follow the
+  **exact same publishing steps as the SEO job** (create via
+  `POST /api/v1/blogs` as the writer bot, `status: "need_approval"`, then
+  trigger the review email via `blog-review-email`) — this job never
+  clones or PRs `klaussa_fe` for content either.
 - **We're cited but the cited text contains information that looks wrong
   or outdated** (cross-check against the actual current page content) →
   **escalate immediately**, no auto-fix. Factual correctness needs a
@@ -55,12 +56,12 @@ interactive human login and will not work in this unattended context.
   `geo_runs` rows for that query** → escalate as one digest issue
   covering all queries with a drop this run, no auto-fix.
 - **Zero citations for anyone on a prompt** → pass, deprioritize.
-- Max **one** PR and **one** issue per run, same as the other jobs.
-  Never force-push, never self-merge. Escalation issues:
-  `gh issue create --repo klaussaindonesia/klaussa_fe --label
-  seo-geo-escalation`.
+- Max **one** content draft and **one** escalation issue per run, same as
+  the other jobs. Escalation issues (code/site issues only — content goes
+  through the review email, not GitHub): `gh issue create --repo
+  klaussaindonesia/klaussa_fe --label seo-geo-escalation`.
 
 ## Traceability
 
-Every PR/issue body must include the run date and the specific
-prompt/query + model/platform the decision was based on.
+Every review email / escalation issue must include the run date and the
+specific prompt/query + model/platform the decision was based on.

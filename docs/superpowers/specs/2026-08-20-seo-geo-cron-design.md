@@ -265,3 +265,50 @@ instructions in each job's prompt file:
 - DataForSEO Lighthouse pricing post-2026-07-01 update not independently
   confirmed — verify against real billing before locking in daily cadence
   long-term.
+
+## 11. Addendum (2026-08-24): content publishing is not a git PR
+
+§7.2/§7.3 and §8 above describe content actions (SEO/GEO) as a file-based
+draft PR against `klaussa_fe`. A pilot run of the SEO job found this is
+wrong: `klaussa_fe`'s blog is DB-backed (Supabase `blogs` table via
+`api.klaussa.com`), authored through an admin UI — there is no
+content/blog directory in the repo to add a file to
+(`klaussaindonesia/klaussa_fe#1278`).
+
+The actual mechanism, implemented and verified end-to-end against
+production:
+
+- A **WRITER**-role Supabase bot account (`seo-geo-writer-bot@klaussa.com`)
+  creates the post via `POST /api/v1/blogs` with `status: "need_approval"`.
+  This role can author but is **not** in `BLOG_ROLES_CAN_APPROVE` — calling
+  `/blogs/{id}/approve` with this account returns 403, confirmed live. The
+  cron job never holds a credential capable of publishing.
+- The job then POSTs an HMAC-signed intake to a new, separate Cloudflare
+  Worker, `klaussa-lab/blog-review-email`
+  (`https://blog-review-email.navigoinfo-id.workers.dev`), mirroring
+  `email-service`'s proven magic-link pattern (HMAC-signed nonce URLs,
+  Cloudflare Email Send on the same `news.klaussa.com` domain) but scoped
+  to single-post approve/reject instead of digest fan-out — deliberately
+  a separate, smaller Worker rather than extending the live digest
+  pipeline's Supabase-backed state machine (different domain: no grace
+  period, no fan-out, no `kind` discriminator needed).
+- That worker emails the human a green **Approve & Publish** / red
+  **Reject** button pair. Approve calls `/blogs/{id}/approve` using a
+  second, separate **APPROVER**-role bot account
+  (`seo-geo-approver-bot@klaussa.com`) whose credential lives only in the
+  worker's Cloudflare secrets — never in the cron job's environment.
+  Reject `PATCH`es the post back to `status: "draft"` (non-destructive,
+  same semantics as the digest worker's own reject).
+- This is a **structural**, not prompt-level, guardrail: even if the cron
+  agent were instructed or tricked into trying to publish directly, its
+  own bot account has no permission to do so.
+
+This changes §8's "Content jobs only add new files under a content
+directory" bullet: content jobs never touch `klaussa_fe` via git at all.
+The branch-naming guardrail (`content-<job>-<slug>-<YYYYMMDD>`) is now
+moot for content actions and applies to none of the three jobs (Technical
+Health still uses `self-heal-<job>-<YYYYMMDD>` for its git/PR flow,
+unchanged). Job prompts (`seo-geo-cron/prompts/{seo,geo}.md`) have been
+updated accordingly; required secrets
+(`WRITER_EMAIL`/`WRITER_PASSWORD`/`BLOG_REVIEW_HMAC_SECRET`/etc.) are
+documented in `seo-geo-cron/.env.local.example`.

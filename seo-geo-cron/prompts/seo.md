@@ -30,9 +30,9 @@ interactive human login and will not work in this unattended context.
   check whether the technical-health job's most recent audit
   (`get_audit_status`/`get_audit_issues` with no auditId = latest) flags a
   relevant issue on that keyword's ranking page. If yes, don't duplicate —
-  note the correlation in the content PR/issue instead of re-diagnosing.
-  If no technical cause, this is a content-refresh case (see PR steps
-  below).
+  note the correlation in the review email/escalation issue instead of
+  re-diagnosing. If no technical cause, this is a content-refresh case (see
+  publishing steps below).
 - **Ranking at position 4-15 with real impressions but low CTR (under
   ~2%)** → snippet/FAQ opportunity. Draft a direct-answer/FAQ block for
   that page.
@@ -41,19 +41,59 @@ interactive human login and will not work in this unattended context.
   diff its content against ours, draft content that closes the gap.
 - **High-volume keyword (use `get_keyword_metrics`/`research_keywords` to
   check volume) we don't rank for at all** → draft a new post/hub page.
-- For every content action: work in
-  `seo-geo-cron/klaussa_fe-workspace/` (relative to your current working
-  directory, this repo's root — already cloned there), branch
-  `content-seo-<slug>-<YYYYMMDD>`, add a **new file** under the site's
-  content/blog directory (never edit an existing published page directly).
-  Write the actual publishable content, not a brief — the human reviewing
-  the PR will QA it, not expand it. Commit, push,
-  `gh pr create --repo klaussaindonesia/klaussa_fe --draft`. Max **one**
-  PR per run — pick the single highest-priority action from the rules
-  above.
-- Never force-push. Never merge your own PR.
+- For every content action, follow the publishing steps below. Write the
+  actual publishable content, not a brief — the human reviewing the draft
+  will QA it, not expand it. Max **one** draft per run — pick the single
+  highest-priority action from the rules above.
+
+## Publishing steps (content actions only — Technical Health's PR flow is unaffected)
+
+Blog content on klaussa.com is DB-backed (Supabase `blogs` table via
+`api.klaussa.com`), not files in `klaussa_fe` — there is no repo to clone,
+commit, or PR for a blog post. This is a role-gated REST flow, and the
+required env vars (`BACKEND_URL`, `WRITER_EMAIL`, `WRITER_PASSWORD`,
+`BLOG_REVIEW_WORKER_URL`, `BLOG_REVIEW_HMAC_SECRET`,
+`BLOG_REVIEW_RECIPIENT`) are already exported into your shell environment
+by `run.sh` — read them from the environment, never hardcode or print them.
+
+1. **Sign in as the writer bot** (structurally cannot publish — it holds no
+   approve permission, confirmed by a live 403 test):
+   ```bash
+   TOKEN=$(curl -s -X POST "$BACKEND_URL/api/v1/auth/sign-in" \
+     -H "Content-Type: application/json" \
+     -d "{\"email\":\"$WRITER_EMAIL\",\"password\":\"$WRITER_PASSWORD\"}" \
+     | python3 -c "import json,sys; print(json.load(sys.stdin)['session']['access_token'])")
+   ```
+2. **Create the draft.** `content` is a Tiptap JSON document (not markdown)
+   — build a minimal doc: `{"type":"doc","content":[{"type":"paragraph","content":[{"type":"text","text":"..."}]}]}`,
+   using `heading` nodes (`"attrs":{"level":2}`) for section titles and
+   multiple `paragraph` nodes for body text. Always set
+   `"status":"need_approval"` — never `"draft"` (invisible to the reviewer)
+   or `"published"` (you cannot set this anyway; only `/approve` can).
+   ```bash
+   BLOG=$(curl -s -X POST "$BACKEND_URL/api/v1/blogs" \
+     -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+     -d '{"title":"...","content":{...},"status":"need_approval","tags":["seo"]}')
+   BLOG_ID=$(echo "$BLOG" | python3 -c "import json,sys; print(json.load(sys.stdin)['id'])")
+   ```
+3. **Trigger the human-in-the-loop review email.** Sign the intake with
+   HMAC-SHA256 over `"<unix_ts>.<raw_json_body>"`:
+   ```bash
+   TS=$(date +%s)
+   BODY=$(python3 -c "import json; print(json.dumps({'blog_id':'$BLOG_ID','title':'<title>','summary':'<1-2 sentence why>','admin_url':'https://klaussa.com/blogs/dashboard','to':'$BLOG_REVIEW_RECIPIENT'}))")
+   SIG=$(printf '%s.%s' "$TS" "$BODY" | openssl dgst -sha256 -hmac "$BLOG_REVIEW_HMAC_SECRET" -r | awk '{print $1}')
+   curl -s -X POST "$BLOG_REVIEW_WORKER_URL/internal/blog-proposal" \
+     -H "Content-Type: application/json" \
+     -H "X-Klaussa-Signature: sha256=$SIG" -H "X-Klaussa-Timestamp: $TS" \
+     -d "$BODY"
+   ```
+   That's the end of your job — a human gets an email with Approve/Reject
+   buttons and decides from there. Do not poll for their decision; this
+   process exits after this step, same as every other job.
+- Never attempt to call `/blogs/{id}/approve` yourself — you have no
+  credential capable of it, by design.
 
 ## Traceability
 
-Every PR body must include the GSC date range and (if used) the rank
-tracker snapshot date the decision was based on.
+Every review email / escalation issue must include the GSC date range and
+(if used) the rank tracker snapshot date the decision was based on.

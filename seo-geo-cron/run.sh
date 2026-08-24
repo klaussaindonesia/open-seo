@@ -11,6 +11,13 @@ if [ ! -f "$PROMPT_FILE" ]; then
   exit 1
 fi
 
+if [ -f "$SCRIPT_DIR/.env.local" ]; then
+  set -a
+  # shellcheck disable=SC1091
+  source "$SCRIPT_DIR/.env.local"
+  set +a
+fi
+
 cd "$SCRIPT_DIR/.."
 git pull -q
 
