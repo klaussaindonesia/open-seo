@@ -20,13 +20,14 @@
     "serp_queued_depth40 = 0.0006 base page + 3 x 0.00045 extra pages, from the account price table + OpenSEO's own formula. Not yet independently measured.",
     "lighthouse_per_page measured exactly at 0.005.",
     "Perplexity is 2.4x cheaper than Gemini and sends almost no input tokens (22 vs 530-11007) because it does its own retrieval. Best cost lever if a month needs trimming: swap gemini -> perplexity in the 2-model config, saving ~32% of GEO spend.",
-    "Gemini is the most expensive model despite low per-token rates -- it emitted 2075 output tokens vs Claude's 857. Cost here is driven by output length and web-search input bloat, not headline token price."
+    "Gemini is the most expensive model despite low per-token rates -- it emitted 2075 output tokens vs Claude's 857. Cost here is driven by output length and web-search input bloat, not headline token price.",
+    "Coverage beats frequency for a POC: 130 keywords at 3x weekly ($3.30) costs LESS than 66 keywords daily ($3.86) and covers 2x the surface. Daily SERP checks mostly sample day-to-day ranking noise; the extra keywords are real additional signal."
   ],
   "months": [
     {
       "month": 1,
       "monthly_ceiling_usd": 20,
-      "projected_usd": 14.48,
+      "projected_usd": 13.92,
       "goal": "Dense baseline + make impact visible inside 30 days. GEO runs the same chat_gpt+gemini pair every week, so week-1 vs week-4 is like-for-like. Rank tracking runs daily this month only, to establish the baseline at maximum resolution.",
       "technical_health": {
         "crawl": "daily, 50 pages",
@@ -34,9 +35,9 @@
         "cost_usd": 1.5
       },
       "seo_rank_tracker": {
-        "keywords": 66,
-        "schedule": "daily",
-        "cost_usd": 3.86
+        "keywords": 130,
+        "schedule": "3x weekly",
+        "cost_usd": 3.3
       },
       "geo_brand_lookup": {
         "schedule": "weekly",
@@ -55,7 +56,7 @@
     {
       "month": 2,
       "monthly_ceiling_usd": 15,
-      "projected_usd": 11.71,
+      "projected_usd": 12.8,
       "goal": "Keep weekly resolution; drop rank tracking off daily now the baseline exists.",
       "technical_health": {
         "crawl": "daily, 50 pages",
@@ -63,9 +64,9 @@
         "cost_usd": 1.5
       },
       "seo_rank_tracker": {
-        "keywords": 66,
-        "schedule": "twice weekly",
-        "cost_usd": 1.11
+        "keywords": 130,
+        "schedule": "2x weekly",
+        "cost_usd": 2.2
       },
       "geo_brand_lookup": {
         "schedule": "weekly",
@@ -79,7 +80,7 @@
     {
       "month": 3,
       "monthly_ceiling_usd": 10,
-      "projected_usd": 7.94,
+      "projected_usd": 8.48,
       "goal": "Steady state. Swap gemini -> perplexity to hold 2-model coverage at 32% lower cost.",
       "technical_health": {
         "crawl": "daily, 50 pages",
@@ -87,9 +88,9 @@
         "cost_usd": 1.18
       },
       "seo_rank_tracker": {
-        "keywords": 66,
+        "keywords": 130,
         "schedule": "weekly",
-        "cost_usd": 0.56
+        "cost_usd": 1.1
       },
       "geo_brand_lookup": {
         "schedule": "weekly",
@@ -103,7 +104,7 @@
     {
       "month": 4,
       "monthly_ceiling_usd": 5,
-      "projected_usd": 3.32,
+      "projected_usd": 3.86,
       "goal": "Maintenance. Enough signal to catch a regression, not to explore.",
       "technical_health": {
         "crawl": "daily, 50 pages",
@@ -111,9 +112,9 @@
         "cost_usd": 0.22
       },
       "seo_rank_tracker": {
-        "keywords": 66,
+        "keywords": 130,
         "schedule": "weekly",
-        "cost_usd": 0.56
+        "cost_usd": 1.1
       },
       "geo_brand_lookup": {
         "schedule": "monthly",
