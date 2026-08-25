@@ -22,7 +22,8 @@ acts when they cite someone else instead.
 2. Read `seo-geo-cron/data/prompts.json` for the prompt set. If it is missing,
    escalate "[SEO/GEO] GEO prompt set not configured" and stop — do not invent
    prompts. Run the tier and model list this month's `budget.json` entry
-   specifies (month 1: all 20 prompts x chat_gpt + gemini).
+   specifies (month 1: all 22 prompts x chat_gpt + gemini) -- `budget.json` is
+   authoritative on prompt volume if this count ever drifts from it again.
 3. For each prompt, `explore_prompt` with `highlightBrand: "klaussa"`.
 4. `lookup_brand` with `query: "klaussa"` and `competitors` taken from
    `get_project_context` — the canonical list, not a hardcoded one. This is

@@ -24,6 +24,9 @@ data, or sensitive paths.
 
 Move fixed entries here, mark them checked, and append the resolving date or commit.
 
+- [x] `2026-08-25T13:38:51Z` — `claude` — `update_project_context`'s `appendResearchLog.summary` silently caps at 1000 characters, but `seo-geo-cron/prompts/_common.md` just says to append "a one-line entry". Fixed 2026-08-25: `_common.md` now states the 1000-char cap next to the instruction.
+- [x] `2026-08-25T12:35:00Z` — `claude` — `seo-geo-cron/prompts/geo.md` told the GEO job to run "all 20 prompts" in month 1 while `data/prompts.json`/`data/budget.json` both say 22. Fixed 2026-08-25: `geo.md` now cites 22 and defers to `budget.json` if the count ever drifts again.
+
 ## badseo harness vs `wrangler dev`: sitemap emits badseo.dev locs locally
 
 `badseo/scripts/run-audit.ts` against a local `wrangler dev --port 8787` fails 4

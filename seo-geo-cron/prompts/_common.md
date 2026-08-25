@@ -51,7 +51,9 @@ unit prices, and a `monthly_ceiling_usd` per month. Before any paid call:
 
 After buying any non-trivial research, append a one-line
 `appendResearchLog` entry via `update_project_context` saying what you bought
-and what it answered, so a later run does not re-buy it.
+and what it answered, so a later run does not re-buy it. That summary is
+capped at 1000 chars server-side -- keep it to one line or the call is
+rejected.
 
 ## Guardrails (all jobs)
 

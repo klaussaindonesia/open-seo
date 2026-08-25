@@ -10,12 +10,12 @@
   ],
   "depth": 40,
   "schedule_by_month": {
-    "1": "3x weekly",
-    "2": "2x weekly",
-    "3": "weekly",
-    "4": "weekly"
+    "1": "2x weekly",
+    "2": "biweekly",
+    "3": "biweekly",
+    "4": "monthly"
   },
-  "_cost": "130 keywords x depth 40 (queued) = $0.2535 per check.",
+  "_cost": "130 keywords x depth 40, live (the only method run_rank_tracker exposes) = $1.08 per check -- 4.3x the queued-endpoint price this was originally priced against. See budget.json's _serp_note.",
   "_group_meaning": {
     "brand-defend": "Owned terms. Erosion is the only signal that matters.",
     "category-commercial": "Are we visible in the legal-AI category at all? Tracked for position, not traffic.",

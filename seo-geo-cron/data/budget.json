@@ -3,6 +3,8 @@
   "_prices_source": "MEASURED against this account on 2026-08-25 with production config (max_output_tokens 4096, web_search on), not estimated. Raw DataForSEO prices -- self-hosted OpenSEO pays DataForSEO directly, so OpenSEO's 1.28x hosted credit markup does not apply.",
   "unit_prices_usd": {
     "serp_queued_depth40_per_keyword": 0.00195,
+    "serp_live_depth40_per_keyword": 0.00832,
+    "_serp_note": "run_rank_tracker (the only trigger OpenSEO's MCP exposes) always uses DataForSEO's live SERP endpoint, not queued. Measured 2026-08-25: estimate_rank_tracker_cost returned $1.0816 for a 130-keyword live check ($0.00832/kw) -- 4.3x the queued price this budget originally assumed. The queued price above is unreachable through this tool and kept only for reference.",
     "lighthouse_per_page": 0.005,
     "llm_mentions_per_result": 0.001,
     "site_crawl_per_page": 0.0,
@@ -21,14 +23,14 @@
     "lighthouse_per_page measured exactly at 0.005.",
     "Perplexity is 2.4x cheaper than Gemini and sends almost no input tokens (22 vs 530-11007) because it does its own retrieval. Best cost lever if a month needs trimming: swap gemini -> perplexity in the 2-model config, saving ~32% of GEO spend.",
     "Gemini is the most expensive model despite low per-token rates -- it emitted 2075 output tokens vs Claude's 857. Cost here is driven by output length and web-search input bloat, not headline token price.",
-    "Coverage beats frequency for a POC: 130 keywords at 3x weekly ($3.30) costs LESS than 66 keywords daily ($3.86) and covers 2x the surface. Daily SERP checks mostly sample day-to-day ranking noise; the extra keywords are real additional signal."
+    "Rank-check cadence is the main lever now that each check is $1.08, not $0.25: it tapers 2x weekly -> biweekly -> biweekly -> monthly across the 4 months instead of the originally planned 3x weekly -> 2x weekly -> weekly -> weekly, which would have blown every ceiling."
   ],
   "months": [
     {
       "month": 1,
       "monthly_ceiling_usd": 20,
-      "projected_usd": 14.83,
-      "goal": "Dense baseline + make impact visible inside 30 days. GEO runs the same chat_gpt+gemini pair every week, so week-1 vs week-4 is like-for-like. Rank tracking runs daily this month only, to establish the baseline at maximum resolution.",
+      "projected_usd": 20.87,
+      "goal": "Dense baseline + make impact visible inside 30 days. GEO runs the same chat_gpt+gemini pair every week, so week-1 vs week-4 is like-for-like. Rank tracking runs 2x weekly this month for the densest baseline the real per-check price allows -- ~4% over the $20 ceiling, accepted deliberately in exchange for baseline resolution.",
       "technical_health": {
         "crawl": "daily, 50 pages",
         "lighthouse": "daily, 10 pages",
@@ -36,8 +38,8 @@
       },
       "seo_rank_tracker": {
         "keywords": 130,
-        "schedule": "3x weekly",
-        "cost_usd": 3.3
+        "schedule": "2x weekly",
+        "cost_usd": 9.39
       },
       "geo_brand_lookup": {
         "schedule": "weekly",
@@ -56,8 +58,8 @@
     {
       "month": 2,
       "monthly_ceiling_usd": 15,
-      "projected_usd": 12.8,
-      "goal": "Keep weekly resolution; drop rank tracking off daily now the baseline exists.",
+      "projected_usd": 12.9,
+      "goal": "Baseline exists; drop rank tracking to biweekly to stay under the tighter ceiling at the real per-check price.",
       "technical_health": {
         "crawl": "daily, 50 pages",
         "lighthouse": "daily, 10 pages",
@@ -65,8 +67,8 @@
       },
       "seo_rank_tracker": {
         "keywords": 130,
-        "schedule": "2x weekly",
-        "cost_usd": 2.2
+        "schedule": "biweekly",
+        "cost_usd": 2.35
       },
       "geo_brand_lookup": {
         "schedule": "weekly",
@@ -80,8 +82,8 @@
     {
       "month": 3,
       "monthly_ceiling_usd": 10,
-      "projected_usd": 8.48,
-      "goal": "Steady state. Swap gemini -> perplexity to hold 2-model coverage at 32% lower cost.",
+      "projected_usd": 9.68,
+      "goal": "Steady state. Swap gemini -> perplexity to hold 2-model coverage at 32% lower cost. Rank tracking stays biweekly -- weekly no longer fits the $10 ceiling at the real per-check price.",
       "technical_health": {
         "crawl": "daily, 50 pages",
         "lighthouse": "5 pages daily + 20 pages weekly",
@@ -89,8 +91,8 @@
       },
       "seo_rank_tracker": {
         "keywords": 130,
-        "schedule": "weekly",
-        "cost_usd": 1.1
+        "schedule": "biweekly",
+        "cost_usd": 2.35
       },
       "geo_brand_lookup": {
         "schedule": "weekly",
@@ -104,8 +106,8 @@
     {
       "month": 4,
       "monthly_ceiling_usd": 5,
-      "projected_usd": 3.86,
-      "goal": "Maintenance. Enough signal to catch a regression, not to explore.",
+      "projected_usd": 3.83,
+      "goal": "Maintenance. Enough signal to catch a regression, not to explore. Rank tracking drops to monthly -- a single check is $1.08, over a fifth of the whole month's ceiling.",
       "technical_health": {
         "crawl": "daily, 50 pages",
         "lighthouse": "weekly, 10 pages",
@@ -113,8 +115,8 @@
       },
       "seo_rank_tracker": {
         "keywords": 130,
-        "schedule": "weekly",
-        "cost_usd": 1.1
+        "schedule": "monthly",
+        "cost_usd": 1.08
       },
       "geo_brand_lookup": {
         "schedule": "monthly",
