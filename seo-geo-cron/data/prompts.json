@@ -30,7 +30,7 @@
     {
       "tier": "weekly",
       "category": "competitor",
-      "text": "Apa alternatif Hukumonline untuk mencari peraturan perundang-undangan?"
+      "text": "AI apa yang bisa membaca dan menganalisis dokumen hukum perusahaan di Indonesia?"
     },
     {
       "tier": "weekly",
@@ -80,7 +80,7 @@
     {
       "tier": "monthly",
       "category": "competitor",
-      "text": "Perbandingan platform database peraturan perundang-undangan Indonesia"
+      "text": "Perbandingan AI hukum di Indonesia untuk firma hukum dan tim legal perusahaan"
     },
     {
       "tier": "monthly",
@@ -111,7 +111,18 @@
       "tier": "monthly",
       "category": "task-intent",
       "text": "Bagaimana cara mendirikan PT di Indonesia dan dokumen apa saja yang dibutuhkan?"
+    },
+    {
+      "tier": "weekly",
+      "category": "competitor",
+      "text": "AI untuk riset putusan pengadilan Indonesia, mana yang paling lengkap?"
+    },
+    {
+      "tier": "weekly",
+      "category": "competitor",
+      "text": "Tools AI untuk memantau kepatuhan regulasi perusahaan di Indonesia"
     }
   ],
-  "_competitors": "Removed. Competitors are read from get_project_context, which is the single source of truth -- keeping a second copy here would drift."
+  "_competitors": "Removed. Competitors are read from get_project_context, which is the single source of truth -- keeping a second copy here would drift.",
+  "_competitor_note": "Prompts in the 'competitor' category target the Indonesian legal-AI category (Legal Hero, Hukumonline AIlex, Justisio, Veritask AI) by their positioning, deliberately without naming them -- a real user would not know the names, and naming a rival in the prompt biases the model toward citing it. The canonical competitor list for lookup_brand lives in project context."
 }

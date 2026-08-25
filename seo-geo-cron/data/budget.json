@@ -27,7 +27,7 @@
     {
       "month": 1,
       "monthly_ceiling_usd": 20,
-      "projected_usd": 13.92,
+      "projected_usd": 14.83,
       "goal": "Dense baseline + make impact visible inside 30 days. GEO runs the same chat_gpt+gemini pair every week, so week-1 vs week-4 is like-for-like. Rank tracking runs daily this month only, to establish the baseline at maximum resolution.",
       "technical_health": {
         "crawl": "daily, 50 pages",
@@ -44,13 +44,13 @@
         "cost_usd": 0.05
       },
       "geo_prompts": {
-        "schedule": "all 20 prompts x 2 models (chat_gpt + gemini), weekly",
+        "schedule": "all 22 prompts x 2 models (chat_gpt + gemini), weekly",
         "models": [
           "chat_gpt",
           "gemini"
         ],
         "_note": "2-model config chosen up front, so every run in every month is directly comparable -- no methodology change between the first and last measurement of the POC.",
-        "cost_usd": 9.07
+        "cost_usd": 9.98
       }
     },
     {
