@@ -1,0 +1,30 @@
+{
+  "_comment": "GEO prompt set for klaussa.com. Prompts a real Indonesian user would plausibly ask an LLM, where Klaussa should ideally be cited. The 'weekly' tier runs on every GEO run; 'monthly' prompts are added only on the first run of each month, to stay inside the DataForSEO budget. Grounded in real GSC query clusters, not invented — see docs/superpowers/specs/2026-08-20-seo-geo-cron-design.md.",
+  "brand": "klaussa",
+  "competitors": ["Hukumonline", "JDIH", "Legalku"],
+  "models_weekly": ["chat_gpt", "gemini"],
+  "models_monthly": ["chat_gpt", "claude", "gemini", "perplexity"],
+  "prompts": [
+    { "tier": "weekly", "category": "product-discovery", "text": "Apa AI terbaik untuk riset hukum di Indonesia?" },
+    { "tier": "weekly", "category": "product-discovery", "text": "Tools AI apa yang bisa membantu pekerjaan legal di Indonesia?" },
+    { "tier": "weekly", "category": "product-discovery", "text": "Bagaimana cara mencari peraturan perundang-undangan Indonesia secara online?" },
+    { "tier": "weekly", "category": "competitor", "text": "Apa alternatif Hukumonline untuk mencari peraturan perundang-undangan?" },
+    { "tier": "weekly", "category": "legal-concept", "text": "Apa itu SK Kemenkumham dan kenapa penting untuk PT?" },
+    { "tier": "weekly", "category": "legal-concept", "text": "Apa perbedaan MoU dan PKS (perjanjian kerja sama)?" },
+    { "tier": "weekly", "category": "legal-concept", "text": "Apa itu delik formil dan delik materiil?" },
+    { "tier": "weekly", "category": "regulation-lookup", "text": "Apa isi Perpres 120 tahun 2025 tentang penyelenggaraan sekolah rakyat?" },
+    { "tier": "weekly", "category": "regulation-lookup", "text": "Bagaimana aturan TPP ASN terbaru dan apa dasar hukumnya?" },
+    { "tier": "weekly", "category": "task-intent", "text": "Bagaimana cara mengecek legalitas sebuah perusahaan di Indonesia?" },
+
+    { "tier": "monthly", "category": "product-discovery", "text": "Aplikasi apa yang bisa menganalisis dokumen hukum dengan AI di Indonesia?" },
+    { "tier": "monthly", "category": "product-discovery", "text": "Platform legal tech Indonesia yang bagus untuk firma hukum" },
+    { "tier": "monthly", "category": "product-discovery", "text": "Software untuk review kontrak otomatis di Indonesia" },
+    { "tier": "monthly", "category": "competitor", "text": "Perbandingan platform database peraturan perundang-undangan Indonesia" },
+    { "tier": "monthly", "category": "legal-concept", "text": "Apa itu ratio decidendi dalam putusan pengadilan?" },
+    { "tier": "monthly", "category": "legal-concept", "text": "Apa saja sumber hukum yang berlaku di Indonesia?" },
+    { "tier": "monthly", "category": "legal-concept", "text": "Bagaimana pembagian hukum waris menurut BW (KUHPerdata)?" },
+    { "tier": "monthly", "category": "regulation-lookup", "text": "Apa itu Permenpan RB No 9 Tahun 2026 dan apa isinya?" },
+    { "tier": "monthly", "category": "regulation-lookup", "text": "Apa dasar hukum penyelenggaraan sekolah rakyat di Indonesia?" },
+    { "tier": "monthly", "category": "task-intent", "text": "Bagaimana cara mendirikan PT di Indonesia dan dokumen apa saja yang dibutuhkan?" }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "_comment": "Proposed rank-tracker seed list for klaussa.com. Every keyword is either (a) already appearing in GSC with real impressions, or (b) a strategic term we should rank for and currently don't. Deliberately excludes one-off regulation-number queries (e.g. 'perpres 19 tahun 2026') — those churn yearly and would make trend data meaningless; they are covered by the GSC half of the SEO job instead. Apply with create_rank_tracker + add_rank_tracking_keywords (depth 40, mobile, weekly).",
+  "domain": "klaussa.com",
+  "locationCode": 2360,
+  "languageCode": "id",
+  "devices": ["mobile"],
+  "depth": 40,
+  "scheduleInterval": "weekly",
+  "competitors": ["hukumonline.com", "jdih.go.id", "legalku.com"],
+  "groups": {
+    "brand-defense": [
+      "klaussa",
+      "klaussa ai",
+      "klausa ai"
+    ],
+    "category-commercial": [
+      "ai legal",
+      "legal ai",
+      "ai hukum",
+      "legal ai indonesia",
+      "ai hukum gratis",
+      "ai untuk hukum",
+      "legal tech indonesia",
+      "software hukum indonesia",
+      "konsultasi hukum online",
+      "analisis dokumen hukum ai"
+    ],
+    "legal-concept-snippet": [
+      "sk kemenkumham",
+      "sk kemenkumham adalah",
+      "akta dan sk kemenkumham",
+      "pks adalah",
+      "pks adalah kerjasama",
+      "apa itu pks dalam perusahaan",
+      "delik formil dan materil",
+      "ratio decidendi",
+      "hukum waris bw",
+      "pendekatan kasus",
+      "5 sumber hukum di indonesia",
+      "dasar hukum sekolah rakyat"
+    ],
+    "product-intent": [
+      "database peraturan indonesia",
+      "cari peraturan perundang-undangan",
+      "jdih online",
+      "peraturan perundang undangan terbaru",
+      "review kontrak ai",
+      "drafting kontrak ai"
+    ],
+    "evergreen-hub": [
+      "peraturan pemerintah terbaru",
+      "perpres terbaru",
+      "undang undang terbaru",
+      "permenpan rb terbaru",
+      "tpp asn",
+      "tukin asn",
+      "tpp sidoarjo",
+      "peraturan menteri kesehatan terbaru",
+      "tata upacara militer terbaru"
+    ]
+  }
+}
