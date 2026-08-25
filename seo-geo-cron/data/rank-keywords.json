@@ -1,6 +1,7 @@
 {
-  "_comment": "Rank-tracker seed list for klaussa.com, sized for the front-loaded POC budget. Every keyword is either already appearing in GSC with >=3 impressions over the last 28 days, or a strategic term we should rank for and currently don't. Excludes bare regulation-number lookups ('perpres 19 tahun 2026'), year-bound queries ('ssh kota semarang 2026') and verbatim document searches -- all churn and would make trend data meaningless. The GSC half of the SEO job covers those instead.",
-  "_no_competitors_note": "create_rank_tracker takes no competitor field, by design. Each check returns the full SERP to depth 40, so any competitor outranking us is already visible in the result -- the SEO job reads competitors off the SERP rather than being told who to watch, which also catches competitors we would not have thought to list. Named competitors are only needed for GEO share-of-voice (lookup_brand), and live in prompts.json.",
+  "_comment": "Rank-tracker keyword set for klaussa.com, sorted by OPPORTUNITY rather than by raw impressions. Opportunity = monthly search volume x ease (100-difficulty), boosted 1.6x where we already rank 11-30 and 1.25x at 31-50, because moving a page that already ranks is far cheaper than creating one that does not. Terms we already hold in the top 10 are damped 0.7x -- they need defending, not chasing. Every keyword here carries measurable Google volume; the previous set spent 34% of its budget on long-tail Google cannot even size.",
+  "_sources": "Klaussa's own ranked-keyword set (100 pulled), the previously tracked 130 hydrated with real volume, and gap terms held by Legal Hero, Justisio and Veritask.",
+  "_recycling": "The core set is FIXED for the POC so week-1 and week-4 positions stay comparable. Only the long-tail group rotates: at each month boundary, drop any long-tail keyword whose volume has fallen to zero and replace it from the current opportunity pool. Never rotate the brand, category-commercial, or quick-win groups mid-POC -- those are the measurement baseline.",
   "domain": "klaussa.com",
   "locationCode": 2360,
   "languageCode": "id",
@@ -14,157 +15,1072 @@
     "3": "weekly",
     "4": "weekly"
   },
-  "_cost": "130 keywords x 1 device x depth 40 (queued) = $0.2535 per check.",
+  "_cost": "130 keywords x depth 40 (queued) = $0.2535 per check.",
+  "_group_meaning": {
+    "brand-defend": "Owned terms. Erosion is the only signal that matters.",
+    "category-commercial": "Are we visible in the legal-AI category at all? Tracked for position, not traffic.",
+    "quick-win-striking-distance": "Already ranking 11-40 at low difficulty. The highest-impact group: the page exists, it just needs to move.",
+    "gap-not-ranking": "Real demand we do not rank for. Includes terms rivals already hold.",
+    "holding-page-one": "Already top 10. Watch for loss.",
+    "high-volume-deep": "Big volume but we sit past position 40. Slower, still worth watching.",
+    "long-tail": "Small but real volume. The only group that rotates between months."
+  },
   "groups": {
-    "brand-defense": [
-      "klaussa",
+    "brand-defend": [
       "klaussa ai",
+      "klaussa",
       "klausa ai"
     ],
     "category-commercial": [
-      "ai legal",
-      "legal ai",
-      "ai hukum",
-      "ai hukum indonesia",
-      "legal ai indonesia",
-      "ai hukum gratis",
-      "ai untuk hukum",
-      "legal tech indonesia",
-      "software hukum indonesia",
       "konsultasi hukum online",
-      "analisis dokumen hukum ai",
-      "review kontrak ai",
-      "drafting kontrak ai",
-      "ai khusus hukum",
-      "ai legal assistant"
+      "ai legal",
+      "ai hukum",
+      "legal ai",
+      "ai hukum gratis",
+      "ai hukum indonesia",
+      "legal tech indonesia"
     ],
-    "product-intent": [
-      "database peraturan indonesia",
-      "cari peraturan perundang-undangan",
-      "jdih online"
-    ],
-    "evergreen-hub": [
-      "peraturan perundang undangan terbaru",
-      "peraturan pemerintah terbaru",
-      "perpres terbaru",
-      "undang undang terbaru",
-      "permenpan rb terbaru",
-      "peraturan menteri kesehatan terbaru",
-      "tata upacara militer terbaru",
-      "tum tni terbaru"
-    ],
-    "pks-cluster": [
-      "perbedaan mou dan pks",
-      "pks adalah kerjasama",
-      "pks adalah perjanjian",
-      "apa itu pks kerja",
-      "dokumen pks adalah",
-      "apa itu pks dalam perusahaan",
-      "apa itu pks kontrak",
-      "pks dalam dunia kerja adalah",
-      "mou dan perjanjian kerjasama apakah sama",
-      "apa itu dokumen pks",
-      "apa itu pks dalam dunia kerja",
-      "apa itu pks dalam kerjasama",
-      "apa arti pks dalam perusahaan",
-      "apa beda mou dan perjanjian kerjasama",
-      "apa itu pks",
-      "apa itu pks dalam kontrak"
-    ],
-    "sk-kemenkumham-cluster": [
-      "cara cek sk kemenkumham",
-      "sk kemenkumham",
-      "sk kemenkumham pt",
-      "sk kemenkumham adalah",
-      "akta dan sk kemenkumham",
-      "apa itu sk kemenkumham",
-      "apa itu sk menkeh",
-      "akta pendirian dan sk kemenkumham",
-      "akta kemenkumham"
-    ],
-    "regional-tpp": [
-      "tpp asn",
-      "tukin asn",
-      "tpp sidoarjo",
-      "tpp kabupaten sidoarjo",
-      "tpp pemkab sidoarjo",
-      "besaran tpp sidoarjo",
-      "besaran tpp pemprov jatim",
-      "tukin kemendikdasmen",
-      "tukin kemnaker berapa persen"
-    ],
-    "pt-perorangan": [
-      "syarat mendirikan pt perorangan",
-      "struktur pt perorangan",
-      "susunan pengurus pt perorangan"
-    ],
-    "regulation-topic": [
-      "uu cipta kerja tentang keterlambatan gaji",
-      "aturan seragam bgn",
-      "perpres sekolah rakyat",
-      "dasar hukum sekolah rakyat",
-      "permenkes tentang sistem informasi puskesmas"
-    ],
-    "legal-concept": [
-      "apa itu interpol",
-      "delik formil adalah",
-      "apa itu ratio decidendi",
-      "perbedaan wni dan wna",
-      "hukum menyita barang karena hutang",
-      "pasal 1337 kuhperdata",
-      "hukum waris bw",
-      "apa itu konsesi",
-      "arti ratio decidendi",
-      "apa itu delik formil dan delik materil",
-      "5 sumber hukum di indonesia",
-      "pendekatan kasus",
-      "hukum pinjam meminjam",
-      "delik materiil dan formil",
-      "gaji telat 2 hari",
-      "menyita barang karena hutang",
-      "apa itu masa probation",
-      "pendekatan kasus adalah",
-      "most favoured nation",
-      "apa itu pencari suaka",
-      "hukum udara",
-      "pemeriksa keimigrasian pemula",
-      "apa itu social control",
-      "pasal 1765 kuhperdata",
-      "apa itu delik formil",
-      "merekam pembicaraan diam-diam",
-      "apa itu asylum",
-      "1337 kuhperdata",
-      "apa itu positivisme hukum",
-      "cara menuntut pencemaran nama baik",
-      "syarat rups luar biasa",
-      "apa itu pro bono",
-      "apa itu tax allowance di slip gaji",
-      "apakah kantor hukum harus berbadan hukum",
-      "pendekatan kasus dalam penelitian hukum normatif",
-      "teori ratio decidendi",
-      "sk kemenkuham",
-      "5 sumber hukum",
-      "apa bedanya mahkamah agung dan mahkamah konstitusi",
-      "apa itu lawyer pro bono",
-      "apa itu probation",
-      "apa dasar ketentuan batas wilayah kecamatan",
-      "apa itu paklaring",
-      "apa itu pengungsi",
-      "berapa lama laporan polisi diproses",
-      "apa arti pencari suaka",
-      "apa bedanya wna dan wni",
-      "apa itu hak cipta di youtube",
-      "apa itu refugee",
-      "apa itu grasi dan rehabilitasi",
-      "apa itu hak moral",
-      "apa itu konsensi",
-      "apa itu tax holiday dan tax allowance",
-      "permendikbud tentang kesalahan penulisan ijazah",
-      "tugas pemeriksa keimigrasian pemula",
-      "unsur pasal 1365 kuhperdata",
+    "quick-win-striking-distance": [
+      "lex posterior derogat priori",
+      "trademarks adalah",
+      "sp-1 adalah",
+      "perbedaan mk dan ma",
+      "kewenangan mk",
+      "hak dpr",
+      "common law dan civil law",
       "1365 kuhperdata",
-      "akpol artinya",
-      "apa arti konsesi"
+      "sp 1 adalah",
+      "sp 3 adalah",
+      "kode etik profesi",
+      "kepanjangan spk",
+      "hak pengusahaan hutan",
+      "ratio decidendi",
+      "presumption of innocence",
+      "tax holiday adalah",
+      "spk kontrak",
+      "ratio decidendi adalah",
+      "pp 72",
+      "r registered",
+      "pasal 221 kuhp",
+      "cara hitung thr prorata",
+      "kunjang kediri",
+      "arti konsesi",
+      "unclos adalah",
+      "tugas mahkamah agung dan mahkamah konstitusi",
+      "tugas ma dan mk",
+      "perbedaan civil law dan common law",
+      "hak karyawan resign",
+      "apa itu judicial review",
+      "impersonation adalah",
+      "hak angket dpr",
+      "sistem klasifikasi merek",
+      "trade mark artinya",
+      "rehabilitasi presiden adalah",
+      "grasi dan rehabilitasi",
+      "efisiensi karyawan adalah",
+      "contoh hak moral",
+      "common law vs civil law",
+      "instalasi karantina hewan",
+      "logo registered",
+      "undang undang csr",
+      "pasal 1320 bw",
+      "kuhperdata 1320",
+      "biaya pengacara",
+      "apa itu trademark",
+      "praduga tak bersalah adalah",
+      "pp-19-01",
+      "hukum publik dan hukum privat",
+      "apa itu trade mark",
+      "lawyer ai"
+    ],
+    "gap-not-ranking": [
+      "kbli 2025",
+      "apa itu paklaring",
+      "undang undang asn",
+      "undang undang pt",
+      "sk kemenkumham",
+      "apa itu pks",
+      "apa itu probation",
+      "tpp asn",
+      "apa itu konsesi",
+      "berapa lama laporan polisi diproses",
+      "apa itu pro bono",
+      "apa itu interpol",
+      "pks adalah perjanjian",
+      "sk kemenkumham pt",
+      "syarat mendirikan pt perorangan",
+      "hukum pinjam meminjam",
+      "undang undang terbaru",
+      "delik formil adalah",
+      "apa itu asylum",
+      "most favoured nation",
+      "pks adalah kerjasama",
+      "perbedaan mou dan pks",
+      "apa itu masa probation",
+      "peraturan pemerintah terbaru"
+    ],
+    "holding-page-one": [
+      "t&c artinya",
+      "t&c",
+      "pp tanda tanya",
+      "presumption of innocence adalah",
+      "sewa pengacara berapa",
+      "pasal 1337 kuhperdata"
+    ],
+    "high-volume-deep": [
+      "pkwtt adalah",
+      "pkwtt",
+      "pkwtt dan pkwt",
+      "rencana pembangunan jangka menengah",
+      "uu paten",
+      "bppn adalah",
+      "perpres gaji pns",
+      "jam kerja pns",
+      "obstruction justice",
+      "transnasional adalah",
+      "refugees adalah",
+      "statuta roma",
+      "rumah dinas walikota pontianak",
+      "peraturan menteri keuangan perjalanan dinas",
+      "obstruction of justice",
+      "apa itu pkwt dan pkwtt",
+      "doxing or doxxing",
+      "ai medusa"
+    ],
+    "long-tail": [
+      "kepala daerah kabupaten disebut",
+      "perhitungan pesangon mengundurkan diri uu cipta kerja",
+      "concession artinya",
+      "concession adalah",
+      "lebih baik pkwt atau pkwtt",
+      "perbedaan common law dan civil law",
+      "logika hukum",
+      "grasi dan rehabilitasi adalah",
+      "delik materil adalah",
+      "delik formil",
+      "bunyi pasal 1365 kuhperdata",
+      "pengertian mahkamah konstitusi",
+      "kbli virtual office",
+      "pkwt pkwtt",
+      "sistem pemerintahan presidensial adalah",
+      "rapat umum pemegang saham luar biasa",
+      "rahasia bank",
+      "kontrak bisnis",
+      "harta bersama adalah",
+      "apa itu jaminan fidusia",
+      "kbli nib"
     ]
+  },
+  "metrics": {
+    "klaussa ai": {
+      "vol": 0,
+      "kd": 0,
+      "q": null,
+      "pos": 1,
+      "opp": 0
+    },
+    "klaussa": {
+      "vol": 0,
+      "kd": 0,
+      "q": null,
+      "pos": 1,
+      "opp": 0
+    },
+    "klausa ai": {
+      "vol": 0,
+      "kd": 0,
+      "q": null,
+      "pos": 1,
+      "opp": 0
+    },
+    "t&c artinya": {
+      "vol": 880,
+      "kd": 0,
+      "q": 14,
+      "pos": 10,
+      "opp": 616
+    },
+    "t&c": {
+      "vol": 590,
+      "kd": 0,
+      "q": -19,
+      "pos": 10,
+      "opp": 413
+    },
+    "pp tanda tanya": {
+      "vol": 590,
+      "kd": 0,
+      "q": 0,
+      "pos": 9,
+      "opp": 413
+    },
+    "presumption of innocence adalah": {
+      "vol": 390,
+      "kd": 0,
+      "q": 0,
+      "pos": 10,
+      "opp": 273
+    },
+    "sewa pengacara berapa": {
+      "vol": 320,
+      "kd": 0,
+      "q": 23,
+      "pos": 10,
+      "opp": 224
+    },
+    "pasal 1337 kuhperdata": {
+      "vol": 320,
+      "kd": 0,
+      "q": -18,
+      "pos": 10,
+      "opp": 224
+    },
+    "lex posterior derogat priori": {
+      "vol": 2400,
+      "kd": 0,
+      "q": -32,
+      "pos": 19,
+      "opp": 3840
+    },
+    "trademarks adalah": {
+      "vol": 2400,
+      "kd": 20,
+      "q": -16,
+      "pos": 30,
+      "opp": 3072
+    },
+    "sp-1 adalah": {
+      "vol": 1600,
+      "kd": 0,
+      "q": 14,
+      "pos": 28,
+      "opp": 2560
+    },
+    "perbedaan mk dan ma": {
+      "vol": 1600,
+      "kd": 0,
+      "q": -47,
+      "pos": 16,
+      "opp": 2560
+    },
+    "kewenangan mk": {
+      "vol": 1900,
+      "kd": 0,
+      "q": -32,
+      "pos": 39,
+      "opp": 2375
+    },
+    "hak dpr": {
+      "vol": 1300,
+      "kd": 0,
+      "q": -55,
+      "pos": 28,
+      "opp": 2080
+    },
+    "common law dan civil law": {
+      "vol": 1300,
+      "kd": 0,
+      "q": -45,
+      "pos": 21,
+      "opp": 2080
+    },
+    "1365 kuhperdata": {
+      "vol": 1300,
+      "kd": 0,
+      "q": -23,
+      "pos": 24,
+      "opp": 2080
+    },
+    "sp 1 adalah": {
+      "vol": 1600,
+      "kd": 0,
+      "q": 14,
+      "pos": 31,
+      "opp": 2000
+    },
+    "sp 3 adalah": {
+      "vol": 1300,
+      "kd": 0,
+      "q": -23,
+      "pos": 35,
+      "opp": 1625
+    },
+    "kode etik profesi": {
+      "vol": 1300,
+      "kd": 0,
+      "q": -28,
+      "pos": 35,
+      "opp": 1625
+    },
+    "kepanjangan spk": {
+      "vol": 1000,
+      "kd": 0,
+      "q": 14,
+      "pos": 16,
+      "opp": 1600
+    },
+    "hak pengusahaan hutan": {
+      "vol": 1000,
+      "kd": 0,
+      "q": 0,
+      "pos": 19,
+      "opp": 1600
+    },
+    "ratio decidendi": {
+      "vol": 880,
+      "kd": 0,
+      "q": -23,
+      "pos": 18,
+      "opp": 1408
+    },
+    "presumption of innocence": {
+      "vol": 1000,
+      "kd": 19,
+      "q": -23,
+      "pos": 22,
+      "opp": 1296
+    },
+    "tax holiday adalah": {
+      "vol": 1000,
+      "kd": 0,
+      "q": 0,
+      "pos": 36,
+      "opp": 1250
+    },
+    "spk kontrak": {
+      "vol": 720,
+      "kd": 0,
+      "q": 0,
+      "pos": 24,
+      "opp": 1152
+    },
+    "ratio decidendi adalah": {
+      "vol": 720,
+      "kd": 0,
+      "q": 0,
+      "pos": 16,
+      "opp": 1152
+    },
+    "pp 72": {
+      "vol": 720,
+      "kd": 0,
+      "q": -19,
+      "pos": 22,
+      "opp": 1152
+    },
+    "r registered": {
+      "vol": 720,
+      "kd": 18,
+      "q": -18,
+      "pos": 27,
+      "opp": 945
+    },
+    "pasal 221 kuhp": {
+      "vol": 590,
+      "kd": 0,
+      "q": -19,
+      "pos": 30,
+      "opp": 944
+    },
+    "cara hitung thr prorata": {
+      "vol": 590,
+      "kd": 0,
+      "q": -22,
+      "pos": 14,
+      "opp": 944
+    },
+    "kunjang kediri": {
+      "vol": 720,
+      "kd": 0,
+      "q": -18,
+      "pos": 31,
+      "opp": 900
+    },
+    "arti konsesi": {
+      "vol": 720,
+      "kd": 0,
+      "q": 0,
+      "pos": 39,
+      "opp": 900
+    },
+    "unclos adalah": {
+      "vol": 720,
+      "kd": 12,
+      "q": -55,
+      "pos": 36,
+      "opp": 792
+    },
+    "tugas mahkamah agung dan mahkamah konstitusi": {
+      "vol": 480,
+      "kd": 0,
+      "q": -33,
+      "pos": 25,
+      "opp": 768
+    },
+    "tugas ma dan mk": {
+      "vol": 480,
+      "kd": 0,
+      "q": -33,
+      "pos": 28,
+      "opp": 768
+    },
+    "perbedaan civil law dan common law": {
+      "vol": 480,
+      "kd": 0,
+      "q": -33,
+      "pos": 17,
+      "opp": 768
+    },
+    "hak karyawan resign": {
+      "vol": 480,
+      "kd": 0,
+      "q": 0,
+      "pos": 19,
+      "opp": 768
+    },
+    "apa itu judicial review": {
+      "vol": 480,
+      "kd": 0,
+      "q": -18,
+      "pos": 30,
+      "opp": 768
+    },
+    "impersonation adalah": {
+      "vol": 590,
+      "kd": 0,
+      "q": 0,
+      "pos": 39,
+      "opp": 738
+    },
+    "hak angket dpr": {
+      "vol": 590,
+      "kd": 0,
+      "q": 49,
+      "pos": 33,
+      "opp": 738
+    },
+    "sistem klasifikasi merek": {
+      "vol": 480,
+      "kd": 6,
+      "q": -19,
+      "pos": 25,
+      "opp": 722
+    },
+    "trade mark artinya": {
+      "vol": 390,
+      "kd": 0,
+      "q": 49,
+      "pos": 27,
+      "opp": 624
+    },
+    "rehabilitasi presiden adalah": {
+      "vol": 390,
+      "kd": 0,
+      "q": -71,
+      "pos": 18,
+      "opp": 624
+    },
+    "grasi dan rehabilitasi": {
+      "vol": 390,
+      "kd": 0,
+      "q": -19,
+      "pos": 21,
+      "opp": 624
+    },
+    "efisiensi karyawan adalah": {
+      "vol": 390,
+      "kd": 0,
+      "q": 23,
+      "pos": 20,
+      "opp": 624
+    },
+    "contoh hak moral": {
+      "vol": 390,
+      "kd": 0,
+      "q": -86,
+      "pos": 14,
+      "opp": 624
+    },
+    "common law vs civil law": {
+      "vol": 390,
+      "kd": 0,
+      "q": 0,
+      "pos": 18,
+      "opp": 624
+    },
+    "instalasi karantina hewan": {
+      "vol": 480,
+      "kd": 4,
+      "q": 23,
+      "pos": 37,
+      "opp": 576
+    },
+    "logo registered": {
+      "vol": 390,
+      "kd": 9,
+      "q": 0,
+      "pos": 15,
+      "opp": 568
+    },
+    "undang undang csr": {
+      "vol": 320,
+      "kd": 0,
+      "q": -34,
+      "pos": 26,
+      "opp": 512
+    },
+    "pasal 1320 bw": {
+      "vol": 320,
+      "kd": 0,
+      "q": -46,
+      "pos": 25,
+      "opp": 512
+    },
+    "kuhperdata 1320": {
+      "vol": 320,
+      "kd": 0,
+      "q": -33,
+      "pos": 26,
+      "opp": 512
+    },
+    "biaya pengacara": {
+      "vol": 320,
+      "kd": 0,
+      "q": -19,
+      "pos": 29,
+      "opp": 512
+    },
+    "apa itu trademark": {
+      "vol": 320,
+      "kd": 0,
+      "q": 0,
+      "pos": 24,
+      "opp": 512
+    },
+    "praduga tak bersalah adalah": {
+      "vol": 390,
+      "kd": 0,
+      "q": -19,
+      "pos": 31,
+      "opp": 488
+    },
+    "pp-19-01": {
+      "vol": 390,
+      "kd": 0,
+      "q": 0,
+      "pos": 39,
+      "opp": 488
+    },
+    "hukum publik dan hukum privat": {
+      "vol": 390,
+      "kd": 0,
+      "q": -33,
+      "pos": 31,
+      "opp": 488
+    },
+    "apa itu trade mark": {
+      "vol": 320,
+      "kd": 8,
+      "q": 0,
+      "pos": 17,
+      "opp": 471
+    },
+    "lawyer ai": {
+      "vol": 480,
+      "kd": 24,
+      "q": -19,
+      "pos": 39,
+      "opp": 456
+    },
+    "kbli 2025": {
+      "vol": 22200,
+      "kd": 0,
+      "q": null,
+      "pos": null,
+      "opp": 22200
+    },
+    "apa itu paklaring": {
+      "vol": 9900,
+      "kd": 0,
+      "q": 49,
+      "pos": null,
+      "opp": 9900
+    },
+    "undang undang asn": {
+      "vol": 8100,
+      "kd": 0,
+      "q": null,
+      "pos": null,
+      "opp": 8100
+    },
+    "undang undang pt": {
+      "vol": 8100,
+      "kd": 6,
+      "q": null,
+      "pos": null,
+      "opp": 7614
+    },
+    "sk kemenkumham": {
+      "vol": 2900,
+      "kd": 0,
+      "q": 21,
+      "pos": null,
+      "opp": 2900
+    },
+    "apa itu pks": {
+      "vol": 1900,
+      "kd": 3,
+      "q": 60,
+      "pos": null,
+      "opp": 1843
+    },
+    "apa itu probation": {
+      "vol": 1600,
+      "kd": 0,
+      "q": 7,
+      "pos": null,
+      "opp": 1600
+    },
+    "tpp asn": {
+      "vol": 1300,
+      "kd": 0,
+      "q": -7,
+      "pos": null,
+      "opp": 1300
+    },
+    "apa itu konsesi": {
+      "vol": 1000,
+      "kd": 0,
+      "q": 0,
+      "pos": null,
+      "opp": 1000
+    },
+    "berapa lama laporan polisi diproses": {
+      "vol": 880,
+      "kd": 0,
+      "q": -17,
+      "pos": null,
+      "opp": 880
+    },
+    "apa itu pro bono": {
+      "vol": 880,
+      "kd": 0,
+      "q": -32,
+      "pos": null,
+      "opp": 880
+    },
+    "apa itu interpol": {
+      "vol": 880,
+      "kd": 0,
+      "q": -40,
+      "pos": null,
+      "opp": 880
+    },
+    "pks adalah perjanjian": {
+      "vol": 720,
+      "kd": 0,
+      "q": -7,
+      "pos": null,
+      "opp": 720
+    },
+    "sk kemenkumham pt": {
+      "vol": 590,
+      "kd": 0,
+      "q": 21,
+      "pos": null,
+      "opp": 590
+    },
+    "syarat mendirikan pt perorangan": {
+      "vol": 480,
+      "kd": 0,
+      "q": 6,
+      "pos": null,
+      "opp": 480
+    },
+    "hukum pinjam meminjam": {
+      "vol": 480,
+      "kd": 0,
+      "q": 69,
+      "pos": null,
+      "opp": 480
+    },
+    "undang undang terbaru": {
+      "vol": 590,
+      "kd": 19,
+      "q": -56,
+      "pos": null,
+      "opp": 478
+    },
+    "konsultasi hukum online": {
+      "vol": 880,
+      "kd": 50,
+      "q": -11,
+      "pos": null,
+      "opp": 440
+    },
+    "delik formil adalah": {
+      "vol": 390,
+      "kd": 0,
+      "q": -22,
+      "pos": null,
+      "opp": 390
+    },
+    "apa itu asylum": {
+      "vol": 390,
+      "kd": 0,
+      "q": -3,
+      "pos": null,
+      "opp": 390
+    },
+    "most favoured nation": {
+      "vol": 390,
+      "kd": 7,
+      "q": 6,
+      "pos": null,
+      "opp": 363
+    },
+    "pks adalah kerjasama": {
+      "vol": 320,
+      "kd": 0,
+      "q": -35,
+      "pos": null,
+      "opp": 320
+    },
+    "perbedaan mou dan pks": {
+      "vol": 320,
+      "kd": 0,
+      "q": 32,
+      "pos": null,
+      "opp": 320
+    },
+    "apa itu masa probation": {
+      "vol": 320,
+      "kd": 0,
+      "q": 31,
+      "pos": null,
+      "opp": 320
+    },
+    "peraturan pemerintah terbaru": {
+      "vol": 390,
+      "kd": 25,
+      "q": -19,
+      "pos": null,
+      "opp": 292
+    },
+    "ai legal": {
+      "vol": 480,
+      "kd": 50,
+      "q": 6,
+      "pos": null,
+      "opp": 240
+    },
+    "legal ai": {
+      "vol": 480,
+      "kd": 77,
+      "q": 6,
+      "pos": null,
+      "opp": 110
+    },
+    "pkwtt adalah": {
+      "vol": 12100,
+      "kd": 0,
+      "q": 0,
+      "pos": 52,
+      "opp": 12100
+    },
+    "pkwtt": {
+      "vol": 6600,
+      "kd": 0,
+      "q": 0,
+      "pos": 66,
+      "opp": 6600
+    },
+    "pkwtt dan pkwt": {
+      "vol": 1600,
+      "kd": 0,
+      "q": 0,
+      "pos": 42,
+      "opp": 2000
+    },
+    "rencana pembangunan jangka menengah": {
+      "vol": 1600,
+      "kd": 6,
+      "q": -23,
+      "pos": 83,
+      "opp": 1504
+    },
+    "uu paten": {
+      "vol": 1000,
+      "kd": 0,
+      "q": -45,
+      "pos": 50,
+      "opp": 1250
+    },
+    "bppn adalah": {
+      "vol": 1000,
+      "kd": 0,
+      "q": -12,
+      "pos": 41,
+      "opp": 1250
+    },
+    "perpres gaji pns": {
+      "vol": 880,
+      "kd": 0,
+      "q": -18,
+      "pos": 48,
+      "opp": 1100
+    },
+    "jam kerja pns": {
+      "vol": 1000,
+      "kd": 0,
+      "q": -12,
+      "pos": 75,
+      "opp": 1000
+    },
+    "obstruction justice": {
+      "vol": 720,
+      "kd": 0,
+      "q": 0,
+      "pos": 48,
+      "opp": 900
+    },
+    "transnasional adalah": {
+      "vol": 880,
+      "kd": 0,
+      "q": 0,
+      "pos": 84,
+      "opp": 880
+    },
+    "refugees adalah": {
+      "vol": 880,
+      "kd": 0,
+      "q": 48,
+      "pos": 63,
+      "opp": 880
+    },
+    "statuta roma": {
+      "vol": 880,
+      "kd": 5,
+      "q": -33,
+      "pos": 84,
+      "opp": 836
+    },
+    "rumah dinas walikota pontianak": {
+      "vol": 590,
+      "kd": 0,
+      "q": 22,
+      "pos": 49,
+      "opp": 738
+    },
+    "peraturan menteri keuangan perjalanan dinas": {
+      "vol": 590,
+      "kd": 0,
+      "q": -19,
+      "pos": 48,
+      "opp": 738
+    },
+    "obstruction of justice": {
+      "vol": 720,
+      "kd": 0,
+      "q": 0,
+      "pos": 53,
+      "opp": 720
+    },
+    "apa itu pkwt dan pkwtt": {
+      "vol": 720,
+      "kd": 1,
+      "q": 0,
+      "pos": 58,
+      "opp": 713
+    },
+    "doxing or doxxing": {
+      "vol": 720,
+      "kd": 33,
+      "q": 0,
+      "pos": 44,
+      "opp": 603
+    },
+    "ai medusa": {
+      "vol": 590,
+      "kd": 9,
+      "q": -90,
+      "pos": 78,
+      "opp": 537
+    },
+    "ai hukum": {
+      "vol": 260,
+      "kd": 17,
+      "q": 31,
+      "pos": null,
+      "opp": 216
+    },
+    "ai hukum indonesia": {
+      "vol": 50,
+      "kd": null,
+      "q": 40,
+      "pos": null,
+      "opp": 25
+    },
+    "ai hukum gratis": {
+      "vol": 70,
+      "kd": null,
+      "q": 36,
+      "pos": null,
+      "opp": 35
+    },
+    "legal tech indonesia": {
+      "vol": 10,
+      "kd": 52,
+      "q": 0,
+      "pos": null,
+      "opp": 5
+    },
+    "kepala daerah kabupaten disebut": {
+      "vol": 480,
+      "kd": 0,
+      "q": -33,
+      "pos": 43,
+      "opp": 600
+    },
+    "perhitungan pesangon mengundurkan diri uu cipta kerja": {
+      "vol": 480,
+      "kd": 0,
+      "q": -46,
+      "pos": 52,
+      "opp": 480
+    },
+    "concession artinya": {
+      "vol": 480,
+      "kd": 0,
+      "q": 23,
+      "pos": 59,
+      "opp": 480
+    },
+    "concession adalah": {
+      "vol": 480,
+      "kd": 0,
+      "q": 0,
+      "pos": 61,
+      "opp": 480
+    },
+    "lebih baik pkwt atau pkwtt": {
+      "vol": 480,
+      "kd": 1,
+      "q": -19,
+      "pos": 61,
+      "opp": 475
+    },
+    "perbedaan common law dan civil law": {
+      "vol": 260,
+      "kd": 0,
+      "q": -19,
+      "pos": 20,
+      "opp": 416
+    },
+    "logika hukum": {
+      "vol": 260,
+      "kd": 0,
+      "q": -33,
+      "pos": 26,
+      "opp": 416
+    },
+    "grasi dan rehabilitasi adalah": {
+      "vol": 260,
+      "kd": 0,
+      "q": -19,
+      "pos": 22,
+      "opp": 416
+    },
+    "delik materil adalah": {
+      "vol": 260,
+      "kd": 0,
+      "q": -66,
+      "pos": 19,
+      "opp": 416
+    },
+    "delik formil": {
+      "vol": 260,
+      "kd": 0,
+      "q": -46,
+      "pos": 19,
+      "opp": 416
+    },
+    "bunyi pasal 1365 kuhperdata": {
+      "vol": 260,
+      "kd": 0,
+      "q": 23,
+      "pos": 28,
+      "opp": 416
+    },
+    "pengertian mahkamah konstitusi": {
+      "vol": 320,
+      "kd": 0,
+      "q": -67,
+      "pos": 49,
+      "opp": 400
+    },
+    "kbli virtual office": {
+      "vol": 320,
+      "kd": 0,
+      "q": -40,
+      "pos": 44,
+      "opp": 400
+    },
+    "pkwt pkwtt": {
+      "vol": 390,
+      "kd": 0,
+      "q": -19,
+      "pos": 58,
+      "opp": 390
+    },
+    "sistem pemerintahan presidensial adalah": {
+      "vol": 260,
+      "kd": 0,
+      "q": -46,
+      "pos": 35,
+      "opp": 325
+    },
+    "rapat umum pemegang saham luar biasa": {
+      "vol": 260,
+      "kd": 0,
+      "q": 52,
+      "pos": 33,
+      "opp": 325
+    },
+    "rahasia bank": {
+      "vol": 260,
+      "kd": 0,
+      "q": -19,
+      "pos": 34,
+      "opp": 325
+    },
+    "kontrak bisnis": {
+      "vol": 260,
+      "kd": 0,
+      "q": -33,
+      "pos": 31,
+      "opp": 325
+    },
+    "harta bersama adalah": {
+      "vol": 260,
+      "kd": 0,
+      "q": -19,
+      "pos": 32,
+      "opp": 325
+    },
+    "apa itu jaminan fidusia": {
+      "vol": 320,
+      "kd": 0,
+      "q": 0,
+      "pos": 54,
+      "opp": 320
+    },
+    "kbli nib": {
+      "vol": 260,
+      "kd": 8,
+      "q": 24,
+      "pos": 36,
+      "opp": 299
+    }
   }
 }
