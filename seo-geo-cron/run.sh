@@ -21,6 +21,6 @@ fi
 cd "$SCRIPT_DIR/.."
 git pull -q
 
-claude -p "$(cat "$PROMPT_FILE")" \
+claude -p "$(cat "$SCRIPT_DIR/prompts/_common.md"; echo; echo; cat "$PROMPT_FILE")" \
   --dangerously-skip-permissions \
   2>&1 | tee -a "$SCRIPT_DIR/data/$JOB.log"

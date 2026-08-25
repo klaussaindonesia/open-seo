@@ -1,66 +1,57 @@
 # Technical Health job
 
-You are the automated Technical Health agent for klaussa.com (OpenSEO
-project ID `60bfa4e0-fc18-452a-845b-70c99f82644e`). You run daily, unattended.
-
-Use the `openseo-cron` MCP server for every OpenSEO tool call below — it
-authenticates with a Cloudflare Access Service Token. Do not use a server
-named plain `openseo`, if one is also configured; that one requires an
-interactive human login and will not work in this unattended context.
+Daily. Finds technical SEO regressions and either fixes them or escalates.
 
 ## What to do
 
-1. Call the `openseo-cron` MCP server's `run_site_audit` tool with
-   `projectId: "60bfa4e0-fc18-452a-845b-70c99f82644e"`,
-   `url: "https://klaussa.com"`, default `maxPages` (50) and
-   `runLighthouse: true`.
-2. Poll `get_audit_status` (same projectId/auditId) until `status` is
-   `"completed"` or `"failed"`. **You must do this synchronously, in a loop,
-   within this same turn** — run a Bash `sleep 15` between each poll and
-   call `get_audit_status` again yourself. This process is invoked fresh by
-   cron and exits for good the moment you stop responding; there is no
-   scheduler, wakeup, or callback that will resume you later, so do not use
-   any "check back in N seconds" / scheduled-continuation mechanism even if
-   one appears to be available — it will not fire, and the run will be lost
-   with the audit left incomplete. If the audit is still running after
-   ~10 minutes (40 polls), give up, escalate with issue title "[SEO/GEO]
-   technical-health audit did not complete in time", and stop.
-3. Call `get_audit_issues` for the full issue report.
+1. `run_site_audit` with `url: "https://klaussa.com"`, default `maxPages` (50),
+   and `runLighthouse` per this month's budget entry. The crawl itself is free
+   (OpenSEO crawls via its own Workers fetch); only Lighthouse costs money, at
+   $0.005/page.
+2. Poll `get_audit_status` until `status` is `"completed"` or `"failed"`.
+   **Do this synchronously, in a loop, in this same turn** — `sleep 15` between
+   polls via Bash and call the tool again yourself. Nothing will resume you
+   later. If it is still running after ~10 minutes (40 polls), escalate with
+   "[SEO/GEO] technical-health audit did not complete in time" and stop.
+3. `get_audit_issues` for the full report (free).
 
 ## Decision rules
 
 - **Broken internal links, broken pages (4xx), meta-description-too-long,
-  title-too-long, missing-h1, or templated schema gaps** where the same fix
-  clearly applies across repeated occurrences (e.g. one dead nav/footer
-  link target hit from many pages) → **auto-fix, open a PR.**
-  - Work in `seo-geo-cron/klaussa_fe-workspace/` (relative to your current
-    working directory, which is this repo's root — already cloned there).
-    `git checkout main && git pull`. Create branch
+  title-too-long, missing-h1, or templated schema gaps** where one fix clearly
+  resolves many occurrences (e.g. a dead nav/footer target hit from every
+  page) → **auto-fix, open a PR.**
+  - Work in `seo-geo-cron/klaussa_fe-workspace/` (relative to the repo root,
+    already cloned). `git checkout main && git pull`, then branch
     `self-heal-technical-health-<YYYYMMDD>`.
-  - Only touch the specific files needed for the fix (e.g. the shared
-    nav/footer component, or the specific page's meta tags). Never touch
-    files under `auth/`, `billing/`, `.github/workflows/`, or any
-    `*migration*`/`*schema*` path — if the fix seems to require touching
-    one of those, escalate instead (see below).
-  - Commit, push, then `gh pr create --repo klaussaindonesia/klaussa_fe
-    --base main --head self-heal-technical-health-<YYYYMMDD> --title "..."
-    --body "..."`. The PR body must state the audit ID and list every issue
-    fixed with its issueType.
-  - Max **one** PR per run. If more distinct fixes are found than fit in
-    one coherent PR, fix the highest-severity/highest-count cluster this
-    run and leave the rest for tomorrow's run.
-- **Server errors (5xx), failed Lighthouse checks, slow-response pages, or
-  any issue whose fix is unclear or touches a guardrailed path** →
-  **escalate.** Run `gh issue create --repo klaussaindonesia/klaussa_fe
-  --label seo-geo-escalation --title "[SEO/GEO] <short summary>" --body
-  "<audit ID, affected URLs, the raw issue data, why this needs a human>"`.
-  Max **one** issue per run — bundle related findings (e.g. all 503s) into
-  one issue.
-- **Info-level cosmetic issues with no clear actionable fix** → do nothing
-  (pass).
-- Never force-push. Never merge your own PR. Never run `gh pr merge`.
+  - Touch only the files needed for that fix. Never touch `auth/`, `billing/`,
+    `.github/workflows/`, or any `*migration*`/`*schema*` path — if the fix
+    seems to need one of those, escalate instead.
+  - Commit, push, `gh pr create --repo klaussaindonesia/klaussa_fe --base main
+    --head self-heal-technical-health-<YYYYMMDD>`. The body must state the
+    audit ID and list every issue fixed with its issueType.
+  - If more distinct fixes exist than fit one coherent PR, fix the
+    highest-severity/highest-count cluster and leave the rest for tomorrow.
+- **Server errors (5xx), failed Lighthouse checks, slow-response pages, or any
+  issue whose fix is unclear or touches a guardrailed path** → **escalate.**
+  Bundle related findings into one issue.
+- **Info-level cosmetic issues with no clear fix** → pass.
 
-## Traceability
+## Known issues — check context before escalating
 
-Every PR/issue body must include the OpenSEO audit ID it was generated
-from, so a human can trace the decision back to the source data.
+`current_goal` in project context records what is already known and tracked.
+As of month 1 that includes the intermittent 503s on `/peraturan/*`
+(klaussa_fe#1276) and the fact that `/peraturan/jenis/*` and
+`/peraturan/tahun/*` draw zero search impressions.
+
+**Do not open a duplicate issue for something already tracked there.** If this
+run's audit shows a *material change* — the 503s spreading to new route
+groups, clearing up entirely, or a fresh regression elsewhere — comment on the
+existing issue instead, or open a new one only if it is genuinely a different
+fault.
+
+## Prioritisation
+
+Weight issues on pages listed in `keyPages` above issues on pages that are
+not. A broken title on a `money` or `hub` page matters more than the same
+issue on a page with no traffic.

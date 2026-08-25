@@ -15,5 +15,5 @@ if [ -f "$SCRIPT_DIR/.env.local" ]; then
   set +a
 fi
 
-claude -p "$(cat "$PROMPT_FILE")" \
+claude -p "$(cat "$SCRIPT_DIR/prompts/_common.md"; echo; echo; cat "$PROMPT_FILE")" \
   2>&1 | tee "$SCRIPT_DIR/data/$JOB-pilot.log"
