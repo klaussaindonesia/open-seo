@@ -1,5 +1,5 @@
 {
-  "_comment": "Proposed rank-tracker seed list for klaussa.com. Every keyword is either (a) already appearing in GSC with real impressions, or (b) a strategic term we should rank for and currently don't. Deliberately excludes one-off regulation-number queries (e.g. 'perpres 19 tahun 2026') — those churn yearly and would make trend data meaningless; they are covered by the GSC half of the SEO job instead. Apply with create_rank_tracker + add_rank_tracking_keywords (depth 40, mobile, weekly).",
+  "_comment": "Rank-tracker seed list for klaussa.com, sized for a $10/month DataForSEO POC budget. Every keyword is either (a) already appearing in GSC with >=25 impressions in the last 28 days, or (b) a strategic term we should rank for and currently don't. Deliberately excludes bare regulation-number lookups ('perpres 19 tahun 2026') and year-bound regional queries ('ssh kota semarang 2026') -- those churn annually and would make trend data meaningless; the GSC half of the SEO job covers them instead. Apply with create_rank_tracker + add_rank_tracking_keywords.",
   "domain": "klaussa.com",
   "locationCode": 2360,
   "languageCode": "id",
@@ -7,6 +7,7 @@
   "depth": 40,
   "scheduleInterval": "weekly",
   "competitors": ["hukumonline.com", "jdih.go.id", "legalku.com"],
+  "_cost": "70 keywords x 1 device x depth 40 (queued) = $0.1365 per check, ~$0.59/month weekly.",
   "groups": {
     "brand-defense": [
       "klaussa",
@@ -17,6 +18,7 @@
       "ai legal",
       "legal ai",
       "ai hukum",
+      "ai hukum indonesia",
       "legal ai indonesia",
       "ai hukum gratis",
       "ai untuk hukum",
@@ -25,19 +27,53 @@
       "konsultasi hukum online",
       "analisis dokumen hukum ai"
     ],
-    "legal-concept-snippet": [
-      "sk kemenkumham",
-      "sk kemenkumham adalah",
-      "akta dan sk kemenkumham",
+    "pks-cluster": [
       "pks adalah",
       "pks adalah kerjasama",
+      "pks adalah perjanjian",
+      "dokumen pks adalah",
+      "apa itu pks kerja",
+      "apa itu pks kontrak",
       "apa itu pks dalam perusahaan",
+      "pks dalam dunia kerja adalah",
+      "perbedaan mou dan pks"
+    ],
+    "sk-kemenkumham-cluster": [
+      "sk kemenkumham",
+      "sk kemenkumham pt",
+      "sk kemenkumham adalah",
+      "akta dan sk kemenkumham",
+      "cara cek sk kemenkumham"
+    ],
+    "legal-concept-snippet": [
+      "delik formil adalah",
       "delik formil dan materil",
-      "ratio decidendi",
+      "apa itu ratio decidendi",
+      "arti ratio decidendi",
+      "apa itu interpol",
+      "apa itu konsesi",
+      "perbedaan wni dan wna",
       "hukum waris bw",
       "pendekatan kasus",
+      "pendekatan kasus adalah",
       "5 sumber hukum di indonesia",
-      "dasar hukum sekolah rakyat"
+      "pasal 1337 kuhperdata",
+      "hukum pinjam meminjam",
+      "hukum menyita barang karena hutang",
+      "struktur pt perorangan",
+      "syarat mendirikan pt perorangan"
+    ],
+    "regulation-topic-evergreen": [
+      "perpres sekolah rakyat",
+      "dasar hukum sekolah rakyat",
+      "aturan seragam bgn",
+      "uu cipta kerja keterlambatan gaji",
+      "tpp asn",
+      "tukin asn",
+      "tpp sidoarjo",
+      "tpp kabupaten sidoarjo",
+      "tpp pemkab sidoarjo",
+      "kategori wilayah notaris"
     ],
     "product-intent": [
       "database peraturan indonesia",
@@ -52,9 +88,6 @@
       "perpres terbaru",
       "undang undang terbaru",
       "permenpan rb terbaru",
-      "tpp asn",
-      "tukin asn",
-      "tpp sidoarjo",
       "peraturan menteri kesehatan terbaru",
       "tata upacara militer terbaru"
     ]
