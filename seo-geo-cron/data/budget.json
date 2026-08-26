@@ -6,6 +6,8 @@
     "serp_live_depth40_per_keyword": 0.00832,
     "_serp_note": "run_rank_tracker (the only trigger OpenSEO's MCP exposes) always uses DataForSEO's live SERP endpoint, not queued. Measured 2026-08-25: estimate_rank_tracker_cost returned $1.0816 for a 130-keyword live check ($0.00832/kw) -- 4.3x the queued price this budget originally assumed. The queued price above is unreachable through this tool and kept only for reference.",
     "lighthouse_per_page": 0.005,
+    "lighthouse_per_audit_call": 0.10,
+    "_lighthouse_note": "run_site_audit's runLighthouse:true has no page-count or strategy parameter -- it always samples a fixed ~10 pages x 2 strategies (mobile+desktop) = 20 checks. Confirmed 2026-08-25: the technical-health run spent exactly $0.10 (20 x $0.005). This is 2x the 10-check/$0.05 figure this budget originally assumed, and there is no way to configure it down -- only cadence (how often runLighthouse is enabled) is a lever.",
     "llm_mentions_per_result": 0.001,
     "site_crawl_per_page": 0.0,
     "llm_responses_per_prompt_per_model": {
@@ -23,18 +25,19 @@
     "lighthouse_per_page measured exactly at 0.005.",
     "Perplexity is 2.4x cheaper than Gemini and sends almost no input tokens (22 vs 530-11007) because it does its own retrieval. Best cost lever if a month needs trimming: swap gemini -> perplexity in the 2-model config, saving ~32% of GEO spend.",
     "Gemini is the most expensive model despite low per-token rates -- it emitted 2075 output tokens vs Claude's 857. Cost here is driven by output length and web-search input bloat, not headline token price.",
-    "Rank-check cadence is the main lever now that each check is $1.08, not $0.25: it tapers 2x weekly -> biweekly -> biweekly -> monthly across the 4 months instead of the originally planned 3x weekly -> 2x weekly -> weekly -> weekly, which would have blown every ceiling."
+    "Rank-check cadence is the main lever now that each check is $1.08, not $0.25: it tapers 2x weekly -> biweekly -> biweekly -> monthly across the 4 months instead of the originally planned 3x weekly -> 2x weekly -> weekly -> weekly, which would have blown every ceiling.",
+    "Lighthouse is confirmed at $0.10/audit call, not $0.05 -- see _lighthouse_note. Month 1 keeps daily Lighthouse anyway (deliberate: $2.37 over the $20 ceiling, accepted for baseline density in the first 30 days). Months 3-4's original 'partial page count' plans were never achievable (the tool has no page-count control), so both moved to weekly Lighthouse instead."
   ],
   "months": [
     {
       "month": 1,
       "monthly_ceiling_usd": 20,
-      "projected_usd": 20.87,
-      "goal": "Dense baseline + make impact visible inside 30 days. GEO runs the same chat_gpt+gemini pair every week, so week-1 vs week-4 is like-for-like. Rank tracking runs 2x weekly this month for the densest baseline the real per-check price allows -- ~4% over the $20 ceiling, accepted deliberately in exchange for baseline resolution.",
+      "projected_usd": 22.37,
+      "goal": "Dense baseline + make impact visible inside 30 days. GEO runs the same chat_gpt+gemini pair every week, so week-1 vs week-4 is like-for-like. Rank tracking runs 2x weekly and Lighthouse stays daily this month for the densest baseline available -- both kept deliberately despite pushing ~12% over the $20 ceiling, in exchange for baseline resolution in the first 30 days.",
       "technical_health": {
         "crawl": "daily, 50 pages",
-        "lighthouse": "daily, 10 pages",
-        "cost_usd": 1.5
+        "lighthouse": "daily (~10 pages x 2 strategies, fixed sample size)",
+        "cost_usd": 3.0
       },
       "seo_rank_tracker": {
         "keywords": 130,
@@ -58,12 +61,12 @@
     {
       "month": 2,
       "monthly_ceiling_usd": 15,
-      "projected_usd": 12.9,
-      "goal": "Baseline exists; drop rank tracking to biweekly to stay under the tighter ceiling at the real per-check price.",
+      "projected_usd": 14.4,
+      "goal": "Baseline exists; drop rank tracking to biweekly to stay under the tighter ceiling at the real per-check price. Lighthouse stays daily -- it still fits at the corrected $3.00/month price.",
       "technical_health": {
         "crawl": "daily, 50 pages",
-        "lighthouse": "daily, 10 pages",
-        "cost_usd": 1.5
+        "lighthouse": "daily (~10 pages x 2 strategies, fixed sample size)",
+        "cost_usd": 3.0
       },
       "seo_rank_tracker": {
         "keywords": 130,
@@ -82,12 +85,12 @@
     {
       "month": 3,
       "monthly_ceiling_usd": 10,
-      "projected_usd": 9.68,
-      "goal": "Steady state. Swap gemini -> perplexity to hold 2-model coverage at 32% lower cost. Rank tracking stays biweekly -- weekly no longer fits the $10 ceiling at the real per-check price.",
+      "projected_usd": 8.93,
+      "goal": "Steady state. Swap gemini -> perplexity to hold 2-model coverage at 32% lower cost. Rank tracking stays biweekly -- weekly no longer fits the $10 ceiling at the real per-check price. Lighthouse drops to weekly -- daily no longer fits either, and the original 'partial page count' plan was never achievable (the tool has no page-count control).",
       "technical_health": {
         "crawl": "daily, 50 pages",
-        "lighthouse": "5 pages daily + 20 pages weekly",
-        "cost_usd": 1.18
+        "lighthouse": "weekly (~10 pages x 2 strategies, fixed sample size)",
+        "cost_usd": 0.43
       },
       "seo_rank_tracker": {
         "keywords": 130,
@@ -106,12 +109,12 @@
     {
       "month": 4,
       "monthly_ceiling_usd": 5,
-      "projected_usd": 3.83,
-      "goal": "Maintenance. Enough signal to catch a regression, not to explore. Rank tracking drops to monthly -- a single check is $1.08, over a fifth of the whole month's ceiling.",
+      "projected_usd": 4.04,
+      "goal": "Maintenance. Enough signal to catch a regression, not to explore. Rank tracking drops to monthly -- a single check is $1.08, over a fifth of the whole month's ceiling. Lighthouse stays weekly.",
       "technical_health": {
         "crawl": "daily, 50 pages",
-        "lighthouse": "weekly, 10 pages",
-        "cost_usd": 0.22
+        "lighthouse": "weekly (~10 pages x 2 strategies, fixed sample size)",
+        "cost_usd": 0.43
       },
       "seo_rank_tracker": {
         "keywords": 130,
