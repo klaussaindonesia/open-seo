@@ -23,19 +23,30 @@ digest email.
      share_of_voice_pct REAL
    );
    ```
-2. Read `seo-geo-cron/data/prompts.json` for the prompt set. If it is
+2. **Due-gate.** `SELECT MAX(run_date) FROM geo_runs` (a missing/empty
+   table means no baseline yet — today is due). Read this month's cadence
+   from `budget.json`'s `geo_prompts.schedule` (authoritative — "weekly"
+   most months, "every other week" in month 4). If not enough days have
+   elapsed since that date, **stop — do not call any paid tool**
+   (`explore_prompt`/`lookup_brand`). This is the common case and should
+   cost nothing. `explore_prompt` also caches for 7 days, so running early
+   risks writing rows that look like fresh measurement but are really
+   replayed cache — silently corrupting the week-1-vs-week-4 comparison
+   and the "share-of-voice dropped" rule below, which both depend on
+   `geo_runs` reflecting real, independent weekly samples.
+3. Read `seo-geo-cron/data/prompts.json` for the prompt set. If it is
    missing, escalate "[SEO/GEO] GEO prompt set not configured" and stop —
    do not invent prompts. Run the tier and model list this month's
    `budget.json` entry specifies (month 1: all 22 prompts x chat_gpt +
    gemini) — `budget.json` is authoritative on prompt volume if this
    count ever drifts from it again.
-3. For each prompt, `explore_prompt` with `highlightBrand: "klaussa"`.
-4. `lookup_brand` with `query: "klaussa"` and `competitors` taken from
+4. For each prompt, `explore_prompt` with `highlightBrand: "klaussa"`.
+5. `lookup_brand` with `query: "klaussa"` and `competitors` taken from
    `get_project_context` — the canonical list, not a hardcoded one. This
    is the one place competitors must be supplied explicitly: share-of-
    voice is arithmetically meaningless without named rivals to divide
    against.
-5. Insert one `geo_runs` row per (prompt, model) and per (query,
+6. Insert one `geo_runs` row per (prompt, model) and per (query,
    platform).
 
 ## Finding this week's opportunities
