@@ -185,6 +185,17 @@ up to two weeks later):
 
 - `GET /blogs/{blog_id}`. Still not `published` → nothing to check yet,
   skip.
+- **Sanity-check the URL while you have the blog in hand.** The response's
+  `slug` is authoritative: `target_page_url` must end in exactly that slug.
+  If it does not, the row is pointing at the wrong page — almost certainly
+  the *parent* that inspired the candidate rather than the companion the
+  action actually created. Fix it before doing anything else: move the
+  current value to `source_page_url` (that is what it really is), set
+  `target_page_url` to `https://www.klaussa.com/blog/<slug>`, and clear
+  `indexed_at`, since any prior value was measured against the wrong page.
+  This mismatch is silent and expensive — it makes indexing and outcome
+  checks report on a page the job never touched, so a long-indexed parent
+  makes a brand-new companion look successful.
 - `published` → `inspect_urls` with `target_page_url` (free, batch up
   to 10 URLs per call rather than one row at a time). Read
   `indexStatusResult.coverageState` and `.verdict` — if the coverage
