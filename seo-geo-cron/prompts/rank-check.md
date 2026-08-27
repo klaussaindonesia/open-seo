@@ -22,4 +22,4 @@ minimal so it is safe and cheap to invoke every day.
    match closely -- if it does not, escalate rather than guess why), then
    `run_rank_tracker` with `maxCostCredits` set to the estimate's
    `costCredits`. Nothing else. The SEO job reads the resulting position data
-   on its own weekly run; this job does not interpret it.
+   on its own daily run; this job does not interpret it.

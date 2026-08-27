@@ -14,7 +14,7 @@ authenticates with a Cloudflare Access Service Token and works unattended. Do
 not use a server named plain `openseo` if one is also configured — that one
 requires an interactive human login and will fail here.
 
-## Step 0 — ground yourself before doing anything else
+## Ground yourself before doing anything else
 
 Call `get_project_context` (free, no credits) and read it. It is the single
 source of truth for:
@@ -95,9 +95,12 @@ never cross-check the other job's rows) where `status = 'proposed'` and
 - None found → proceed straight to this job's own instructions.
 - For each match, `GET /blogs/{blog_id}` (free, read-only — a fresh read
   on a new run, not polling within a run):
-  - Still `need_approval` after 14+ days → escalate once this run, naming
-    every such `blog_id` in one issue titled "[SEO/GEO] N drafts
-    unreviewed after 14+ days" (sitting unreviewed for two weeks is
+  - Still `need_approval` after 14+ days → check whether an issue titled
+    "[SEO/GEO] N drafts unreviewed after 14+ days" already exists first
+    (matching the rank-tracker escalation's own convention) — if so, do
+    not re-file it; the row stays `proposed` and this check simply
+    repeats harmlessly on future runs. Otherwise escalate once this run,
+    naming every such `blog_id` (sitting unreviewed for two weeks is
     itself a signal worth surfacing).
   - `status: draft` (was rejected) → `UPDATE actions SET
     status='judged', outcome='rejected', judged_at=<today> WHERE
@@ -119,8 +122,13 @@ new opportunities.
   design — drafts go to a human by email.
 - Content-draft cap is per job: SEO up to **5** per run, GEO up to **2**
   per run — delivered as **one digest email** per run regardless of item
-  count (see "Outcome tracking" below). Escalation cap stays **one**
-  issue per run for every job, unchanged.
+  count (mechanics in `seo.md`'s Publishing section, reused by `geo.md`).
+  Escalation cap stays **one** issue per run for every job, unchanged.
+- If more than one escalation condition fires in the same run, fold them
+  into that one allowed issue rather than dropping all but the first
+  one you noticed — a failure/orphaned-work condition (e.g. a failed
+  digest send, drafts left unrecorded) always outranks a purely
+  informational one (e.g. a missing-config notice).
 - Escalation issues: `gh issue create --repo klaussaindonesia/klaussa_fe
   --label seo-geo-escalation`.
 - Every PR, issue, or content draft must cite the data it acted on (audit ID,

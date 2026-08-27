@@ -7,15 +7,25 @@ actions, delivered as one digest email.
 
 0. **Outcome tracking first.** Follow `_common.md`'s "Outcome tracking"
    section — check and judge any of your own (`job='seo'`) past actions
-   that are due, before anything else below.
+   that are due, before anything else below. If a due row's judgment
+   needs fresh GSC and GSC is currently unavailable (see step 2's
+   fallback below), skip judging that row this run — leave it
+   `proposed` and try again next run. Never write a judgment from
+   incomplete data.
 1. `get_rank_tracker` for tracked positions and history. If `configs` is
    empty no tracker exists yet — escalate once with "[SEO/GEO] rank
    tracker not configured" (check the issue does not already exist
    first), then continue with the GSC-only analysis below.
 2. `get_search_console_performance` (`dateRange: "last_28_days"`,
-   dimensions `["query"]` and `["page"]`). Free — use it every run.
+   dimensions `["query"]` and `["page"]`). Free — use it every run. **If
+   this call fails** (down, reconnect-required, or any error): do not
+   fall back to stale cached data for rules 1/2 below — they produce
+   zero candidates this run instead. Rely on rules 3/4 (local
+   `rank-keywords.json`, unaffected by a Google outage). If this is the
+   reason a run drafts fewer than 5, say so in the research log entry
+   rather than silently drafting less.
 3. Optionally `get_google_analytics_organic_overview` for traffic trend
-   (free).
+   (free) — same fallback as step 2 if it fails.
 
 ## Finding today's opportunities
 
@@ -24,24 +34,46 @@ every signal source, then take the top 5 by priority. Never stop at the
 first match — that was last week's behavior; daily cadence means walking
 every rule to see the full picture, then picking the strongest 5.
 
+**Before scanning any rule, build one exclusion set — this applies to
+every rule below, not just rules 3/4:**
+```sql
+SELECT target_page_url, cluster_keywords FROM actions WHERE job='seo';
+```
+Collect every non-null `target_page_url` into an excluded-URL set, and
+union every `cluster_keywords` JSON array into an excluded-keyword set.
+A page or keyword already acted on — at any status, `drafted`,
+`proposed`, or `judged` — is off the table for every rule until a
+human's outcome judgment decides it needs a different angle (see
+`_common.md`'s Outcome tracking). This is not optional per-rule
+behavior; it is the one gate every candidate below must pass before it
+counts.
+
 Read `current_goal` from context first — it names the specific thing this
 POC is trying to move, and that outranks generic best practice.
 
 1. **Rule 1 candidates (highest priority): a key page ranks well but
    converts badly.** Scan `keyPages` from context against fresh GSC data
-   for pages at position 4-15 with CTR under ~2% — each qualifying page
-   is one candidate, already page-level, no grouping needed. This is the
-   highest-value action for klaussa.com: the blog draws ~1.6x the
-   impressions of the regulation pages and converts them at about a
-   fifth of the rate. `keyPages` records measured CTR per page — compare
-   against the best-converting page in that list to see what "good"
-   looks like on this site.
+   for pages at position 4-15 with CTR under ~2%, **skipping any page
+   already in the excluded-URL set built above** — each remaining
+   qualifying page is one candidate, already page-level, no grouping
+   needed. This is the highest-value action for klaussa.com: the blog
+   draws ~1.6x the impressions of the regulation pages and converts them
+   at about a fifth of the rate. `keyPages` records measured CTR per
+   page — compare against the best-converting page in that list to see
+   what "good" looks like on this site.
 2. **Rule 2 candidates: position dropped vs. the prior period.** Any
    tracked keyword with a real position drop vs. the prior rank-tracker
-   snapshot is one candidate. Check the technical-health job's latest
-   audit (`get_audit_issues`, no auditId = latest, free) for a technical
-   cause on that page before assuming it is a content problem — if
-   there is one, note the correlation rather than re-diagnosing it.
+   snapshot is one candidate, **skipping any page already in the
+   excluded-URL set**. This only produces candidates on a run following
+   a genuinely *new* tracker snapshot — the rank-tracker cadence is 2x
+   weekly in month 1 and biweekly after (`budget.json`), so
+   `previousPosition == position` for every keyword on most days is
+   expected, not a failure; it means no new snapshot has landed since
+   the last check, and this rule correctly yields nothing. Check the
+   technical-health job's latest audit (`get_audit_issues`, no auditId =
+   latest, free) for a technical cause on that page before assuming it
+   is a content problem — if there is one, note the correlation rather
+   than re-diagnosing it.
 3. **Rule 3/4 candidates: cluster-then-cap.** Rules 3 (a competitor
    outranks us) and 4 (a high-volume keyword we do not rank for at all)
    both source from `rank-keywords.json`'s tracked keyword groups, which
@@ -50,10 +82,8 @@ POC is trying to move, and that outranks generic best practice.
 
    a. Read `quick-win-striking-distance` → `gap-not-ranking` →
       `high-volume-deep` in that priority order.
-   b. Query `actions.sqlite` for every keyword already covered by any
-      past `seo` row (`SELECT cluster_keywords FROM actions WHERE
-      job='seo'`, union the JSON arrays). Drop those keywords from each
-      group.
+   b. Drop every keyword already in the excluded-keyword set built
+      above.
    c. Group what's left by topic — judgment, not string matching. Two
       keywords belong in one cluster only if a single page/section could
       fully answer both without duplicating content elsewhere.
@@ -100,6 +130,23 @@ Blog content is DB-backed (Supabase via `api.klaussa.com`), not files in
 are already exported by `run.sh`; read them from the environment, never
 print them.
 
+**What actually gets built, for every rule.** The writer bot can only
+create new posts — it never edits an existing page, by design (editing a
+live page would be publishing a change without human approval). So
+every action below, regardless of which rule produced the candidate, is
+a **new companion post** — never an edit to the page that inspired it.
+Record the *companion's own URL* (returned as `slug` when you create it)
+as `target_page_url` in `actions.sqlite` — that is what `_common.md`'s
+Step 0 measures 14 days later, and it must be a URL the action actually
+touched. Keep a one-line reference to whatever page inspired the
+candidate inside `cluster_topic` instead (e.g. "Companion for
+/blog/bedanya-mou-dan-pks: MoU vs PKS FAQ") — useful context for judging
+whether the companion helped, but not the thing being measured.
+`action_type`: use `new-page` for a rule-4 candidate (no existing page
+at all) or `companion-post` for rules 1-3 (a new post placed alongside
+an existing page). GEO's own publishing (which reuses this section)
+uses `citation-gap-fix`.
+
 Follow `writing_preferences` from context — it is binding, not advisory.
 
 Sign in as the writer bot once (it cannot publish, by design):
@@ -110,7 +157,10 @@ TOKEN=$(curl -s -X POST "$BACKEND_URL/api/v1/auth/sign-in" \
   | python3 -c "import json,sys; print(json.load(sys.stdin)['session']['access_token'])")
 ```
 
-For **each** of the up to 5 chosen candidates, in order:
+For **each** of the up to 5 chosen candidates, in order, keep a running
+list of the `actions.sqlite` row ids you insert (you'll need the exact
+list at the end — do not re-derive it from `run_date`, which is
+ambiguous if this job is ever run twice in one day):
 
 1. Create the draft. `content` is a Tiptap JSON doc, not markdown:
    `heading` nodes (`"attrs":{"level":2}`) for section titles, `paragraph`
@@ -121,19 +171,41 @@ For **each** of the up to 5 chosen candidates, in order:
      -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
      -d '{"title":"...","content":{...},"status":"need_approval","tags":["seo"]}')
    BLOG_ID=$(echo "$BLOG" | python3 -c "import json,sys; print(json.load(sys.stdin)['id'])")
+   BLOG_URL=$(echo "$BLOG" | python3 -c "import json,sys; d=json.load(sys.stdin); print('https://klaussa.com/blog/' + d['slug'])")
    ```
-2. Immediately record it — do not wait until all candidates are drafted:
+2. Immediately record it — do not wait until all candidates are drafted.
+   Use `sqlite3`'s Python module with bound parameters, not shell string
+   interpolation — an apostrophe or quote in an LLM-authored topic string
+   (very plausible in Indonesian legal text) would otherwise break the
+   SQL literal or the shell string silently:
    ```bash
-   sqlite3 seo-geo-cron/data/actions.sqlite "INSERT INTO actions
-     (job, run_date, cluster_topic, cluster_keywords, target_page_url,
-      action_type, blog_id, baseline_metrics, status, created_at)
-     VALUES ('seo', date('now'), '<topic>', '<json array of keywords>',
-      <'target url' or NULL>, '<edit-existing|new-page|faq-block>',
-      '$BLOG_ID', '<json baseline metrics>', 'drafted', datetime('now'));"
+   ROW_ID=$(python3 -c "
+   import sqlite3, json
+   conn = sqlite3.connect('seo-geo-cron/data/actions.sqlite')
+   cur = conn.execute(
+       '''INSERT INTO actions
+          (job, run_date, cluster_topic, cluster_keywords, target_page_url,
+           action_type, blog_id, baseline_metrics, status, created_at)
+          VALUES (?, date('now'), ?, ?, ?, ?, ?, ?, 'drafted', datetime('now'))''',
+       (
+           'seo',
+           '<topic, e.g. \"Companion for /blog/xyz: MoU vs PKS FAQ\">',
+           json.dumps(['<keyword or query 1>', '<keyword or query 2>']),
+           '<BLOG_URL value, the companion\'s own URL>',
+           '<new-page|companion-post>',
+           '$BLOG_ID',
+           json.dumps({'position': None, 'ctr': 0.0065, 'impressions': 5677,
+                       'clicks': None, 'measured_at': '2026-08-27'}),
+       ),
+   )
+   conn.commit()
+   print(cur.lastrowid)
+   ")
    ```
    Writing this immediately after each draft — not batched at the end —
    means an interrupted run never leaves a drafted-but-unrecorded item
-   that tomorrow's exclusion set (rule 3/4 step b above) would miss.
+   that tomorrow's exclusion set would miss. Append `$ROW_ID` to your
+   running list of inserted ids.
 
 Once every chosen candidate has a draft and an `actions.sqlite` row, send
 **one** digest covering all of them. HMAC-sign the batched body:
@@ -159,16 +231,26 @@ The worker renders each item's full draft into the email, so each
 summary is context for that item's decision, not a substitute for the
 content.
 
-**If this call fails** (non-2xx, or no response): escalate once, titled
+**If this call fails** (non-2xx, or no response): this outranks every
+other escalation condition in this run — if another escalation
+condition (e.g. "rank tracker not configured") also fired earlier in
+this same run, fold it into this one issue instead of using the
+one-per-run slot on the less urgent finding. Escalate once, titled
 "[SEO/GEO] digest send failed — N drafts orphaned", listing every
 `blog_id` drafted this run. Do not leave them unrecorded and unreachable
 — they are already in `need_approval` with no email pointing at them.
 
-**On success**, flip every row drafted this run from `drafted` to
-`proposed`:
+**On success**, flip exactly the rows you just inserted from `drafted` to
+`proposed`, by id — not by date, which a same-day retry would get wrong:
 ```bash
-sqlite3 seo-geo-cron/data/actions.sqlite "UPDATE actions SET status='proposed'
-  WHERE job='seo' AND run_date=date('now') AND status='drafted';"
+python3 -c "
+import sqlite3
+conn = sqlite3.connect('seo-geo-cron/data/actions.sqlite')
+ids = [<ROW_ID_1>, <ROW_ID_2>]  # every id collected above
+conn.executemany('UPDATE actions SET status=\'proposed\' WHERE id=?',
+                  [(i,) for i in ids])
+conn.commit()
+"
 ```
 
 Then stop. A human decides from the email. Do not poll for their
