@@ -69,6 +69,7 @@ CREATE TABLE IF NOT EXISTS actions (
   run_date TEXT NOT NULL,
   cluster_topic TEXT NOT NULL,
   cluster_keywords TEXT NOT NULL,
+  source_page_url TEXT,
   target_page_url TEXT,
   action_type TEXT NOT NULL,
   blog_id TEXT,
@@ -81,11 +82,38 @@ CREATE TABLE IF NOT EXISTS actions (
 );
 ```
 
+`source_page_url` was added after this table may already have existed
+on disk with real rows in it — `CREATE TABLE IF NOT EXISTS` is a no-op
+against a table that already exists, so it will **not** add the new
+column by itself. Before doing anything else with this table, ensure
+the column exists:
+```python
+import sqlite3
+conn = sqlite3.connect('seo-geo-cron/data/actions.sqlite')
+try:
+    conn.execute('ALTER TABLE actions ADD COLUMN source_page_url TEXT')
+    conn.commit()
+except sqlite3.OperationalError as e:
+    if 'duplicate column name' not in str(e):
+        raise  # some other real error -- do not swallow it
+```
+This is safe to run every time: it either adds the column once or fails
+harmlessly with "duplicate column name" on every run after that.
+
 `cluster_keywords`, `baseline_metrics`, and `outcome_metrics` are JSON
 stored as text (SQLite has no native JSON type). `baseline_metrics` /
 `outcome_metrics` shape: `{"position": <number|null>, "ctr":
 <number|null>, "impressions": <number|null>, "clicks": <number|null>,
 "measured_at": "<date>"}`.
+
+`source_page_url` and `target_page_url` answer two different questions
+and must never be conflated: `source_page_url` is the existing page (if
+any) that made you consider this candidate in the first place — used to
+recognize "I already acted on this page" so it isn't picked again.
+`target_page_url` is the page Step 0 actually measures 14 days later —
+always the URL the action itself produced, since that's the only page
+the action could have changed. For a brand-new topic with no existing
+page, `source_page_url` is null.
 
 **Step 0 of every run, before anything else**: query your own job's rows
 (`WHERE job = '<seo|geo>'` — the table is shared for storage convenience,

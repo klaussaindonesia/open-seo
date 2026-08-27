@@ -37,11 +37,17 @@ every rule to see the full picture, then picking the strongest 5.
 **Before scanning any rule, build one exclusion set — this applies to
 every rule below, not just rules 3/4:**
 ```sql
-SELECT target_page_url, cluster_keywords FROM actions WHERE job='seo';
+SELECT source_page_url, cluster_keywords FROM actions WHERE job='seo';
 ```
-Collect every non-null `target_page_url` into an excluded-URL set, and
-union every `cluster_keywords` JSON array into an excluded-keyword set.
-A page or keyword already acted on — at any status, `drafted`,
+Collect every non-null `source_page_url` into an excluded-source-URL
+set, and union every `cluster_keywords` JSON array into an
+excluded-keyword set. Use `source_page_url` here, never
+`target_page_url` — `target_page_url` is always the *new* companion
+page an action produced (see Publishing below), so it can never match
+an existing page you're scanning for candidates; `source_page_url` is
+the existing page that made a past run consider a candidate in the
+first place, which is exactly what this exclusion needs to recognize. A
+page or keyword already acted on — at any status, `drafted`,
 `proposed`, or `judged` — is off the table for every rule until a
 human's outcome judgment decides it needs a different angle (see
 `_common.md`'s Outcome tracking). This is not optional per-rule
@@ -54,7 +60,7 @@ POC is trying to move, and that outranks generic best practice.
 1. **Rule 1 candidates (highest priority): a key page ranks well but
    converts badly.** Scan `keyPages` from context against fresh GSC data
    for pages at position 4-15 with CTR under ~2%, **skipping any page
-   already in the excluded-URL set built above** — each remaining
+   already in the excluded-source-URL set built above** — each remaining
    qualifying page is one candidate, already page-level, no grouping
    needed. This is the highest-value action for klaussa.com: the blog
    draws ~1.6x the impressions of the regulation pages and converts them
@@ -64,7 +70,7 @@ POC is trying to move, and that outranks generic best practice.
 2. **Rule 2 candidates: position dropped vs. the prior period.** Any
    tracked keyword with a real position drop vs. the prior rank-tracker
    snapshot is one candidate, **skipping any page already in the
-   excluded-URL set**. This only produces candidates on a run following
+   excluded-source-URL set**. This only produces candidates on a run following
    a genuinely *new* tracker snapshot — the rank-tracker cadence is 2x
    weekly in month 1 and biweekly after (`budget.json`), so
    `previousPosition == position` for every keyword on most days is
@@ -135,17 +141,32 @@ create new posts — it never edits an existing page, by design (editing a
 live page would be publishing a change without human approval). So
 every action below, regardless of which rule produced the candidate, is
 a **new companion post** — never an edit to the page that inspired it.
-Record the *companion's own URL* (returned as `slug` when you create it)
-as `target_page_url` in `actions.sqlite` — that is what `_common.md`'s
-Step 0 measures 14 days later, and it must be a URL the action actually
-touched. Keep a one-line reference to whatever page inspired the
-candidate inside `cluster_topic` instead (e.g. "Companion for
-/blog/bedanya-mou-dan-pks: MoU vs PKS FAQ") — useful context for judging
-whether the companion helped, but not the thing being measured.
+Two different URLs go in two different columns — do not merge them:
+- `target_page_url` is the *companion's own URL* (returned as `slug`
+  when you create it). This is what `_common.md`'s Step 0 measures 14
+  days later, and it must always be a URL the action actually touched.
+- `source_page_url` is the *existing* page that made you consider this
+  candidate (the underperforming page for rules 1-2, the already-ranking
+  Klaussa page for rule 3), used only so tomorrow's exclusion set (above)
+  recognizes that page already has a companion. Null for rule 4, which
+  has no existing page at all.
+Also note the page that inspired the candidate in `cluster_topic` for
+human-readable context (e.g. "Companion for /blog/bedanya-mou-dan-pks:
+MoU vs PKS FAQ") — that field is free text for a person reading the
+digest email, `source_page_url` is the structured value the exclusion
+set actually queries.
 `action_type`: use `new-page` for a rule-4 candidate (no existing page
 at all) or `companion-post` for rules 1-3 (a new post placed alongside
 an existing page). GEO's own publishing (which reuses this section)
 uses `citation-gap-fix`.
+
+`baseline_metrics` describes the *companion's* day-0 state, not the
+source page's existing performance — the companion has no GSC history
+yet, so this is almost always `{"position": null, "ctr": null,
+"impressions": null, "clicks": null, "measured_at": "<today>"}`. Record
+the source page's current numbers (the ones that made it a candidate)
+in `cluster_topic` or the digest summary instead — useful context for a
+human, but not what Step 0 diffs against 14 days later.
 
 Follow `writing_preferences` from context — it is binding, not advisory.
 
@@ -184,17 +205,19 @@ ambiguous if this job is ever run twice in one day):
    conn = sqlite3.connect('seo-geo-cron/data/actions.sqlite')
    cur = conn.execute(
        '''INSERT INTO actions
-          (job, run_date, cluster_topic, cluster_keywords, target_page_url,
-           action_type, blog_id, baseline_metrics, status, created_at)
-          VALUES (?, date('now'), ?, ?, ?, ?, ?, ?, 'drafted', datetime('now'))''',
+          (job, run_date, cluster_topic, cluster_keywords, source_page_url,
+           target_page_url, action_type, blog_id, baseline_metrics, status,
+           created_at)
+          VALUES (?, date('now'), ?, ?, ?, ?, ?, ?, ?, 'drafted', datetime('now'))''',
        (
            'seo',
            '<topic, e.g. \"Companion for /blog/xyz: MoU vs PKS FAQ\">',
            json.dumps(['<keyword or query 1>', '<keyword or query 2>']),
+           '<the existing page that inspired this candidate, or None for rule 4>',
            '<BLOG_URL value, the companion\'s own URL>',
            '<new-page|companion-post>',
            '$BLOG_ID',
-           json.dumps({'position': None, 'ctr': 0.0065, 'impressions': 5677,
+           json.dumps({'position': None, 'ctr': None, 'impressions': None,
                        'clicks': None, 'measured_at': '2026-08-27'}),
        ),
    )
