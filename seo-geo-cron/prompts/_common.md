@@ -55,12 +55,72 @@ and what it answered, so a later run does not re-buy it. That summary is
 capped at 1000 chars server-side -- keep it to one line or the call is
 rejected.
 
+## Outcome tracking (`actions.sqlite`)
+
+Every content-drafting job (SEO, GEO) shares one SQLite file,
+`seo-geo-cron/data/actions.sqlite` (gitignored — separate from
+`geo-history.sqlite`, which tracks per-prompt citation results, a
+different concern). Create it if absent:
+
+```sql
+CREATE TABLE IF NOT EXISTS actions (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  job TEXT NOT NULL CHECK (job IN ('seo', 'geo')),
+  run_date TEXT NOT NULL,
+  cluster_topic TEXT NOT NULL,
+  cluster_keywords TEXT NOT NULL,
+  target_page_url TEXT,
+  action_type TEXT NOT NULL,
+  blog_id TEXT,
+  baseline_metrics TEXT,
+  status TEXT NOT NULL CHECK (status IN ('drafted', 'proposed', 'judged')),
+  outcome TEXT CHECK (outcome IN ('improved', 'flat', 'worse', 'rejected')),
+  outcome_metrics TEXT,
+  created_at TEXT NOT NULL,
+  judged_at TEXT
+);
+```
+
+`cluster_keywords`, `baseline_metrics`, and `outcome_metrics` are JSON
+stored as text (SQLite has no native JSON type). `baseline_metrics` /
+`outcome_metrics` shape: `{"position": <number|null>, "ctr":
+<number|null>, "impressions": <number|null>, "clicks": <number|null>,
+"measured_at": "<date>"}`.
+
+**Step 0 of every run, before anything else**: query your own job's rows
+(`WHERE job = '<seo|geo>'` — the table is shared for storage convenience,
+never cross-check the other job's rows) where `status = 'proposed'` and
+`run_date` is 14 or more days ago.
+
+- None found → proceed straight to this job's own instructions.
+- For each match, `GET /blogs/{blog_id}` (free, read-only — a fresh read
+  on a new run, not polling within a run):
+  - Still `need_approval` after 14+ days → escalate once this run, naming
+    every such `blog_id` in one issue titled "[SEO/GEO] N drafts
+    unreviewed after 14+ days" (sitting unreviewed for two weeks is
+    itself a signal worth surfacing).
+  - `status: draft` (was rejected) → `UPDATE actions SET
+    status='judged', outcome='rejected', judged_at=<today> WHERE
+    id=<row id>`. No further action for that row.
+  - `status: published` → pull fresh GSC performance for
+    `target_page_url` (same dimensions as your normal run), compare
+    against `baseline_metrics`. Judge `improved`/`flat`/`worse` the same
+    way you'd judge any other threshold in this file — meaningful
+    movement in position or CTR, not a rigid formula. Write `outcome`,
+    `outcome_metrics`, `status='judged'`, `judged_at=<today>`.
+
+Only once Step 0 is done for every eligible row do you move on to finding
+new opportunities.
+
 ## Guardrails (all jobs)
 
 - Never force-push. Never merge your own PR. Never run `gh pr merge`.
 - Never publish content yourself. The writer-bot account cannot approve, by
   design — drafts go to a human by email.
-- Max **one** PR/content draft and **one** escalation issue per run.
+- Content-draft cap is per job: SEO up to **5** per run, GEO up to **2**
+  per run — delivered as **one digest email** per run regardless of item
+  count (see "Outcome tracking" below). Escalation cap stays **one**
+  issue per run for every job, unchanged.
 - Escalation issues: `gh issue create --repo klaussaindonesia/klaussa_fe
   --label seo-geo-escalation`.
 - Every PR, issue, or content draft must cite the data it acted on (audit ID,
