@@ -131,6 +131,14 @@ stored as text (SQLite has no native JSON type). `baseline_metrics` /
 and must never be conflated: `source_page_url` is the existing page (if
 any) that made you consider this candidate in the first place — used to
 recognize "I already acted on this page" so it isn't picked again.
+**Always store URLs in the `https://www.klaussa.com/...` form.** Bare
+`klaussa.com` 301-redirects to `www.`, and Google Search Console reports
+every row under the `www.` form — verified 2026-08-27: 1000/1000 GSC page
+rows were `www.`, zero were bare. A bare-domain URL stored here matches
+nothing when Step 0 queries GSC, so a page that is genuinely ranking gets
+judged `worse` on empty data. If you ever read a URL from somewhere that
+gives you the bare form, normalize it before storing.
+
 `target_page_url` is the page Step 0 actually measures 14 days later —
 always the URL the action itself produced, since that's the only page
 the action could have changed. For a brand-new topic with no existing

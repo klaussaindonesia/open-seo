@@ -192,7 +192,11 @@ ambiguous if this job is ever run twice in one day):
      -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
      -d '{"title":"...","content":{...},"status":"need_approval","tags":["seo"]}')
    BLOG_ID=$(echo "$BLOG" | python3 -c "import json,sys; print(json.load(sys.stdin)['id'])")
-   BLOG_URL=$(echo "$BLOG" | python3 -c "import json,sys; d=json.load(sys.stdin); print('https://klaussa.com/blog/' + d['slug'])")
+   # NOTE the www. -- klaussa.com 301-redirects to www.klaussa.com, and GSC
+   # reports every row under the www form. A non-www target_page_url will
+   # silently match nothing when Step 0 pulls GSC 14 days later, making a
+   # page that is genuinely ranking look like a total failure.
+   BLOG_URL=$(echo "$BLOG" | python3 -c "import json,sys; d=json.load(sys.stdin); print('https://www.klaussa.com/blog/' + d['slug'])")
    ```
 2. Immediately record it — do not wait until all candidates are drafted.
    Use `sqlite3`'s Python module with bound parameters, not shell string

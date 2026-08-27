@@ -173,16 +173,29 @@ function OverviewTab({ data }: { data: PipelineData }) {
                   Awaiting your approval ({data.attention.pendingApproval.length}
                   )
                   <span className="ml-2 font-normal text-base-content/60">
-                    — approve or reject from the review email
+                    — approve from the review email, or open it directly
                   </span>
                 </p>
                 <ul className="space-y-1 text-sm">
                   {data.attention.pendingApproval.map((item) => (
-                    <li key={item.blogId} className="text-base-content/80">
-                      {item.clusterTopic}{" "}
+                    <li
+                      key={item.blogId}
+                      className="flex flex-wrap items-center gap-2"
+                    >
+                      <span className="text-base-content/80">
+                        {item.clusterTopic}
+                      </span>
                       <span className="text-base-content/50">
                         ({item.runDate})
                       </span>
+                      <a
+                        href={`https://www.klaussa.com/blogs/${item.blogId}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="link link-primary text-xs"
+                      >
+                        Review &amp; approve →
+                      </a>
                     </li>
                   ))}
                 </ul>
