@@ -440,6 +440,17 @@ describe("verifyConnection", () => {
     await expect(GscService.verifyConnection(connection)).resolves.toBe(true);
   });
 
+  it("probes the connection's own grant, not some other account", async () => {
+    mocks.listSites.mockResolvedValue([]);
+
+    await GscService.verifyConnection(connection);
+
+    expect(mocks.createGscClient).toHaveBeenCalledWith({
+      userId: "u1",
+      gscAccountId: "sub-a",
+    });
+  });
+
   it("is false when Google rejects the stored grant, without error logging", async () => {
     mocks.listSites.mockRejectedValue(new GscTokenError("revoked"));
     const consoleError = vi

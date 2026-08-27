@@ -252,6 +252,17 @@ describe("verifyConnection", () => {
     await expect(Ga4Service.verifyConnection(connection)).resolves.toBe(true);
   });
 
+  it("probes the connection's own grant, not some other account", async () => {
+    mocks.listProperties.mockResolvedValue([]);
+
+    await Ga4Service.verifyConnection(connection);
+
+    expect(mocks.createGa4AdminClient).toHaveBeenCalledWith({
+      userId: "u1",
+      ga4AccountId: "sub-a",
+    });
+  });
+
   it("is false when Google rejects the stored grant, without error logging", async () => {
     mocks.listProperties.mockRejectedValue(new Ga4TokenError("revoked"));
     const consoleError = vi
