@@ -229,6 +229,20 @@ ambiguous if this job is ever run twice in one day):
    means an interrupted run never leaves a drafted-but-unrecorded item
    that tomorrow's exclusion set would miss. Append `$ROW_ID` to your
    running list of inserted ids.
+3. Sync this candidate's keywords into OpenSEO's Rank Tracking so the
+   dashboard reflects every action the cron takes, not only the ones
+   that started from a tracked keyword: `add_rank_tracking_keywords`
+   with this candidate's `cluster_keywords`. This mutation is free and
+   idempotent — a keyword already tracked (true for every rule-3/4
+   candidate, since they came from there) is silently skipped, so
+   there's no need to check first; only *rule-1/2* candidates (sourced
+   from GSC/`keyPages` directly, never added to the tracker) actually
+   add anything here. Do not also add these to
+   `seo-geo-cron/data/rank-keywords.json` — that file drives which
+   *un-acted-on* keywords get considered as future candidates, and
+   these are already excluded from that going forward via this run's
+   own `actions.sqlite` rows, so there's nothing for the file to gain
+   from also listing them.
 
 Once every chosen candidate has a draft and an `actions.sqlite` row, send
 **one** digest covering all of them. HMAC-sign the batched body:
