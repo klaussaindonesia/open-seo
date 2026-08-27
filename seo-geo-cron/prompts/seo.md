@@ -229,7 +229,13 @@ ambiguous if this job is ever run twice in one day):
    means an interrupted run never leaves a drafted-but-unrecorded item
    that tomorrow's exclusion set would miss. Append `$ROW_ID` to your
    running list of inserted ids.
-3. Sync this candidate's keywords into OpenSEO's Rank Tracking so the
+3. Mirror this row to the dashboard: call `record_content_action` with
+   `projectId`, `job: "seo"`, `runDate`, `clusterTopic`, `clusterKeywords`,
+   `sourcePageUrl`, `targetPageUrl` (the companion's own URL), `actionType`,
+   `blogId`, `blogUrl` (same as `targetPageUrl`), `baselineMetrics`, and
+   `status: "drafted"`. Free, no credits. If it fails, note it in the research
+   log and continue — see `_common.md`'s mirror note.
+4. Sync this candidate's keywords into OpenSEO's Rank Tracking so the
    dashboard reflects every action the cron takes, not only the ones
    that started from a tracked keyword: `add_rank_tracking_keywords`
    with this candidate's `cluster_keywords`. This mutation is free and
@@ -289,6 +295,9 @@ conn.executemany('UPDATE actions SET status=\'proposed\' WHERE id=?',
 conn.commit()
 "
 ```
+
+Then mirror the same flip: call `record_content_action` once per row you just
+flipped, with the same `blogId` and `status: "proposed"`.
 
 Then stop. A human decides from the email. Do not poll for their
 decision.

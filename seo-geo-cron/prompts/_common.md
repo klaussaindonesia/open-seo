@@ -102,6 +102,25 @@ for column in ('source_page_url', 'indexed_at'):
 This is safe to run every time: each column is either added once or
 fails harmlessly with "duplicate column name" on every run after that.
 
+**Mirror every write to the dashboard.** Immediately after each successful
+local write below, call the `record_content_action` MCP tool with the same
+values (it upserts by `blog_id`, so calling it repeatedly for the same blog as
+it moves through the pipeline is exactly the intended usage). This populates
+OpenSEO's **SEO Pipeline** page so the dashboard shows what the cron actually
+did. It uses no credits.
+
+This mirror is **best-effort**: if the call fails, note it in the research log
+and carry on. `actions.sqlite` is the source of truth for every decision this
+job makes; a missed mirror write is a stale dashboard row, never a wrong
+decision. Never retry in a way that blocks the run, and never skip or roll back
+a local write because the mirror failed.
+
+While you are in the indexing check below, you already fetch each row's current
+blog status via `GET /blogs/{blog_id}` — pass that status through to
+`record_content_action` (`published`, `rejected` when it has gone back to
+`draft`, otherwise the row's existing status). That daily read is what keeps the
+dashboard's approval state fresh without waiting for Step 0's 14-day window.
+
 `cluster_keywords`, `baseline_metrics`, and `outcome_metrics` are JSON
 stored as text (SQLite has no native JSON type). `baseline_metrics` /
 `outcome_metrics` shape: `{"position": <number|null>, "ctr":
