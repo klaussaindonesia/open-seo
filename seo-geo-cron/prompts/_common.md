@@ -78,27 +78,29 @@ CREATE TABLE IF NOT EXISTS actions (
   outcome TEXT CHECK (outcome IN ('improved', 'flat', 'worse', 'rejected')),
   outcome_metrics TEXT,
   created_at TEXT NOT NULL,
-  judged_at TEXT
+  judged_at TEXT,
+  indexed_at TEXT
 );
 ```
 
-`source_page_url` was added after this table may already have existed
-on disk with real rows in it — `CREATE TABLE IF NOT EXISTS` is a no-op
-against a table that already exists, so it will **not** add the new
-column by itself. Before doing anything else with this table, ensure
-the column exists:
+`source_page_url` and `indexed_at` were both added after this table may
+already have existed on disk with real rows in it — `CREATE TABLE IF
+NOT EXISTS` is a no-op against a table that already exists, so it will
+**not** add new columns by itself. Before doing anything else with this
+table, ensure both columns exist:
 ```python
 import sqlite3
 conn = sqlite3.connect('seo-geo-cron/data/actions.sqlite')
-try:
-    conn.execute('ALTER TABLE actions ADD COLUMN source_page_url TEXT')
-    conn.commit()
-except sqlite3.OperationalError as e:
-    if 'duplicate column name' not in str(e):
-        raise  # some other real error -- do not swallow it
+for column in ('source_page_url', 'indexed_at'):
+    try:
+        conn.execute(f'ALTER TABLE actions ADD COLUMN {column} TEXT')
+        conn.commit()
+    except sqlite3.OperationalError as e:
+        if 'duplicate column name' not in str(e):
+            raise  # some other real error -- do not swallow it
 ```
-This is safe to run every time: it either adds the column once or fails
-harmlessly with "duplicate column name" on every run after that.
+This is safe to run every time: each column is either added once or
+fails harmlessly with "duplicate column name" on every run after that.
 
 `cluster_keywords`, `baseline_metrics`, and `outcome_metrics` are JSON
 stored as text (SQLite has no native JSON type). `baseline_metrics` /
@@ -142,6 +144,34 @@ never cross-check the other job's rows) where `status = 'proposed'` and
 
 Only once Step 0 is done for every eligible row do you move on to finding
 new opportunities.
+
+**Indexing check, also every run, free (no credits):** there is no
+reliable API to make Google index a page faster (checked directly:
+Google's sitemap-ping is deprecated, the Indexing API only covers
+JobPosting/BroadcastEvent, IndexNow doesn't cover Google) — the only
+thing automatable is *checking* status and surfacing a one-click link
+for the one manual lever that does work. Query your own job's rows
+where `target_page_url IS NOT NULL` and `indexed_at IS NULL` (this is
+not limited to 14+-day-old rows like Step 0 above — check every one,
+every run, so indexing gets caught within a day or two of publish, not
+up to two weeks later):
+
+- `GET /blogs/{blog_id}`. Still not `published` → nothing to check yet,
+  skip.
+- `published` → `inspect_urls` with `target_page_url` (free, batch up
+  to 10 URLs per call rather than one row at a time). Read
+  `indexStatusResult.coverageState` and `.verdict` — if the coverage
+  text indicates the page is actually indexed (not "URL is unknown to
+  Google" or similar not-yet-crawled states), set `indexed_at=<today>`.
+- Still not indexed **and** `created_at` was 2+ days ago → append an
+  `appendResearchLog` entry naming the page and pasting the response's
+  own `inspectionResultLink` verbatim (a real, working, pre-filled
+  Search Console URL — `inspect_urls` generates a fresh one on every
+  call, you do not need to and should not try to construct this URL
+  yourself). That link is a genuine one-click path to GSC's own
+  "Request Indexing" button — the actual, honest ceiling of what's
+  automatable here. Not urgent enough to spend the one escalation slot
+  on; the research log is the right channel.
 
 ## Guardrails (all jobs)
 
