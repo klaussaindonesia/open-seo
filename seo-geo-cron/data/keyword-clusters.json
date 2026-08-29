@@ -1,0 +1,880 @@
+{
+  "_comment": "Topic clusters over rank-keywords.json's 131 tracked keywords -- the blog backlog. Clusters cross the opportunity groups on purpose: 'kbli 2025' (gap-not-ranking) and 'kbli nib' (long-tail) are the same blog. This answers 'how many blogs cover the whole tracked set', which the flat keyword list cannot. Derived, not authoritative: rank-keywords.json remains the source of truth for which keywords are tracked.",
+  "_generated": "2026-08-29",
+  "_depth_rule": "blogs_planned reflects that a page which already ranks needs support, not replacement. best_position <=20 -> 1 (page exists and is close); ranking but >20 -> 2 (pillar rewrite + support); not ranking at all -> 2-4 by volume, because a cluster we have no page for must earn topical authority from zero.",
+  "clusters": {
+    "kbli": {
+      "keywords": [
+        "kbli 2025",
+        "kbli virtual office",
+        "kbli nib"
+      ],
+      "groups": [
+        "gap-not-ranking",
+        "long-tail"
+      ],
+      "volume_per_month": 22780,
+      "max_difficulty": 8,
+      "best_position": 36,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "pkwt-vs-pkwtt": {
+      "keywords": [
+        "pkwtt adalah",
+        "pkwtt",
+        "pkwtt dan pkwt",
+        "apa itu pkwt dan pkwtt",
+        "lebih baik pkwt atau pkwtt",
+        "pkwt pkwtt"
+      ],
+      "groups": [
+        "high-volume-deep",
+        "long-tail"
+      ],
+      "volume_per_month": 21890,
+      "max_difficulty": 1,
+      "best_position": 42,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "paklaring": {
+      "keywords": [
+        "apa itu paklaring"
+      ],
+      "groups": [
+        "gap-not-ranking"
+      ],
+      "volume_per_month": 9900,
+      "max_difficulty": 0,
+      "best_position": null,
+      "blogs_planned": 4,
+      "blogs_done": 0
+    },
+    "uu-asn-tpp": {
+      "keywords": [
+        "undang undang asn",
+        "tpp asn"
+      ],
+      "groups": [
+        "gap-not-ranking"
+      ],
+      "volume_per_month": 9400,
+      "max_difficulty": 0,
+      "best_position": null,
+      "blogs_planned": 4,
+      "blogs_done": 0
+    },
+    "pendirian-pt": {
+      "keywords": [
+        "undang undang pt",
+        "syarat mendirikan pt perorangan"
+      ],
+      "groups": [
+        "gap-not-ranking"
+      ],
+      "volume_per_month": 8580,
+      "max_difficulty": 6,
+      "best_position": null,
+      "blogs_planned": 4,
+      "blogs_done": 0
+    },
+    "klausa-kontrak": {
+      "keywords": [
+        "klausa"
+      ],
+      "groups": [
+        "gap-not-ranking"
+      ],
+      "volume_per_month": 8100,
+      "max_difficulty": 0,
+      "best_position": null,
+      "blogs_planned": 4,
+      "blogs_done": 0
+    },
+    "merek-trademark": {
+      "keywords": [
+        "trademarks adalah",
+        "r registered",
+        "sistem klasifikasi merek",
+        "trade mark artinya",
+        "logo registered",
+        "apa itu trademark",
+        "apa itu trade mark"
+      ],
+      "groups": [
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 5020,
+      "max_difficulty": 20,
+      "best_position": 15,
+      "blogs_planned": 1,
+      "blogs_done": 0
+    },
+    "mk-vs-ma": {
+      "keywords": [
+        "kewenangan mk",
+        "perbedaan mk dan ma",
+        "tugas mahkamah agung dan mahkamah konstitusi",
+        "tugas ma dan mk",
+        "pengertian mahkamah konstitusi"
+      ],
+      "groups": [
+        "long-tail",
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 4780,
+      "max_difficulty": 0,
+      "best_position": 16,
+      "blogs_planned": 1,
+      "blogs_done": 1
+    },
+    "surat-peringatan-sp": {
+      "keywords": [
+        "sp-1 adalah",
+        "sp 1 adalah",
+        "sp 3 adalah"
+      ],
+      "groups": [
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 4500,
+      "max_difficulty": 0,
+      "best_position": 28,
+      "blogs_planned": 2,
+      "blogs_done": 1
+    },
+    "sk-kemenkumham": {
+      "keywords": [
+        "sk kemenkumham",
+        "sk kemenkumham pt"
+      ],
+      "groups": [
+        "gap-not-ranking"
+      ],
+      "volume_per_month": 3490,
+      "max_difficulty": 0,
+      "best_position": null,
+      "blogs_planned": 3,
+      "blogs_done": 1
+    },
+    "pks-vs-mou": {
+      "keywords": [
+        "apa itu pks",
+        "pks adalah perjanjian",
+        "pks adalah kerjasama",
+        "perbedaan mou dan pks"
+      ],
+      "groups": [
+        "gap-not-ranking"
+      ],
+      "volume_per_month": 3260,
+      "max_difficulty": 3,
+      "best_position": null,
+      "blogs_planned": 3,
+      "blogs_done": 1
+    },
+    "konsesi": {
+      "keywords": [
+        "apa itu konsesi",
+        "arti konsesi",
+        "concession artinya",
+        "concession adalah"
+      ],
+      "groups": [
+        "gap-not-ranking",
+        "long-tail",
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 2680,
+      "max_difficulty": 0,
+      "best_position": 39,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "regulasi-terbaru-tracker": {
+      "keywords": [
+        "undang undang terbaru",
+        "peraturan pemerintah terbaru",
+        "pp 72",
+        "pp-19-01",
+        "pp tanda tanya"
+      ],
+      "groups": [
+        "gap-not-ranking",
+        "holding-page-one",
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 2680,
+      "max_difficulty": 25,
+      "best_position": 9,
+      "blogs_planned": 1,
+      "blogs_done": 0
+    },
+    "pns-jam-kerja-gaji": {
+      "keywords": [
+        "jam kerja pns",
+        "perpres gaji pns",
+        "peraturan menteri keuangan perjalanan dinas"
+      ],
+      "groups": [
+        "high-volume-deep"
+      ],
+      "volume_per_month": 2470,
+      "max_difficulty": 0,
+      "best_position": 48,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "common-vs-civil-law": {
+      "keywords": [
+        "common law dan civil law",
+        "perbedaan civil law dan common law",
+        "common law vs civil law",
+        "perbedaan common law dan civil law"
+      ],
+      "groups": [
+        "long-tail",
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 2430,
+      "max_difficulty": 0,
+      "best_position": 17,
+      "blogs_planned": 1,
+      "blogs_done": 0
+    },
+    "asas-lex": {
+      "keywords": [
+        "lex posterior derogat priori"
+      ],
+      "groups": [
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 2400,
+      "max_difficulty": 0,
+      "best_position": 19,
+      "blogs_planned": 1,
+      "blogs_done": 0
+    },
+    "obstruction-of-justice": {
+      "keywords": [
+        "obstruction justice",
+        "obstruction of justice",
+        "pasal 221 kuhp"
+      ],
+      "groups": [
+        "high-volume-deep",
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 2030,
+      "max_difficulty": 0,
+      "best_position": 30,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "masa-probation": {
+      "keywords": [
+        "apa itu probation",
+        "apa itu masa probation"
+      ],
+      "groups": [
+        "gap-not-ranking"
+      ],
+      "volume_per_month": 1920,
+      "max_difficulty": 0,
+      "best_position": null,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "hak-dpr": {
+      "keywords": [
+        "hak dpr",
+        "hak angket dpr"
+      ],
+      "groups": [
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 1890,
+      "max_difficulty": 0,
+      "best_position": 28,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "praduga-tak-bersalah": {
+      "keywords": [
+        "presumption of innocence",
+        "presumption of innocence adalah",
+        "praduga tak bersalah adalah"
+      ],
+      "groups": [
+        "holding-page-one",
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 1780,
+      "max_difficulty": 19,
+      "best_position": 10,
+      "blogs_planned": 1,
+      "blogs_done": 0
+    },
+    "spk": {
+      "keywords": [
+        "kepanjangan spk",
+        "spk kontrak"
+      ],
+      "groups": [
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 1720,
+      "max_difficulty": 0,
+      "best_position": 16,
+      "blogs_planned": 1,
+      "blogs_done": 0
+    },
+    "rpjmn": {
+      "keywords": [
+        "rencana pembangunan jangka menengah"
+      ],
+      "groups": [
+        "high-volume-deep"
+      ],
+      "volume_per_month": 1600,
+      "max_difficulty": 6,
+      "best_position": 83,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "ratio-decidendi": {
+      "keywords": [
+        "ratio decidendi",
+        "ratio decidendi adalah"
+      ],
+      "groups": [
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 1600,
+      "max_difficulty": 0,
+      "best_position": 16,
+      "blogs_planned": 1,
+      "blogs_done": 0
+    },
+    "pmh-1365": {
+      "keywords": [
+        "1365 kuhperdata",
+        "bunyi pasal 1365 kuhperdata"
+      ],
+      "groups": [
+        "long-tail",
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 1560,
+      "max_difficulty": 0,
+      "best_position": 24,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "terms-and-conditions": {
+      "keywords": [
+        "t&c artinya",
+        "t&c"
+      ],
+      "groups": [
+        "holding-page-one"
+      ],
+      "volume_per_month": 1470,
+      "max_difficulty": 0,
+      "best_position": 10,
+      "blogs_planned": 1,
+      "blogs_done": 0
+    },
+    "pesangon-resign-efisiensi": {
+      "keywords": [
+        "hak karyawan resign",
+        "perhitungan pesangon mengundurkan diri uu cipta kerja",
+        "efisiensi karyawan adalah"
+      ],
+      "groups": [
+        "long-tail",
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 1350,
+      "max_difficulty": 0,
+      "best_position": 19,
+      "blogs_planned": 1,
+      "blogs_done": 0
+    },
+    "kode-etik-profesi": {
+      "keywords": [
+        "kode etik profesi"
+      ],
+      "groups": [
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 1300,
+      "max_difficulty": 0,
+      "best_position": 35,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "suaka-pengungsi": {
+      "keywords": [
+        "apa itu asylum",
+        "refugees adalah"
+      ],
+      "groups": [
+        "gap-not-ranking",
+        "high-volume-deep"
+      ],
+      "volume_per_month": 1270,
+      "max_difficulty": 0,
+      "best_position": 63,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "hukum-transnasional-mfn": {
+      "keywords": [
+        "most favoured nation",
+        "transnasional adalah"
+      ],
+      "groups": [
+        "gap-not-ranking",
+        "high-volume-deep"
+      ],
+      "volume_per_month": 1270,
+      "max_difficulty": 7,
+      "best_position": 84,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "grasi-rehabilitasi": {
+      "keywords": [
+        "rehabilitasi presiden adalah",
+        "grasi dan rehabilitasi",
+        "grasi dan rehabilitasi adalah"
+      ],
+      "groups": [
+        "long-tail",
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 1040,
+      "max_difficulty": 0,
+      "best_position": 18,
+      "blogs_planned": 1,
+      "blogs_done": 0
+    },
+    "uu-paten": {
+      "keywords": [
+        "uu paten"
+      ],
+      "groups": [
+        "high-volume-deep"
+      ],
+      "volume_per_month": 1000,
+      "max_difficulty": 0,
+      "best_position": 50,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "tax-holiday": {
+      "keywords": [
+        "tax holiday adalah"
+      ],
+      "groups": [
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 1000,
+      "max_difficulty": 0,
+      "best_position": 36,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "bppn": {
+      "keywords": [
+        "bppn adalah"
+      ],
+      "groups": [
+        "high-volume-deep"
+      ],
+      "volume_per_month": 1000,
+      "max_difficulty": 0,
+      "best_position": 41,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "hak-pengusahaan-hutan": {
+      "keywords": [
+        "hak pengusahaan hutan"
+      ],
+      "groups": [
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 1000,
+      "max_difficulty": 0,
+      "best_position": 19,
+      "blogs_planned": 1,
+      "blogs_done": 0
+    },
+    "delik-formil-materiil": {
+      "keywords": [
+        "delik formil adalah",
+        "delik formil",
+        "delik materil adalah"
+      ],
+      "groups": [
+        "gap-not-ranking",
+        "long-tail"
+      ],
+      "volume_per_month": 910,
+      "max_difficulty": 0,
+      "best_position": 19,
+      "blogs_planned": 1,
+      "blogs_done": 0
+    },
+    "lapor-polisi": {
+      "keywords": [
+        "berapa lama laporan polisi diproses"
+      ],
+      "groups": [
+        "gap-not-ranking"
+      ],
+      "volume_per_month": 880,
+      "max_difficulty": 0,
+      "best_position": null,
+      "blogs_planned": 1,
+      "blogs_done": 1
+    },
+    "interpol": {
+      "keywords": [
+        "apa itu interpol"
+      ],
+      "groups": [
+        "gap-not-ranking"
+      ],
+      "volume_per_month": 880,
+      "max_difficulty": 0,
+      "best_position": null,
+      "blogs_planned": 1,
+      "blogs_done": 0
+    },
+    "statuta-roma": {
+      "keywords": [
+        "statuta roma"
+      ],
+      "groups": [
+        "high-volume-deep"
+      ],
+      "volume_per_month": 880,
+      "max_difficulty": 5,
+      "best_position": 84,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "pro-bono": {
+      "keywords": [
+        "apa itu pro bono"
+      ],
+      "groups": [
+        "gap-not-ranking"
+      ],
+      "volume_per_month": 880,
+      "max_difficulty": 0,
+      "best_position": null,
+      "blogs_planned": 1,
+      "blogs_done": 0
+    },
+    "sistem-pemerintahan": {
+      "keywords": [
+        "sistem pemerintahan presidensial adalah",
+        "kepala daerah kabupaten disebut"
+      ],
+      "groups": [
+        "long-tail"
+      ],
+      "volume_per_month": 740,
+      "max_difficulty": 0,
+      "best_position": 35,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "doxing": {
+      "keywords": [
+        "doxing or doxxing"
+      ],
+      "groups": [
+        "high-volume-deep"
+      ],
+      "volume_per_month": 720,
+      "max_difficulty": 33,
+      "best_position": 44,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "unclos": {
+      "keywords": [
+        "unclos adalah"
+      ],
+      "groups": [
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 720,
+      "max_difficulty": 12,
+      "best_position": 36,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "hukum-publik-privat": {
+      "keywords": [
+        "hukum publik dan hukum privat",
+        "logika hukum"
+      ],
+      "groups": [
+        "long-tail",
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 650,
+      "max_difficulty": 0,
+      "best_position": 26,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "syarat-sah-perjanjian-1320": {
+      "keywords": [
+        "pasal 1320 bw",
+        "kuhperdata 1320"
+      ],
+      "groups": [
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 640,
+      "max_difficulty": 0,
+      "best_position": 25,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "biaya-pengacara": {
+      "keywords": [
+        "biaya pengacara",
+        "sewa pengacara berapa"
+      ],
+      "groups": [
+        "holding-page-one",
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 640,
+      "max_difficulty": 0,
+      "best_position": 10,
+      "blogs_planned": 1,
+      "blogs_done": 1
+    },
+    "thr-prorata": {
+      "keywords": [
+        "cara hitung thr prorata"
+      ],
+      "groups": [
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 590,
+      "max_difficulty": 0,
+      "best_position": 14,
+      "blogs_planned": 1,
+      "blogs_done": 0
+    },
+    "impersonation": {
+      "keywords": [
+        "impersonation adalah"
+      ],
+      "groups": [
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 590,
+      "max_difficulty": 0,
+      "best_position": 39,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "hukum-pinjam-meminjam": {
+      "keywords": [
+        "hukum pinjam meminjam"
+      ],
+      "groups": [
+        "gap-not-ranking"
+      ],
+      "volume_per_month": 480,
+      "max_difficulty": 0,
+      "best_position": null,
+      "blogs_planned": 1,
+      "blogs_done": 1
+    },
+    "judicial-review": {
+      "keywords": [
+        "apa itu judicial review"
+      ],
+      "groups": [
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 480,
+      "max_difficulty": 0,
+      "best_position": 30,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "karantina-hewan": {
+      "keywords": [
+        "instalasi karantina hewan"
+      ],
+      "groups": [
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 480,
+      "max_difficulty": 4,
+      "best_position": 37,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "hak-moral-cipta": {
+      "keywords": [
+        "contoh hak moral"
+      ],
+      "groups": [
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 390,
+      "max_difficulty": 0,
+      "best_position": 14,
+      "blogs_planned": 1,
+      "blogs_done": 0
+    },
+    "uu-csr": {
+      "keywords": [
+        "undang undang csr"
+      ],
+      "groups": [
+        "quick-win-striking-distance"
+      ],
+      "volume_per_month": 320,
+      "max_difficulty": 0,
+      "best_position": 26,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "kausa-halal-1337": {
+      "keywords": [
+        "pasal 1337 kuhperdata"
+      ],
+      "groups": [
+        "holding-page-one"
+      ],
+      "volume_per_month": 320,
+      "max_difficulty": 0,
+      "best_position": 10,
+      "blogs_planned": 1,
+      "blogs_done": 0
+    },
+    "jaminan-fidusia": {
+      "keywords": [
+        "apa itu jaminan fidusia"
+      ],
+      "groups": [
+        "long-tail"
+      ],
+      "volume_per_month": 320,
+      "max_difficulty": 0,
+      "best_position": 54,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "rups": {
+      "keywords": [
+        "rapat umum pemegang saham luar biasa"
+      ],
+      "groups": [
+        "long-tail"
+      ],
+      "volume_per_month": 260,
+      "max_difficulty": 0,
+      "best_position": 33,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "kontrak-bisnis": {
+      "keywords": [
+        "kontrak bisnis"
+      ],
+      "groups": [
+        "long-tail"
+      ],
+      "volume_per_month": 260,
+      "max_difficulty": 0,
+      "best_position": 31,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "rahasia-bank": {
+      "keywords": [
+        "rahasia bank"
+      ],
+      "groups": [
+        "long-tail"
+      ],
+      "volume_per_month": 260,
+      "max_difficulty": 0,
+      "best_position": 34,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    },
+    "harta-bersama": {
+      "keywords": [
+        "harta bersama adalah"
+      ],
+      "groups": [
+        "long-tail"
+      ],
+      "volume_per_month": 260,
+      "max_difficulty": 0,
+      "best_position": 32,
+      "blogs_planned": 2,
+      "blogs_done": 0
+    }
+  },
+  "not_blog_work": {
+    "_comment": "Page/product problems, not content gaps. Excluded from blog counts.",
+    "brand-homepage": {
+      "keywords": [
+        "klaussa ai",
+        "klaussa",
+        "klausa ai"
+      ],
+      "fix": "homepage / brand entity"
+    },
+    "category-landing-page": {
+      "keywords": [
+        "konsultasi hukum online",
+        "ai legal",
+        "legal ai",
+        "ai hukum",
+        "ai hukum gratis",
+        "ai hukum indonesia",
+        "legal tech indonesia",
+        "lawyer ai"
+      ],
+      "fix": "category landing page, not a blog post"
+    }
+  },
+  "drop_candidates": {
+    "_comment": "Real search volume, zero relevance to a legal-AI product. We rank for these by accident. Recommend removing from rank-keywords.json at the next month boundary -- they consume rank-check budget and distort group averages.",
+    "irrelevant-drop": [
+      "kunjang kediri",
+      "rumah dinas walikota pontianak",
+      "ai medusa"
+    ]
+  },
+  "_totals": {
+    "tracked_keywords": 131,
+    "blog_addressable_keywords": 117,
+    "clusters": 58,
+    "clusters_started": 7,
+    "blogs_floor_one_per_cluster": 58,
+    "blogs_with_depth": 105,
+    "blogs_remaining_floor": 51,
+    "blogs_remaining_with_depth": 98
+  }
+}
