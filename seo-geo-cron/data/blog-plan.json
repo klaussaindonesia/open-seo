@@ -1,0 +1,2503 @@
+{
+ "meta": {
+  "generated": "2026-08-29",
+  "clusters": 58,
+  "blogs_total": 103,
+  "blogs_done": 7,
+  "blogs_todo": 96,
+  "pillars": 58,
+  "supports": 45,
+  "tracked_keywords": 131,
+  "volume_total": 153710,
+  "volume_done": 11600,
+  "waves": {
+   "0": {
+    "blogs": 7,
+    "volume": 11600
+   },
+   "1": {
+    "blogs": 32,
+    "volume": 115960
+   },
+   "2": {
+    "blogs": 21,
+    "volume": 10810
+   },
+   "3": {
+    "blogs": 43,
+    "volume": 13640
+   }
+  },
+  "needs_verify": {
+   "pp tanda tanya": "Peringkat 9, 590/bln. Hampir pasti 'PP' = profile picture (WhatsApp/IG), bukan Peraturan Pemerintah. Cek SERP sebelum menulis apa pun.",
+   "pp 72": "720/bln, ambigu -- PP 72 tahun berapa? Perlu cek SERP untuk tahu PP mana yang dicari.",
+   "pp-19-01": "390/bln, format tidak lazim. Cek SERP sebelum memasukkan ke rencana."
+  },
+  "non_blog": {
+   "brand-homepage": [
+    "klaussa ai",
+    "klaussa",
+    "klausa ai"
+   ],
+   "category-landing-page": [
+    "konsultasi hukum online",
+    "ai legal",
+    "legal ai",
+    "ai hukum",
+    "ai hukum gratis",
+    "ai hukum indonesia",
+    "legal tech indonesia",
+    "lawyer ai"
+   ]
+  },
+  "junk": {
+   "irrelevant-drop": [
+    "kunjang kediri",
+    "rumah dinas walikota pontianak",
+    "ai medusa"
+   ]
+  }
+ },
+ "clusters": [
+  {
+   "cluster": "kbli",
+   "volume": 22780,
+   "best_position": 36,
+   "kd": 8,
+   "keywords": [
+    "kbli 2025",
+    "kbli virtual office",
+    "kbli nib"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "KBLI 2025: Daftar Kode Klasifikasi Baku Lapangan Usaha dan Cara Memilihnya",
+     "slug": "kbli-2025-daftar-kode-dan-cara-memilih",
+     "primary": "kbli 2025",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 22200,
+     "tracked": [
+      "kbli 2025"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "KBLI untuk Virtual Office: Kode yang Diizinkan dan Syarat Domisili",
+     "slug": "kbli-virtual-office-kode-yang-diizinkan",
+     "primary": "kbli virtual office",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 320,
+     "tracked": [
+      "kbli virtual office"
+     ],
+     "wave": 3
+    },
+    {
+     "n": 3,
+     "role": "support",
+     "title": "Hubungan KBLI dan NIB: Memastikan Kode Usaha Sesuai di OSS",
+     "slug": "kbli-dan-nib-menyesuaikan-kode-usaha-di-oss",
+     "primary": "kbli nib",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 260,
+     "tracked": [
+      "kbli nib"
+     ],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "pkwt-vs-pkwtt",
+   "volume": 21890,
+   "best_position": 42,
+   "kd": 1,
+   "keywords": [
+    "pkwtt adalah",
+    "pkwtt",
+    "pkwtt dan pkwt",
+    "apa itu pkwt dan pkwtt",
+    "lebih baik pkwt atau pkwtt",
+    "pkwt pkwtt"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "PKWTT Adalah: Pengertian, Hak Karyawan Tetap, dan Dasar Hukumnya",
+     "slug": "pkwtt-adalah-pengertian-hak-dan-dasar-hukum",
+     "primary": "pkwtt adalah",
+     "secondary": [
+      "pkwtt"
+     ],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 18700,
+     "tracked": [
+      "pkwtt adalah",
+      "pkwtt"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Perbedaan PKWT dan PKWTT: Hak, Masa Kerja, dan Pesangon",
+     "slug": "perbedaan-pkwt-dan-pkwtt-hak-masa-kerja-pesangon",
+     "primary": "pkwtt dan pkwt",
+     "secondary": [
+      "apa itu pkwt dan pkwtt",
+      "pkwt pkwtt"
+     ],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 2710,
+     "tracked": [
+      "pkwtt dan pkwt",
+      "apa itu pkwt dan pkwtt",
+      "pkwt pkwtt"
+     ],
+     "wave": 3
+    },
+    {
+     "n": 3,
+     "role": "support",
+     "title": "Lebih Baik PKWT atau PKWTT? Panduan Memilih Status Kerja",
+     "slug": "lebih-baik-pkwt-atau-pkwtt-panduan-memilih",
+     "primary": "lebih baik pkwt atau pkwtt",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 480,
+     "tracked": [
+      "lebih baik pkwt atau pkwtt"
+     ],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "paklaring",
+   "volume": 9900,
+   "best_position": null,
+   "kd": 0,
+   "keywords": [
+    "apa itu paklaring"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Apa Itu Paklaring? Fungsi, Syarat, dan Cara Mengurusnya",
+     "slug": "apa-itu-paklaring-fungsi-syarat-dan-cara-mengurus",
+     "primary": "apa itu paklaring",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 9900,
+     "tracked": [
+      "apa itu paklaring"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Contoh Surat Paklaring dan Unsur yang Membuatnya Sah",
+     "slug": "contoh-surat-paklaring-dan-unsur-yang-sah",
+     "primary": "contoh surat paklaring",
+     "secondary": [],
+     "new": [
+      "contoh surat paklaring"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    },
+    {
+     "n": 3,
+     "role": "support",
+     "title": "Perusahaan Tidak Memberikan Paklaring: Apakah Melanggar Hukum?",
+     "slug": "perusahaan-tidak-memberikan-paklaring-dasar-hukum",
+     "primary": "paklaring tidak diberikan perusahaan",
+     "secondary": [],
+     "new": [
+      "paklaring tidak diberikan perusahaan"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    },
+    {
+     "n": 4,
+     "role": "support",
+     "title": "Beda Paklaring, Surat Keterangan Kerja, dan Surat Referensi",
+     "slug": "beda-paklaring-surat-keterangan-kerja-dan-referensi",
+     "primary": "perbedaan paklaring dan surat keterangan kerja",
+     "secondary": [],
+     "new": [
+      "perbedaan paklaring dan surat keterangan kerja"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "uu-asn-tpp",
+   "volume": 9400,
+   "best_position": null,
+   "kd": 0,
+   "keywords": [
+    "undang undang asn",
+    "tpp asn"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Undang-Undang ASN Terbaru: UU 20/2023 dan Perubahan Pokoknya",
+     "slug": "undang-undang-asn-terbaru-uu-20-2023",
+     "primary": "undang undang asn",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 8100,
+     "tracked": [
+      "undang undang asn"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "TPP ASN: Cara Hitung Tambahan Penghasilan Pegawai dan Dasar Hukumnya",
+     "slug": "tpp-asn-cara-hitung-dan-dasar-hukum",
+     "primary": "tpp asn",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 1300,
+     "tracked": [
+      "tpp asn"
+     ],
+     "wave": 3
+    },
+    {
+     "n": 3,
+     "role": "support",
+     "title": "Hak dan Kewajiban ASN Menurut UU ASN 2023",
+     "slug": "hak-dan-kewajiban-asn-menurut-uu-asn-2023",
+     "primary": "hak dan kewajiban asn",
+     "secondary": [],
+     "new": [
+      "hak dan kewajiban asn"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    },
+    {
+     "n": 4,
+     "role": "support",
+     "title": "Perbedaan PNS dan PPPK Setelah UU ASN 2023",
+     "slug": "perbedaan-pns-dan-pppk-setelah-uu-asn-2023",
+     "primary": "perbedaan pns dan pppk",
+     "secondary": [],
+     "new": [
+      "perbedaan pns dan pppk"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "pendirian-pt",
+   "volume": 8580,
+   "best_position": null,
+   "kd": 6,
+   "keywords": [
+    "undang undang pt",
+    "syarat mendirikan pt perorangan"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Undang-Undang PT: UU 40/2007 dan Perubahannya di UU Cipta Kerja",
+     "slug": "undang-undang-pt-uu-40-2007-dan-uu-cipta-kerja",
+     "primary": "undang undang pt",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 8100,
+     "tracked": [
+      "undang undang pt"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Syarat Mendirikan PT Perorangan: Modal, Dokumen, dan Biaya",
+     "slug": "syarat-mendirikan-pt-perorangan-modal-dokumen-biaya",
+     "primary": "syarat mendirikan pt perorangan",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 480,
+     "tracked": [
+      "syarat mendirikan pt perorangan"
+     ],
+     "wave": 3
+    },
+    {
+     "n": 3,
+     "role": "support",
+     "title": "PT Perorangan vs PT Biasa: Mana yang Cocok untuk Usaha Anda",
+     "slug": "pt-perorangan-vs-pt-biasa-mana-yang-cocok",
+     "primary": "perbedaan pt perorangan dan pt biasa",
+     "secondary": [],
+     "new": [
+      "perbedaan pt perorangan dan pt biasa"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    },
+    {
+     "n": 4,
+     "role": "support",
+     "title": "Cara Mendirikan PT Online Lewat AHU dan OSS",
+     "slug": "cara-mendirikan-pt-online-lewat-ahu-dan-oss",
+     "primary": "cara mendirikan pt online",
+     "secondary": [],
+     "new": [
+      "cara mendirikan pt online"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "klausa-kontrak",
+   "volume": 8100,
+   "best_position": null,
+   "kd": 0,
+   "keywords": [
+    "klausa"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Klausa Adalah: Pengertian, Jenis, dan Fungsinya dalam Kontrak",
+     "slug": "klausa-adalah-pengertian-jenis-dan-fungsi",
+     "primary": "klausa",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "Near-brand term (Klaussa). 8.100/bln, tidak ranking.",
+     "volume": 8100,
+     "tracked": [
+      "klausa"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Jenis-Jenis Klausul Kontrak yang Wajib Ada",
+     "slug": "jenis-jenis-klausul-kontrak-yang-wajib-ada",
+     "primary": "jenis klausul kontrak",
+     "secondary": [],
+     "new": [
+      "jenis klausul kontrak"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    },
+    {
+     "n": 3,
+     "role": "support",
+     "title": "Klausa Baku: Larangan dan Sanksi Menurut UU Perlindungan Konsumen",
+     "slug": "klausa-baku-larangan-dan-sanksi-uu-perlindungan-konsumen",
+     "primary": "klausa baku",
+     "secondary": [],
+     "new": [
+      "klausa baku"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    },
+    {
+     "n": 4,
+     "role": "support",
+     "title": "Contoh Klausul Force Majeure, Arbitrase, dan Penyelesaian Sengketa",
+     "slug": "contoh-klausul-force-majeure-arbitrase-sengketa",
+     "primary": "contoh klausul perjanjian",
+     "secondary": [],
+     "new": [
+      "contoh klausul perjanjian"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "merek-trademark",
+   "volume": 5020,
+   "best_position": 15,
+   "kd": 20,
+   "keywords": [
+    "trademarks adalah",
+    "r registered",
+    "sistem klasifikasi merek",
+    "trade mark artinya",
+    "logo registered",
+    "apa itu trademark",
+    "apa itu trade mark"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Trademark Adalah: Pengertian Merek, Fungsi, dan Cara Mendaftarkannya",
+     "slug": "trademark-adalah-pengertian-merek-dan-cara-daftar",
+     "primary": "trademarks adalah",
+     "secondary": [
+      "apa itu trademark",
+      "apa itu trade mark",
+      "trade mark artinya"
+     ],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 3430,
+     "tracked": [
+      "trademarks adalah",
+      "apa itu trademark",
+      "apa itu trade mark",
+      "trade mark artinya"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Arti Simbol R, TM, dan C: Kapan Boleh Dipakai di Logo",
+     "slug": "arti-simbol-r-tm-dan-c-pada-logo",
+     "primary": "r registered",
+     "secondary": [
+      "logo registered"
+     ],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 1110,
+     "tracked": [
+      "r registered",
+      "logo registered"
+     ],
+     "wave": 3
+    },
+    {
+     "n": 3,
+     "role": "support",
+     "title": "Sistem Klasifikasi Merek (Kelas Nice): Panduan Memilih Kelas",
+     "slug": "sistem-klasifikasi-merek-kelas-nice",
+     "primary": "sistem klasifikasi merek",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 480,
+     "tracked": [
+      "sistem klasifikasi merek"
+     ],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "mk-vs-ma",
+   "volume": 4780,
+   "best_position": 16,
+   "kd": 0,
+   "keywords": [
+    "kewenangan mk",
+    "perbedaan mk dan ma",
+    "tugas mahkamah agung dan mahkamah konstitusi",
+    "tugas ma dan mk",
+    "pengertian mahkamah konstitusi"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Perbedaan MK dan MA: Kewenangan, Tugas, dan Dasar Hukumnya",
+     "slug": "perbedaan-mk-dan-ma-kewenangan-tugas-dan-dasar-hukumnya",
+     "primary": "perbedaan mk dan ma",
+     "secondary": [
+      "kewenangan mk",
+      "tugas mahkamah agung dan mahkamah konstitusi",
+      "tugas ma dan mk",
+      "pengertian mahkamah konstitusi"
+     ],
+     "new": [],
+     "done": true,
+     "note": "MENUNGGU APPROVAL sejak 27 Agu -- belum terbit, belum terindeks.",
+     "volume": 4780,
+     "tracked": [
+      "perbedaan mk dan ma",
+      "kewenangan mk",
+      "tugas mahkamah agung dan mahkamah konstitusi",
+      "tugas ma dan mk",
+      "pengertian mahkamah konstitusi"
+     ],
+     "wave": 0
+    }
+   ]
+  },
+  {
+   "cluster": "surat-peringatan-sp",
+   "volume": 4500,
+   "best_position": 28,
+   "kd": 0,
+   "keywords": [
+    "sp-1 adalah",
+    "sp 1 adalah",
+    "sp 3 adalah"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "SP 1, SP 2, dan SP 3 Adalah: Arti, Masa Berlaku, dan Akibat Hukumnya",
+     "slug": "sp-1-sp-2-dan-sp-3-adalah-arti-masa-berlaku-dan-akibat-hukumnya",
+     "primary": "sp-1 adalah",
+     "secondary": [
+      "sp 1 adalah",
+      "sp 3 adalah"
+     ],
+     "new": [],
+     "done": true,
+     "note": "Terbit 27 Agu, terindeks 28 Agu.",
+     "volume": 4500,
+     "tracked": [
+      "sp-1 adalah",
+      "sp 1 adalah",
+      "sp 3 adalah"
+     ],
+     "wave": 0
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Karyawan Menolak Tanda Tangan SP: Apakah Tetap Sah?",
+     "slug": "karyawan-menolak-tanda-tangan-sp-apakah-sah",
+     "primary": "karyawan menolak tanda tangan sp",
+     "secondary": [],
+     "new": [
+      "karyawan menolak tanda tangan sp"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "sk-kemenkumham",
+   "volume": 3490,
+   "best_position": null,
+   "kd": 0,
+   "keywords": [
+    "sk kemenkumham",
+    "sk kemenkumham pt"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "SK Kemenkumham: Apa Itu, Fungsi, dan Cara Cek Keabsahannya",
+     "slug": "sk-kemenkumham-fungsi-dan-cara-cek-keabsahan",
+     "primary": "sk kemenkumham",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "Pillar belum ada -- yang terbit baru companion FAQ.",
+     "volume": 2900,
+     "tracked": [
+      "sk kemenkumham"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "SK Kemenkumham untuk PT: Proses, Biaya, dan Lama Terbit",
+     "slug": "sk-kemenkumham-untuk-pt-proses-biaya-lama-terbit",
+     "primary": "sk kemenkumham pt",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 590,
+     "tracked": [
+      "sk kemenkumham pt"
+     ],
+     "wave": 3
+    },
+    {
+     "n": 3,
+     "role": "support",
+     "title": "FAQ SK Kemenkumham: Jawaban Singkat soal Legalitas PT",
+     "slug": "faq-sk-kemenkumham-jawaban-singkat-soal-legalitas-pt",
+     "primary": "faq sk kemenkumham",
+     "secondary": [],
+     "new": [
+      "faq sk kemenkumham"
+     ],
+     "done": true,
+     "note": "Terbit 24 Agu, terindeks.",
+     "volume": 0,
+     "tracked": [],
+     "wave": 0
+    }
+   ]
+  },
+  {
+   "cluster": "pks-vs-mou",
+   "volume": 3260,
+   "best_position": null,
+   "kd": 3,
+   "keywords": [
+    "apa itu pks",
+    "pks adalah perjanjian",
+    "pks adalah kerjasama",
+    "perbedaan mou dan pks"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "PKS Adalah: Perjanjian Kerja Sama, Isi, dan Kekuatan Hukumnya",
+     "slug": "pks-adalah-perjanjian-kerja-sama-isi-dan-kekuatan-hukum",
+     "primary": "apa itu pks",
+     "secondary": [
+      "pks adalah perjanjian",
+      "pks adalah kerjasama"
+     ],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 2940,
+     "tracked": [
+      "apa itu pks",
+      "pks adalah perjanjian",
+      "pks adalah kerjasama"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Perbedaan MoU dan PKS: Jawaban Singkat dan Dasar Hukumnya",
+     "slug": "perbedaan-mou-dan-pks-jawaban-singkat-dan-dasar-hukumnya",
+     "primary": "perbedaan mou dan pks",
+     "secondary": [],
+     "new": [],
+     "done": true,
+     "note": "Terbit 27 Agu, terindeks 28 Agu.",
+     "volume": 320,
+     "tracked": [
+      "perbedaan mou dan pks"
+     ],
+     "wave": 0
+    },
+    {
+     "n": 3,
+     "role": "support",
+     "title": "Contoh PKS dan Cara Menyusunnya agar Mengikat Secara Hukum",
+     "slug": "contoh-pks-dan-cara-menyusun-agar-mengikat",
+     "primary": "contoh pks",
+     "secondary": [],
+     "new": [
+      "contoh pks"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "konsesi",
+   "volume": 2680,
+   "best_position": 39,
+   "kd": 0,
+   "keywords": [
+    "apa itu konsesi",
+    "arti konsesi",
+    "concession artinya",
+    "concession adalah"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Konsesi Adalah: Pengertian, Jenis, dan Contohnya di Indonesia",
+     "slug": "konsesi-adalah-pengertian-jenis-dan-contoh",
+     "primary": "apa itu konsesi",
+     "secondary": [
+      "arti konsesi"
+     ],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 1720,
+     "tracked": [
+      "apa itu konsesi",
+      "arti konsesi"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Concession Artinya dalam Konteks Hukum dan Bisnis Internasional",
+     "slug": "concession-artinya-dalam-hukum-dan-bisnis",
+     "primary": "concession artinya",
+     "secondary": [
+      "concession adalah"
+     ],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 960,
+     "tracked": [
+      "concession artinya",
+      "concession adalah"
+     ],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "regulasi-terbaru-tracker",
+   "volume": 2680,
+   "best_position": 9,
+   "kd": 25,
+   "keywords": [
+    "undang undang terbaru",
+    "peraturan pemerintah terbaru",
+    "pp 72",
+    "pp-19-01",
+    "pp tanda tanya"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Undang-Undang Terbaru: Daftar UU yang Baru Disahkan dan Cara Memantaunya",
+     "slug": "undang-undang-terbaru-daftar-dan-cara-memantau",
+     "primary": "undang undang terbaru",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "Perlu update berkala -- kandidat evergreen-refresh, bukan sekali tulis.",
+     "volume": 590,
+     "tracked": [
+      "undang undang terbaru"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Peraturan Pemerintah Terbaru: Cara Melacak PP yang Baru Terbit",
+     "slug": "peraturan-pemerintah-terbaru-cara-melacak",
+     "primary": "peraturan pemerintah terbaru",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 390,
+     "tracked": [
+      "peraturan pemerintah terbaru"
+     ],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "pns-jam-kerja-gaji",
+   "volume": 2470,
+   "best_position": 48,
+   "kd": 0,
+   "keywords": [
+    "jam kerja pns",
+    "perpres gaji pns",
+    "peraturan menteri keuangan perjalanan dinas"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Jam Kerja PNS: Aturan Resmi, 5 Hari vs 6 Hari Kerja",
+     "slug": "jam-kerja-pns-aturan-5-hari-vs-6-hari",
+     "primary": "jam kerja pns",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 1000,
+     "tracked": [
+      "jam kerja pns"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Perpres Gaji PNS dan Aturan Perjalanan Dinas Terbaru",
+     "slug": "perpres-gaji-pns-dan-aturan-perjalanan-dinas",
+     "primary": "perpres gaji pns",
+     "secondary": [
+      "peraturan menteri keuangan perjalanan dinas"
+     ],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 1470,
+     "tracked": [
+      "perpres gaji pns",
+      "peraturan menteri keuangan perjalanan dinas"
+     ],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "common-vs-civil-law",
+   "volume": 2430,
+   "best_position": 17,
+   "kd": 0,
+   "keywords": [
+    "common law dan civil law",
+    "perbedaan civil law dan common law",
+    "common law vs civil law",
+    "perbedaan common law dan civil law"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Perbedaan Common Law dan Civil Law: Dua Sistem Hukum Dunia",
+     "slug": "perbedaan-common-law-dan-civil-law",
+     "primary": "common law dan civil law",
+     "secondary": [
+      "perbedaan civil law dan common law",
+      "common law vs civil law",
+      "perbedaan common law dan civil law"
+     ],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 2430,
+     "tracked": [
+      "common law dan civil law",
+      "perbedaan civil law dan common law",
+      "common law vs civil law",
+      "perbedaan common law dan civil law"
+     ],
+     "wave": 1
+    }
+   ]
+  },
+  {
+   "cluster": "asas-lex",
+   "volume": 2400,
+   "best_position": 19,
+   "kd": 0,
+   "keywords": [
+    "lex posterior derogat priori"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Lex Posterior Derogat Legi Priori: Arti, Contoh, dan Asas Terkait",
+     "slug": "lex-posterior-derogat-legi-priori-arti-dan-contoh",
+     "primary": "lex posterior derogat priori",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 2400,
+     "tracked": [
+      "lex posterior derogat priori"
+     ],
+     "wave": 1
+    }
+   ]
+  },
+  {
+   "cluster": "obstruction-of-justice",
+   "volume": 2030,
+   "best_position": 30,
+   "kd": 0,
+   "keywords": [
+    "obstruction justice",
+    "obstruction of justice",
+    "pasal 221 kuhp"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Obstruction of Justice: Arti, Contoh Kasus, dan Sanksinya di Indonesia",
+     "slug": "obstruction-of-justice-arti-contoh-dan-sanksi",
+     "primary": "obstruction of justice",
+     "secondary": [
+      "obstruction justice"
+     ],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 1440,
+     "tracked": [
+      "obstruction of justice",
+      "obstruction justice"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Pasal 221 KUHP: Menghalangi Penyidikan dan Ancaman Pidananya",
+     "slug": "pasal-221-kuhp-menghalangi-penyidikan",
+     "primary": "pasal 221 kuhp",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 590,
+     "tracked": [
+      "pasal 221 kuhp"
+     ],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "masa-probation",
+   "volume": 1920,
+   "best_position": null,
+   "kd": 0,
+   "keywords": [
+    "apa itu probation",
+    "apa itu masa probation"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Apa Itu Probation? Aturan Masa Percobaan Kerja Menurut UU",
+     "slug": "apa-itu-probation-aturan-masa-percobaan-kerja",
+     "primary": "apa itu probation",
+     "secondary": [
+      "apa itu masa probation"
+     ],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 1920,
+     "tracked": [
+      "apa itu probation",
+      "apa itu masa probation"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Hak Karyawan Masa Probation: Gaji, BPJS, dan Pemutusan Kontrak",
+     "slug": "hak-karyawan-masa-probation-gaji-bpjs-pemutusan",
+     "primary": "hak karyawan probation",
+     "secondary": [],
+     "new": [
+      "hak karyawan probation"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "hak-dpr",
+   "volume": 1890,
+   "best_position": 28,
+   "kd": 0,
+   "keywords": [
+    "hak dpr",
+    "hak angket dpr"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Hak DPR: Interpelasi, Angket, dan Menyatakan Pendapat",
+     "slug": "hak-dpr-interpelasi-angket-menyatakan-pendapat",
+     "primary": "hak dpr",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 1300,
+     "tracked": [
+      "hak dpr"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Hak Angket DPR: Syarat, Prosedur, dan Contoh Penggunaannya",
+     "slug": "hak-angket-dpr-syarat-prosedur-dan-contoh",
+     "primary": "hak angket dpr",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 590,
+     "tracked": [
+      "hak angket dpr"
+     ],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "praduga-tak-bersalah",
+   "volume": 1780,
+   "best_position": 10,
+   "kd": 19,
+   "keywords": [
+    "presumption of innocence",
+    "presumption of innocence adalah",
+    "praduga tak bersalah adalah"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Asas Praduga Tak Bersalah: Dasar Hukum dan Penerapannya",
+     "slug": "asas-praduga-tak-bersalah-dasar-hukum-dan-penerapan",
+     "primary": "praduga tak bersalah adalah",
+     "secondary": [
+      "presumption of innocence",
+      "presumption of innocence adalah"
+     ],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 1780,
+     "tracked": [
+      "praduga tak bersalah adalah",
+      "presumption of innocence",
+      "presumption of innocence adalah"
+     ],
+     "wave": 1
+    }
+   ]
+  },
+  {
+   "cluster": "spk",
+   "volume": 1720,
+   "best_position": 16,
+   "kd": 0,
+   "keywords": [
+    "kepanjangan spk",
+    "spk kontrak"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "SPK Adalah: Kepanjangan, Fungsi, dan Bedanya dengan Kontrak",
+     "slug": "spk-adalah-kepanjangan-fungsi-dan-beda-dengan-kontrak",
+     "primary": "kepanjangan spk",
+     "secondary": [
+      "spk kontrak"
+     ],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 1720,
+     "tracked": [
+      "kepanjangan spk",
+      "spk kontrak"
+     ],
+     "wave": 1
+    }
+   ]
+  },
+  {
+   "cluster": "rpjmn",
+   "volume": 1600,
+   "best_position": 83,
+   "kd": 6,
+   "keywords": [
+    "rencana pembangunan jangka menengah"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Rencana Pembangunan Jangka Menengah (RPJMN): Pengertian dan Dasar Hukum",
+     "slug": "rencana-pembangunan-jangka-menengah-rpjmn",
+     "primary": "rencana pembangunan jangka menengah",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 1600,
+     "tracked": [
+      "rencana pembangunan jangka menengah"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Beda RPJPN, RPJMN, dan RKP dalam Perencanaan Pembangunan",
+     "slug": "beda-rpjpn-rpjmn-dan-rkp",
+     "primary": "perbedaan rpjpn dan rpjmn",
+     "secondary": [],
+     "new": [
+      "perbedaan rpjpn dan rpjmn"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "ratio-decidendi",
+   "volume": 1600,
+   "best_position": 16,
+   "kd": 0,
+   "keywords": [
+    "ratio decidendi",
+    "ratio decidendi adalah"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Ratio Decidendi Adalah: Arti, Fungsi, dan Bedanya dengan Obiter Dicta",
+     "slug": "ratio-decidendi-adalah-arti-fungsi-obiter-dicta",
+     "primary": "ratio decidendi adalah",
+     "secondary": [
+      "ratio decidendi"
+     ],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 1600,
+     "tracked": [
+      "ratio decidendi adalah",
+      "ratio decidendi"
+     ],
+     "wave": 1
+    }
+   ]
+  },
+  {
+   "cluster": "pmh-1365",
+   "volume": 1560,
+   "best_position": 24,
+   "kd": 0,
+   "keywords": [
+    "1365 kuhperdata",
+    "bunyi pasal 1365 kuhperdata"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Pasal 1365 KUHPerdata: Perbuatan Melawan Hukum dan Ganti Rugi",
+     "slug": "pasal-1365-kuhperdata-perbuatan-melawan-hukum",
+     "primary": "1365 kuhperdata",
+     "secondary": [
+      "bunyi pasal 1365 kuhperdata"
+     ],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 1560,
+     "tracked": [
+      "1365 kuhperdata",
+      "bunyi pasal 1365 kuhperdata"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Unsur Perbuatan Melawan Hukum dan Cara Mengajukan Gugatannya",
+     "slug": "unsur-perbuatan-melawan-hukum-dan-cara-menggugat",
+     "primary": "unsur perbuatan melawan hukum",
+     "secondary": [],
+     "new": [
+      "unsur perbuatan melawan hukum"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "terms-and-conditions",
+   "volume": 1470,
+   "best_position": 10,
+   "kd": 0,
+   "keywords": [
+    "t&c artinya",
+    "t&c"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "T&C Artinya: Syarat dan Ketentuan, Fungsi, dan Kekuatan Hukumnya",
+     "slug": "tnc-artinya-syarat-ketentuan-dan-kekuatan-hukum",
+     "primary": "t&c artinya",
+     "secondary": [
+      "t&c"
+     ],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 1470,
+     "tracked": [
+      "t&c artinya",
+      "t&c"
+     ],
+     "wave": 1
+    }
+   ]
+  },
+  {
+   "cluster": "pesangon-resign-efisiensi",
+   "volume": 1350,
+   "best_position": 19,
+   "kd": 0,
+   "keywords": [
+    "hak karyawan resign",
+    "perhitungan pesangon mengundurkan diri uu cipta kerja",
+    "efisiensi karyawan adalah"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Hak Karyawan Resign: Pesangon, UPMK, dan Cara Menghitungnya",
+     "slug": "hak-karyawan-resign-pesangon-upmk-dan-cara-hitung",
+     "primary": "hak karyawan resign",
+     "secondary": [
+      "perhitungan pesangon mengundurkan diri uu cipta kerja"
+     ],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 960,
+     "tracked": [
+      "hak karyawan resign",
+      "perhitungan pesangon mengundurkan diri uu cipta kerja"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Efisiensi Karyawan Adalah: PHK karena Efisiensi dan Hak Pekerja",
+     "slug": "efisiensi-karyawan-adalah-phk-efisiensi-dan-hak-pekerja",
+     "primary": "efisiensi karyawan adalah",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 390,
+     "tracked": [
+      "efisiensi karyawan adalah"
+     ],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "kode-etik-profesi",
+   "volume": 1300,
+   "best_position": 35,
+   "kd": 0,
+   "keywords": [
+    "kode etik profesi"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Kode Etik Profesi: Pengertian, Fungsi, dan Contohnya di Indonesia",
+     "slug": "kode-etik-profesi-pengertian-fungsi-dan-contoh",
+     "primary": "kode etik profesi",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 1300,
+     "tracked": [
+      "kode etik profesi"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Kode Etik Advokat Indonesia: Isi Pokok dan Sanksi Pelanggaran",
+     "slug": "kode-etik-advokat-indonesia-isi-dan-sanksi",
+     "primary": "kode etik advokat",
+     "secondary": [],
+     "new": [
+      "kode etik advokat"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "suaka-pengungsi",
+   "volume": 1270,
+   "best_position": 63,
+   "kd": 0,
+   "keywords": [
+    "apa itu asylum",
+    "refugees adalah"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Refugees Adalah: Status Pengungsi dan Perlindungan Hukumnya",
+     "slug": "refugees-adalah-status-pengungsi-dan-perlindungan",
+     "primary": "refugees adalah",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 880,
+     "tracked": [
+      "refugees adalah"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Apa Itu Asylum? Suaka Politik, Syarat, dan Prosedurnya",
+     "slug": "apa-itu-asylum-suaka-politik-syarat-dan-prosedur",
+     "primary": "apa itu asylum",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 390,
+     "tracked": [
+      "apa itu asylum"
+     ],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "hukum-transnasional-mfn",
+   "volume": 1270,
+   "best_position": 84,
+   "kd": 7,
+   "keywords": [
+    "most favoured nation",
+    "transnasional adalah"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Transnasional Adalah: Kejahatan dan Hukum Transnasional",
+     "slug": "transnasional-adalah-kejahatan-dan-hukum-transnasional",
+     "primary": "transnasional adalah",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 880,
+     "tracked": [
+      "transnasional adalah"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Most Favoured Nation (MFN): Prinsip WTO dan Penerapannya",
+     "slug": "most-favoured-nation-mfn-prinsip-wto",
+     "primary": "most favoured nation",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 390,
+     "tracked": [
+      "most favoured nation"
+     ],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "grasi-rehabilitasi",
+   "volume": 1040,
+   "best_position": 18,
+   "kd": 0,
+   "keywords": [
+    "rehabilitasi presiden adalah",
+    "grasi dan rehabilitasi",
+    "grasi dan rehabilitasi adalah"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Grasi, Amnesti, Abolisi, dan Rehabilitasi: Perbedaan dan Dasar Hukum",
+     "slug": "grasi-amnesti-abolisi-dan-rehabilitasi",
+     "primary": "grasi dan rehabilitasi",
+     "secondary": [
+      "grasi dan rehabilitasi adalah",
+      "rehabilitasi presiden adalah"
+     ],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 1040,
+     "tracked": [
+      "grasi dan rehabilitasi",
+      "grasi dan rehabilitasi adalah",
+      "rehabilitasi presiden adalah"
+     ],
+     "wave": 1
+    }
+   ]
+  },
+  {
+   "cluster": "uu-paten",
+   "volume": 1000,
+   "best_position": 50,
+   "kd": 0,
+   "keywords": [
+    "uu paten"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "UU Paten: UU 13/2016, Syarat, dan Masa Perlindungannya",
+     "slug": "uu-paten-uu-13-2016-syarat-dan-masa-perlindungan",
+     "primary": "uu paten",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 1000,
+     "tracked": [
+      "uu paten"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Cara Mendaftarkan Paten di Indonesia: Prosedur dan Biaya",
+     "slug": "cara-mendaftarkan-paten-prosedur-dan-biaya",
+     "primary": "cara mendaftarkan paten",
+     "secondary": [],
+     "new": [
+      "cara mendaftarkan paten"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "tax-holiday",
+   "volume": 1000,
+   "best_position": 36,
+   "kd": 0,
+   "keywords": [
+    "tax holiday adalah"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Tax Holiday Adalah: Insentif Pajak, Syarat, dan Dasar Hukumnya",
+     "slug": "tax-holiday-adalah-insentif-pajak-dan-syarat",
+     "primary": "tax holiday adalah",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 1000,
+     "tracked": [
+      "tax holiday adalah"
+     ],
+     "wave": 1
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Beda Tax Holiday dan Tax Allowance untuk Investor",
+     "slug": "beda-tax-holiday-dan-tax-allowance",
+     "primary": "perbedaan tax holiday dan tax allowance",
+     "secondary": [],
+     "new": [
+      "perbedaan tax holiday dan tax allowance"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "bppn",
+   "volume": 1000,
+   "best_position": 41,
+   "kd": 0,
+   "keywords": [
+    "bppn adalah"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "BPPN Adalah: Badan Penyehatan Perbankan Nasional dan Warisan BLBI",
+     "slug": "bppn-adalah-dan-warisan-blbi",
+     "primary": "bppn adalah",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "Turun dari 2 ke 1: lembaga sudah bubar (2004), query historis, tidak ada sub-intent yang layak halaman kedua.",
+     "volume": 1000,
+     "tracked": [
+      "bppn adalah"
+     ],
+     "wave": 1
+    }
+   ]
+  },
+  {
+   "cluster": "hak-pengusahaan-hutan",
+   "volume": 1000,
+   "best_position": 19,
+   "kd": 0,
+   "keywords": [
+    "hak pengusahaan hutan"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Hak Pengusahaan Hutan (HPH): Pengertian, Syarat, dan Dasar Hukum",
+     "slug": "hak-pengusahaan-hutan-hph-syarat-dan-dasar-hukum",
+     "primary": "hak pengusahaan hutan",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 1000,
+     "tracked": [
+      "hak pengusahaan hutan"
+     ],
+     "wave": 1
+    }
+   ]
+  },
+  {
+   "cluster": "delik-formil-materiil",
+   "volume": 910,
+   "best_position": 19,
+   "kd": 0,
+   "keywords": [
+    "delik formil adalah",
+    "delik formil",
+    "delik materil adalah"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Delik Formil dan Delik Materiil: Perbedaan dan Contoh Kasusnya",
+     "slug": "delik-formil-dan-delik-materiil-perbedaan-dan-contoh",
+     "primary": "delik formil adalah",
+     "secondary": [
+      "delik formil",
+      "delik materil adalah"
+     ],
+     "new": [],
+     "done": false,
+     "note": "Companion GEO sudah ditulis tapi MENUNGGU APPROVAL sejak 25 Agu; pillar ini terpisah.",
+     "volume": 910,
+     "tracked": [
+      "delik formil adalah",
+      "delik formil",
+      "delik materil adalah"
+     ],
+     "wave": 2
+    }
+   ]
+  },
+  {
+   "cluster": "lapor-polisi",
+   "volume": 880,
+   "best_position": null,
+   "kd": 0,
+   "keywords": [
+    "berapa lama laporan polisi diproses"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Berapa Lama Laporan Polisi Diproses: Memantau Lewat SP2HP",
+     "slug": "berapa-lama-laporan-polisi-diproses-cara-memantau-laporan-penipuan-bisnis-lewat-sp2hp",
+     "primary": "berapa lama laporan polisi diproses",
+     "secondary": [],
+     "new": [],
+     "done": true,
+     "note": "Terbit 28 Agu, belum terindeks (baru sehari).",
+     "volume": 880,
+     "tracked": [
+      "berapa lama laporan polisi diproses"
+     ],
+     "wave": 0
+    }
+   ]
+  },
+  {
+   "cluster": "interpol",
+   "volume": 880,
+   "best_position": null,
+   "kd": 0,
+   "keywords": [
+    "apa itu interpol"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Apa Itu Interpol? Fungsi, Red Notice, dan Kewenangannya di Indonesia",
+     "slug": "apa-itu-interpol-fungsi-red-notice-dan-kewenangan",
+     "primary": "apa itu interpol",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 880,
+     "tracked": [
+      "apa itu interpol"
+     ],
+     "wave": 2
+    }
+   ]
+  },
+  {
+   "cluster": "statuta-roma",
+   "volume": 880,
+   "best_position": 84,
+   "kd": 5,
+   "keywords": [
+    "statuta roma"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Statuta Roma: Isi, Mahkamah Pidana Internasional, dan Posisi Indonesia",
+     "slug": "statuta-roma-icc-dan-posisi-indonesia",
+     "primary": "statuta roma",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 880,
+     "tracked": [
+      "statuta roma"
+     ],
+     "wave": 2
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Kejahatan Internasional dalam Statuta Roma: Genosida hingga Agresi",
+     "slug": "kejahatan-internasional-dalam-statuta-roma",
+     "primary": "kejahatan dalam statuta roma",
+     "secondary": [],
+     "new": [
+      "kejahatan dalam statuta roma"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "pro-bono",
+   "volume": 880,
+   "best_position": null,
+   "kd": 0,
+   "keywords": [
+    "apa itu pro bono"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Apa Itu Pro Bono? Bantuan Hukum Gratis dan Kewajiban Advokat",
+     "slug": "apa-itu-pro-bono-bantuan-hukum-gratis",
+     "primary": "apa itu pro bono",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 880,
+     "tracked": [
+      "apa itu pro bono"
+     ],
+     "wave": 2
+    }
+   ]
+  },
+  {
+   "cluster": "sistem-pemerintahan",
+   "volume": 740,
+   "best_position": 35,
+   "kd": 0,
+   "keywords": [
+    "sistem pemerintahan presidensial adalah",
+    "kepala daerah kabupaten disebut"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Sistem Pemerintahan Presidensial Adalah: Ciri dan Penerapannya di Indonesia",
+     "slug": "sistem-pemerintahan-presidensial-adalah-ciri-dan-penerapan",
+     "primary": "sistem pemerintahan presidensial adalah",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 260,
+     "tracked": [
+      "sistem pemerintahan presidensial adalah"
+     ],
+     "wave": 2
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Kepala Daerah Kabupaten Disebut Apa? Struktur Pemerintahan Daerah",
+     "slug": "kepala-daerah-kabupaten-disebut-apa",
+     "primary": "kepala daerah kabupaten disebut",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 480,
+     "tracked": [
+      "kepala daerah kabupaten disebut"
+     ],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "doxing",
+   "volume": 720,
+   "best_position": 44,
+   "kd": 33,
+   "keywords": [
+    "doxing or doxxing"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Doxing Adalah: Ancaman Pidana Menurut UU ITE dan UU PDP",
+     "slug": "doxing-adalah-ancaman-pidana-uu-ite-dan-uu-pdp",
+     "primary": "doxing or doxxing",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 720,
+     "tracked": [
+      "doxing or doxxing"
+     ],
+     "wave": 2
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Cara Melaporkan Doxing dan Melindungi Data Pribadi",
+     "slug": "cara-melaporkan-doxing-dan-melindungi-data-pribadi",
+     "primary": "cara melaporkan doxing",
+     "secondary": [],
+     "new": [
+      "cara melaporkan doxing"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "unclos",
+   "volume": 720,
+   "best_position": 36,
+   "kd": 12,
+   "keywords": [
+    "unclos adalah"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "UNCLOS Adalah: Konvensi Hukum Laut dan Zona Maritim Indonesia",
+     "slug": "unclos-adalah-konvensi-hukum-laut-dan-zona-maritim",
+     "primary": "unclos adalah",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 720,
+     "tracked": [
+      "unclos adalah"
+     ],
+     "wave": 2
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "ZEE, Laut Teritorial, dan Landas Kontinen Menurut UNCLOS",
+     "slug": "zee-laut-teritorial-dan-landas-kontinen",
+     "primary": "zona ekonomi eksklusif adalah",
+     "secondary": [],
+     "new": [
+      "zona ekonomi eksklusif adalah"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "hukum-publik-privat",
+   "volume": 650,
+   "best_position": 26,
+   "kd": 0,
+   "keywords": [
+    "hukum publik dan hukum privat",
+    "logika hukum"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Perbedaan Hukum Publik dan Hukum Privat",
+     "slug": "perbedaan-hukum-publik-dan-hukum-privat",
+     "primary": "hukum publik dan hukum privat",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 390,
+     "tracked": [
+      "hukum publik dan hukum privat"
+     ],
+     "wave": 2
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Logika Hukum: Penalaran Deduktif dan Induktif dalam Penerapan Hukum",
+     "slug": "logika-hukum-penalaran-deduktif-dan-induktif",
+     "primary": "logika hukum",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 260,
+     "tracked": [
+      "logika hukum"
+     ],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "syarat-sah-perjanjian-1320",
+   "volume": 640,
+   "best_position": 25,
+   "kd": 0,
+   "keywords": [
+    "pasal 1320 bw",
+    "kuhperdata 1320"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Pasal 1320 KUHPerdata: Empat Syarat Sah Perjanjian",
+     "slug": "pasal-1320-kuhperdata-empat-syarat-sah-perjanjian",
+     "primary": "pasal 1320 bw",
+     "secondary": [
+      "kuhperdata 1320"
+     ],
+     "new": [],
+     "done": false,
+     "note": "Turun dari 2 ke 1: kedua keyword adalah pasal yang sama, memisahnya akan saling makan.",
+     "volume": 640,
+     "tracked": [
+      "pasal 1320 bw",
+      "kuhperdata 1320"
+     ],
+     "wave": 2
+    }
+   ]
+  },
+  {
+   "cluster": "biaya-pengacara",
+   "volume": 640,
+   "best_position": 10,
+   "kd": 0,
+   "keywords": [
+    "biaya pengacara",
+    "sewa pengacara berapa"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Biaya Sewa Pengacara: Apakah Ada Tarif Resmi dan Bagaimana Dihitung",
+     "slug": "biaya-sewa-pengacara-apakah-ada-tarif-resmi-dan-bagaimana-dihitung",
+     "primary": "biaya pengacara",
+     "secondary": [
+      "sewa pengacara berapa"
+     ],
+     "new": [],
+     "done": true,
+     "note": "Terbit 27 Agu, terindeks 28 Agu.",
+     "volume": 640,
+     "tracked": [
+      "biaya pengacara",
+      "sewa pengacara berapa"
+     ],
+     "wave": 0
+    }
+   ]
+  },
+  {
+   "cluster": "thr-prorata",
+   "volume": 590,
+   "best_position": 14,
+   "kd": 0,
+   "keywords": [
+    "cara hitung thr prorata"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Cara Hitung THR Prorata untuk Karyawan Baru dan Kontrak",
+     "slug": "cara-hitung-thr-prorata-karyawan-baru-dan-kontrak",
+     "primary": "cara hitung thr prorata",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 590,
+     "tracked": [
+      "cara hitung thr prorata"
+     ],
+     "wave": 2
+    }
+   ]
+  },
+  {
+   "cluster": "impersonation",
+   "volume": 590,
+   "best_position": 39,
+   "kd": 0,
+   "keywords": [
+    "impersonation adalah"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Impersonation Adalah: Penipuan Identitas dan Jerat Hukumnya",
+     "slug": "impersonation-adalah-penipuan-identitas-dan-jerat-hukum",
+     "primary": "impersonation adalah",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 590,
+     "tracked": [
+      "impersonation adalah"
+     ],
+     "wave": 2
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Akun Palsu Mengatasnamakan Anda: Cara Lapor dan Dasar Hukumnya",
+     "slug": "akun-palsu-mengatasnamakan-anda-cara-lapor",
+     "primary": "akun palsu mengatasnamakan orang lain",
+     "secondary": [],
+     "new": [
+      "akun palsu mengatasnamakan orang lain"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "hukum-pinjam-meminjam",
+   "volume": 480,
+   "best_position": null,
+   "kd": 0,
+   "keywords": [
+    "hukum pinjam meminjam"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Utang Teman Tidak Dibayar: Bisa Dipidanakan atau Tidak?",
+     "slug": "utang-teman-tidak-dibayar-bisa-dipidanakan-atau-tidak-ini-dasar-hukumnya",
+     "primary": "hukum pinjam meminjam",
+     "secondary": [],
+     "new": [],
+     "done": true,
+     "note": "Terbit 28 Agu, belum terindeks (baru sehari).",
+     "volume": 480,
+     "tracked": [
+      "hukum pinjam meminjam"
+     ],
+     "wave": 0
+    }
+   ]
+  },
+  {
+   "cluster": "judicial-review",
+   "volume": 480,
+   "best_position": 30,
+   "kd": 0,
+   "keywords": [
+    "apa itu judicial review"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Apa Itu Judicial Review? Uji Materi di MK dan MA",
+     "slug": "apa-itu-judicial-review-uji-materi-di-mk-dan-ma",
+     "primary": "apa itu judicial review",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 480,
+     "tracked": [
+      "apa itu judicial review"
+     ],
+     "wave": 2
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Cara Mengajukan Judicial Review ke Mahkamah Konstitusi",
+     "slug": "cara-mengajukan-judicial-review-ke-mk",
+     "primary": "cara mengajukan judicial review",
+     "secondary": [],
+     "new": [
+      "cara mengajukan judicial review"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "karantina-hewan",
+   "volume": 480,
+   "best_position": 37,
+   "kd": 4,
+   "keywords": [
+    "instalasi karantina hewan"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Instalasi Karantina Hewan: Syarat, Izin, dan Dasar Hukumnya",
+     "slug": "instalasi-karantina-hewan-syarat-izin-dan-dasar-hukum",
+     "primary": "instalasi karantina hewan",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "Turun dari 2 ke 1: niche tunggal, tidak ada sub-intent dengan permintaan nyata.",
+     "volume": 480,
+     "tracked": [
+      "instalasi karantina hewan"
+     ],
+     "wave": 2
+    }
+   ]
+  },
+  {
+   "cluster": "hak-moral-cipta",
+   "volume": 390,
+   "best_position": 14,
+   "kd": 0,
+   "keywords": [
+    "contoh hak moral"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Contoh Hak Moral dalam Hak Cipta dan Bedanya dengan Hak Ekonomi",
+     "slug": "contoh-hak-moral-dan-beda-dengan-hak-ekonomi",
+     "primary": "contoh hak moral",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 390,
+     "tracked": [
+      "contoh hak moral"
+     ],
+     "wave": 2
+    }
+   ]
+  },
+  {
+   "cluster": "uu-csr",
+   "volume": 320,
+   "best_position": 26,
+   "kd": 0,
+   "keywords": [
+    "undang undang csr"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Undang-Undang CSR: Kewajiban TJSL Perseroan dan Sanksinya",
+     "slug": "undang-undang-csr-kewajiban-tjsl-dan-sanksi",
+     "primary": "undang undang csr",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "Turun dari 2 ke 1: satu intent, satu dasar hukum.",
+     "volume": 320,
+     "tracked": [
+      "undang undang csr"
+     ],
+     "wave": 2
+    }
+   ]
+  },
+  {
+   "cluster": "kausa-halal-1337",
+   "volume": 320,
+   "best_position": 10,
+   "kd": 0,
+   "keywords": [
+    "pasal 1337 kuhperdata"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Pasal 1337 KUHPerdata: Sebab yang Halal dalam Perjanjian",
+     "slug": "pasal-1337-kuhperdata-sebab-yang-halal",
+     "primary": "pasal 1337 kuhperdata",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 320,
+     "tracked": [
+      "pasal 1337 kuhperdata"
+     ],
+     "wave": 2
+    }
+   ]
+  },
+  {
+   "cluster": "jaminan-fidusia",
+   "volume": 320,
+   "best_position": 54,
+   "kd": 0,
+   "keywords": [
+    "apa itu jaminan fidusia"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Apa Itu Jaminan Fidusia? Pengertian, Objek, dan Pendaftarannya",
+     "slug": "apa-itu-jaminan-fidusia-objek-dan-pendaftaran",
+     "primary": "apa itu jaminan fidusia",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "",
+     "volume": 320,
+     "tracked": [
+      "apa itu jaminan fidusia"
+     ],
+     "wave": 2
+    },
+    {
+     "n": 2,
+     "role": "support",
+     "title": "Eksekusi Jaminan Fidusia Setelah Putusan MK: Aturan Terbaru",
+     "slug": "eksekusi-jaminan-fidusia-setelah-putusan-mk",
+     "primary": "eksekusi jaminan fidusia",
+     "secondary": [],
+     "new": [
+      "eksekusi jaminan fidusia"
+     ],
+     "done": false,
+     "note": "",
+     "volume": 0,
+     "tracked": [],
+     "wave": 3
+    }
+   ]
+  },
+  {
+   "cluster": "rups",
+   "volume": 260,
+   "best_position": 33,
+   "kd": 0,
+   "keywords": [
+    "rapat umum pemegang saham luar biasa"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "RUPS Luar Biasa: Syarat, Kuorum, dan Tata Cara Penyelenggaraan",
+     "slug": "rups-luar-biasa-syarat-kuorum-dan-tata-cara",
+     "primary": "rapat umum pemegang saham luar biasa",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "Turun dari 2 ke 1: satu prosedur, cukup satu halaman menyeluruh.",
+     "volume": 260,
+     "tracked": [
+      "rapat umum pemegang saham luar biasa"
+     ],
+     "wave": 2
+    }
+   ]
+  },
+  {
+   "cluster": "kontrak-bisnis",
+   "volume": 260,
+   "best_position": 31,
+   "kd": 0,
+   "keywords": [
+    "kontrak bisnis"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Kontrak Bisnis: Jenis, Klausul Penting, dan Cara Menyusunnya",
+     "slug": "kontrak-bisnis-jenis-klausul-dan-cara-menyusun",
+     "primary": "kontrak bisnis",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "Turun dari 2 ke 1: kedalaman ada di cluster klausa-kontrak, tautkan ke sana.",
+     "volume": 260,
+     "tracked": [
+      "kontrak bisnis"
+     ],
+     "wave": 2
+    }
+   ]
+  },
+  {
+   "cluster": "rahasia-bank",
+   "volume": 260,
+   "best_position": 34,
+   "kd": 0,
+   "keywords": [
+    "rahasia bank"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Rahasia Bank: Ruang Lingkup, Pengecualian, dan Sanksi Pelanggaran",
+     "slug": "rahasia-bank-pengecualian-dan-sanksi",
+     "primary": "rahasia bank",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "Turun dari 2 ke 1: satu intent definisi.",
+     "volume": 260,
+     "tracked": [
+      "rahasia bank"
+     ],
+     "wave": 2
+    }
+   ]
+  },
+  {
+   "cluster": "harta-bersama",
+   "volume": 260,
+   "best_position": 32,
+   "kd": 0,
+   "keywords": [
+    "harta bersama adalah"
+   ],
+   "blogs": [
+    {
+     "n": 1,
+     "role": "pillar",
+     "title": "Harta Bersama Adalah: Pembagian Gono-Gini Setelah Perceraian",
+     "slug": "harta-bersama-adalah-pembagian-gono-gini",
+     "primary": "harta bersama adalah",
+     "secondary": [],
+     "new": [],
+     "done": false,
+     "note": "Turun dari 2 ke 1: satu intent definisi.",
+     "volume": 260,
+     "tracked": [
+      "harta bersama adalah"
+     ],
+     "wave": 2
+    }
+   ]
+  }
+ ]
+}
