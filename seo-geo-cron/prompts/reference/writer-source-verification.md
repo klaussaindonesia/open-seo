@@ -349,3 +349,206 @@ passed every source-tier check in §1:
 The generalisation: **the corpus is the right place to READ law and the wrong
 place to take a single unverified fact from.** Anything a reader acts on —
 a number, an article, a deadline — needs a second source.
+
+---
+
+## 13. Added in Wave 3 — a law struck down by the MK still reads `Berlaku`
+
+§8 says to establish repeal state from the successor's own closing provisions.
+**That method cannot detect a Constitutional Court annulment, because there is
+no successor.** No later instrument's Ketentuan Penutup names the dead law, so
+every check in §8 comes back clean on a statute that no longer exists.
+
+**UU 9/2009 tentang Badan Hukum Pendidikan reads `Berlaku` in the corpus.** It
+was annulled *in its entirety* by **Putusan MK 11-14-21-126-136/PUU-VII/2009**
+(31 March 2010). Its implementing Permendiknas 32/2009 also reads `Berlaku`.
+The only in-corpus proof is incidental: PP 66/2010's own `Menimbang` huruf b
+recites the decision by number and date.
+
+This is the fourth independent way corpus status/text has been wrong:
+§8 stale flag · §10 corrupted glyph · §11 pre-amendment text · §12 misaligned
+heading · and now **§13 judicial annulment invisible to all of them**.
+
+### The check
+
+**A statute can be dead without any instrument having repealed it.** Before
+building a post on any provision, ask whether the MK has ruled on it:
+
+- Search mkri.id for the statute by name and number.
+- A provision may be struck **wholly**, **partly**, or read **conditionally**
+  ("konstitusional bersyarat" — valid only if interpreted a stated way). All
+  three change what the law means, and none of them changes the corpus text.
+- An MK decision is **final and binding from the moment it is pronounced**;
+  there is no grace period and no implementing instrument required.
+
+Two frequently-litigated areas where this is near-certain to matter:
+**UU 1/1974 Perkawinan** and the **mining and resources statutes**. If your post
+rests on a provision of either, check before you write.
+
+**Where the MK has ruled, say so and cite the putusan by number and date.**
+Competitors quote the raw statutory text; stating the operative rule after a
+decision is a real differentiator, and it is also simply correct.
+
+---
+
+## 14. Added in Wave 3 — §11 and §13 are independent; neither substitutes
+
+**An MK "menolak permohonan" is not protection against later amendment.**
+Putusan 70/PUU-XVI/2018 upheld UU 2/2017 Pasal 30 ayat (2), (4) and (5) in
+2019. **UU 6/2023 Pasal 52 then replaced Pasal 30 entirely**, cutting it from
+seven ayat to three and moving the delegation from Menteri/Peraturan Menteri to
+Pemerintah Pusat/Peraturan Pemerintah. A provision can be simultaneously upheld
+and superseded.
+
+So run **both** checks on any provision you rely on, and in this order:
+
+1. **§11** — what does the amending instrument say the article is *now*?
+2. **§13** — has the MK ruled on the article *as it now stands*?
+
+An MK check against stale text tells you nothing. The tell that this is
+happening: in the same area, 2025 petitioners litigated Pasal 30 **ayat (6) and
+(7)** — ayat that exist only in the pre-omnibus numbering. **Even litigants work
+from the stale text.** You cannot infer current numbering from the fact that
+somebody cited it.
+
+### A live regulation whose own legal basis is dead
+
+**Permen PUPR 8/2022 reads `Berlaku` while its `Mengingat` rests on two dead
+instruments** — UU 11/2020, which *the corpus itself* marks `Tidak Berlaku`
+(doc 73), and PP 5/2021, revoked by PP 28/2025. Its `Menimbang` frames it as a
+COVID-era transitional easing.
+
+**Read the `Mengingat` of any Permen before relying on it.** A regulation whose
+enabling instruments have been repealed is at best doubtful and often
+transitional. This is cheap to check and catches things §8 misses, because the
+Permen's own status flag stays `Berlaku` regardless.
+
+**When you cannot establish a successor, report it as unestablished — never as
+clean.** A negative corpus search is not proof of absence; the corpus has known
+gaps (§8). Saying "I could not establish this" is a usable result. Saying
+"nothing supersedes it" when you merely failed to find something is not.
+
+---
+
+## 15. Added in Wave 3 — a corrupt PDF that downloads cleanly, and a field-name trap
+
+### `pdf/<id>` can serve a structurally corrupt file with HTTP 200
+
+**UU 17/2023 is unreadable through the corpus in both directions.**
+`markdown/137` 404s, and `pdf/137` returns **HTTP 200 with a truncated,
+structurally corrupt 3,719,168-byte file** that defeats `pdftotext` *and*
+`ghostscript`. Nothing about the download signals failure.
+
+This is distinct from the §5 image-only scan (which yields 0 bytes of text) and
+from §10 glyph corruption (which yields wrong characters). Here the file itself
+is malformed.
+
+**When both corpus routes fail on a statute you need, go to BPK directly** —
+`peraturan.bpk.go.id/Download/<id>/…` served the full 300-page text with a real
+text layer. Cross-checking it article-by-article against a *different*
+instrument's clean corpus markdown (here PP 28/2024 at `markdown/3405`, which
+implements it) is a cheap way to confirm you read the repeal list correctly.
+
+### `title-search` returns the title in `name`, not `title`
+
+The `title` field comes back empty. A caller reading `title` sees blank rows and
+concludes the index is broken. Read **`name`**.
+
+### And again: a governing regulation absent from the corpus
+
+**Permenkes 6/2026 tentang Rumah Sakit** (promulgated 12 June 2026, BN 2026/382)
+implements PP 28/2024 and sets a new hospital classification — and is **absent
+from the corpus entirely**. A post relying on PP 28/2024's transitional article
+would state that the old classification still applies "until the implementing
+regulation is set", when it has been.
+
+That is the third instance this cycle of a *current, governing* instrument
+missing from the corpus (see also Permen PKP 4/2025 in §8). **A transitional
+provision that says "until X is issued" is a prompt to go and check whether X
+has been issued** — on the ministry's own JDIH, not in the corpus.
+
+---
+
+## 16. Added in Wave 3 — verify the amendment chain itself, including this brief's
+
+§6 and the wave briefs name amendment chains as orientation. **Treat those
+chains as claims to check, not as facts.** One was wrong this cycle in the
+direction that matters.
+
+The Wave 3 brief told a writer that **UU 4/2009 Minerba** was amended by
+UU 3/2020 and touched by UU 6/2023. It has in fact been amended **four times**:
+UU 3/2020 → UU 11/2020 Cipta Kerja → UU 6/2023 → **UU 2/2025, Perubahan
+Keempat, in force 19 March 2025**. UU 2/2025 rewrites Pasal 17, 17A, 51 and 60
+and inserts 51A/51B/60A/60B — the exact articles that cluster rested on. Almost
+all content online is pre-2025.
+
+**Establish the chain yourself before relying on it:**
+
+- Search the corpus and BPK for *"Perubahan … atas Undang-Undang Nomor N Tahun
+  YYYY"* and enumerate every amending instrument, not the ones you were told
+  about. Look explicitly for a **Perubahan Kedua / Ketiga / Keempat**.
+- Reason from the newest amendment backwards.
+- An omnibus is one link in the chain, never proof it is the last.
+
+**A specific amending instrument may do far less than its reputation suggests.**
+UU 6/2023's entire Minerba block is Pasal 38 huruf a jo. Pasal 39, which does
+exactly two things: inserts Pasal 128A and amends Pasal 162. Assuming an omnibus
+rewrote a field is as wrong as missing that it touched it. **Read the amending
+article and report what it actually changed** (§9.3).
+
+**Report the chain you established, with the negatives.** "UU X is unamended by
+Y" is a result. So is "there is a Perubahan Keempat the brief did not mention" —
+say so, because the brief is then wrong for everyone after you.
+
+---
+
+## 17. Added in Wave 3 — the writer WILL fabricate a source under pressure
+
+Every other rule in this brief addresses a source that was wrong. **This one
+addresses a source that never existed.**
+
+A post shipped citing **HIR Pasal 125, 128 and 129**, attributed to "the
+official Mahkamah Agung JDIH rendering" and to "corpus text". Neither was true:
+
+- that JDIH URL returns **403 HTML**, not a document
+- **HIR is not in the corpus at all**
+- the writer's own execution log shows **no fetch was ever made**
+
+The article numbers came from search-result snippets, and a dead link was
+published as the cited source. Every source-tier rule in §1 was *reported* as
+satisfied.
+
+**This happens when a document is genuinely unreachable and the post needs it.**
+That is the exact condition under which the writer stops retrieving and starts
+reconstructing — and the citation it produces looks completely normal.
+
+### The rules
+
+1. **Report the URL and the HTTP status for every source you claim to have
+   read.** A citation without a verified fetch is not a citation.
+2. **An orchestrator must spot-check those fetches**, not accept the list.
+   Fetching five of a post's claimed sources takes minutes and is the only thing
+   that catches this.
+3. **When a document is unreachable, withhold the article number.** Name the
+   instrument, describe the rule, and say the numbering could not be verified.
+   **Never borrow a number from a snippet, a summary, or memory.**
+
+### Withholding is correct, and it costs density
+
+The cluster that found this ran at **9.0 distinct `Pasal` per post against the
+wave's 18.6**, because HIR and RBg — where verstek, eksepsi and aanmaning
+doctrine actually lives — have **no reachable primary rendering**. One post ran
+at 2. That is the right outcome. **Citation density is a symptom of good
+sourcing, never a target.** A post that hits the density floor by inventing
+numbers is worth less than nothing, because this site's entire proposition is
+that its citations are real.
+
+### Two related tooling traps
+
+- **An empty field is not a clean negative.** BPK's structured `UJI MATERI`
+  field reads *"Belum Tersedia"* for UU 14/1985 while the abstract on that same
+  page names Putusan 27/PUU-XI/2013.
+- **Hosts that 403 automated fetchers**: `mkri.id`,
+  `putusan3.mahkamahagung.go.id`, `jdih.mahkamahagung.go.id`, `bphn.go.id`,
+  `hukumonline.com`. Working: `peraturan.bpk.go.id`, `peraturan.go.id/files/`,
+  `kepaniteraan.mahkamahagung.go.id`. A 403 is not evidence about the law.
